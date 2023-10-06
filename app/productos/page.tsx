@@ -2,15 +2,25 @@
 
 import React, { useState, useEffect } from "react";
 import { fetchAPI } from "../../lib/api";
+import { useSearchParams } from "next/navigation";
+import { Categorias } from "@/components/products/filtros/Categorias";
+import { Busqueda } from "@/components/products/filtros/Busqueda";
 
 export default function Productos() {
   const [searchWord, setSearchWord] = useState("");
-  const [selectedCat, setSelectedCat] = useState("");
-  const [searchInput, setSearchInput] = useState("");
+
+  const searchParams = useSearchParams();
+  const search = searchParams.get("s");
+  const category = searchParams.get("categoria");
 
   useEffect(() => {
     getProductos();
   }, [searchWord]);
+
+  useEffect(() => {
+    getProductos();
+    console.log(search);
+  }, [searchParams]);
 
   useEffect(() => {
     getCategories();
@@ -31,18 +41,18 @@ export default function Productos() {
 
   const getProductos = async () => {
     try {
-      if (searchWord) {
+      if (search) {
         const productRes = await fetchAPI("/productos", {
           filters: {
             $or: [
               {
                 nombre: {
-                  $contains: searchWord,
+                  $contains: search,
                 },
               },
               {
                 descripcion: {
-                  $contains: searchWord,
+                  $contains: search,
                 },
               },
             ],
@@ -52,7 +62,7 @@ export default function Productos() {
                   $or: [
                     {
                       slug: {
-                        $contains: selectedCat,
+                        $contains: category,
                       },
                     },
                   ],
@@ -68,6 +78,9 @@ export default function Productos() {
           populate: {
             imagen_principal: "*",
             categorias: "*",
+            marca: "*",
+            rubros: "*",
+            tipo_de_productos: "*"
           },
         });
         console.log(productRes);
@@ -79,7 +92,7 @@ export default function Productos() {
               $or: [
                 {
                   slug: {
-                    $contains: selectedCat,
+                    $contains: category,
                   },
                 },
               ],
@@ -92,6 +105,9 @@ export default function Productos() {
           populate: {
             imagen_principal: "*",
             categorias: "*",
+            marca: "*",
+            rubros: "*",
+            tipo_de_productos: "*"
           },
         });
         console.log(productRes);
@@ -101,42 +117,13 @@ export default function Productos() {
     }
   };
 
-  const handleSearch = (e: any) => {
-    e.preventDefault();
-    setSearchWord(searchInput);
-    //setCurrentPage(1);
-  };
-
   return (
     <div className="mt-16">
       <div className="PageMainContainer mx-auto px-4 xl:px-16 py-6">
         <div className="mb-4">
-          <h1 className="font-bold text-black text-2xl xl:text-4xl lg:mx-auto">
-            Carreras
-          </h1>
+        <Busqueda />
         </div>
-        <div className="block xl:flex xl:justify-between">
-          <form onSubmit={(e) => handleSearch(e)}>
-            <div className="flex gap-4">
-              <input
-                className="px-4 py-2 border border-gray-400 rounded"
-                type="text"
-                name="search"
-                value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
-              />
-              <button
-                type="submit"
-                className={`cursor-pointer px-5 py-2 rounded-md text-gray-200 bg-cm-primary hover:bg-cm-primaryLight hover:text-white font-bold transition duration-300 flex items-center`}
-              >
-                Buscar
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div className="bg-gray-100">
-        <div className="PageMainContainer mx-auto px-4 xl:px-16 min-h-screen relative py-16"></div>
+        <Categorias selected={"test"} />
       </div>
     </div>
   );
