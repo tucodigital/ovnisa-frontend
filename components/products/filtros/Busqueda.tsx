@@ -32,11 +32,13 @@ export const Busqueda = () => {
 
   return (
     <form onSubmit={(e) => handleSearch(e)}>
-      <div className="flex gap-4">
+      <label className="text-xs">Buscar</label>
+      <div className="flex gap-4 mb-2">
         <input
-          className="px-4 py-2 border border-gray-400 rounded"
+          className="px-4 py-2 border border-gray-400 rounded w-full"
           type="text"
           name="search"
+          placeholder="buscar..."
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />

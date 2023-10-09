@@ -3,12 +3,12 @@
 import type { ChangeEvent } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-export const Categorias = ({
+export const TipoProductos = ({
   selected,
-  categorias,
+  tipoProductos,
 }: {
   selected: string | null;
-  categorias: any;
+  tipoProductos: any;
 }) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -22,9 +22,9 @@ export const Categorias = ({
     const value = event.target.value.trim();
 
     if (!value) {
-      current.delete("categoria");
+      current.delete("tipoProducto");
     } else {
-      current.set("categoria", event.target.value);
+      current.set("tipoProducto", event.target.value);
     }
 
     const search = current.toString();
@@ -36,17 +36,17 @@ export const Categorias = ({
 
   return (
     <div>
-      <label className="text-xs">Categorías</label>
+      <label className="text-xs">Tipo de Productos</label>
       <select
         className="px-4 py-2 rounded border border-gray-400 w-full"
         value={selected ? selected : ""}
         onChange={onSelect}
       >
         <option value=""></option>
-        {categorias && categorias.length > 0
-          ? categorias.map((cat:any) => (
-              <option key={cat.id} value={cat.attributes.slug}>
-                {cat.attributes.nombre}
+        {tipoProductos && tipoProductos.length > 0
+          ? tipoProductos.map((tipo:any) => (
+              <option key={tipo.id} value={tipo.attributes.slug}>
+                {tipo.attributes.nombre}
               </option>
             ))
           : null}
