@@ -7,30 +7,37 @@ import { useSearchParams } from "next/navigation";
 import { Busqueda } from "@/components/products/filtros/Busqueda";
 import { Categorias } from "@/components/products/filtros/Categorias";
 import { TipoProductos } from "@/components/products/filtros/TipoProductos";
+import { Marcas } from "@/components/products/filtros/Marcas";
+import { Rubros } from "@/components/products/filtros/Rubros";
 
 export default function Productos() {
   const searchParams = useSearchParams();
   const search = searchParams.get("s");
   const cat = searchParams.get("categoria");
   const tipo = searchParams.get("tipoProducto");
+  const marca = searchParams.get("marca");
+  const rubro = searchParams.get("rubro");
 
   const [productos, setProdutos] = useState([]);
   const [categorias, setCategorias] = useState([]);
   const [tipoProductos, setTipoProductos] = useState([]);
-  const [mainCatSubTipo, setMainCatSubTipo] = useState([])
+  const [marcas, setMarcas] = useState([]);
+  const [rubros, setRubros] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getCarreras();
+    getProductos();
   }, [searchParams]);
 
   useEffect(() => {
     getCategories();
     getTipoProductos();
+    getMarcas();
+    getRubros();
   }, []);
 
   useEffect(() => {
-    getTipoProductos();
+    getCatSubtipos();
   }, [cat]);
 
   const getCategories = async () => {
@@ -41,9 +48,52 @@ export default function Productos() {
         },
       });
       console.log("categorias: ", catRes);
-      setCategorias(catRes.data)
+      setCategorias(catRes.data);
     } catch (e: any) {
       console.error(e.response);
+    }
+  };
+
+  const getRubros = async () => {
+    try {
+      const rubrosRes = await fetchAPI("/rubros");
+      console.log("rubros: ", rubrosRes);
+      setRubros(rubrosRes.data);
+    } catch (e: any) {
+      console.error(e.response);
+    }
+  };
+
+  const getMarcas = async () => {
+    try {
+      const marcasRes = await fetchAPI("/marcas");
+      console.log("marcas: ", marcasRes);
+      setMarcas(marcasRes.data);
+    } catch (e: any) {
+      console.error(e.response);
+    }
+  };
+
+  const getCatSubtipos = () => {
+    if (cat) {
+      categorias.map((categoria: any) => {
+        if (cat === categoria.attributes.slug) {
+          if (
+            categoria.attributes.tipos_de_productos.data &&
+            categoria.attributes.tipos_de_productos.data.length > 0
+          ) {
+            console.log(
+              "tipos filtrados",
+              categoria.attributes.tipos_de_productos.data
+            );
+            setTipoProductos(categoria.attributes.tipos_de_productos.data);
+          } else {
+            getTipoProductos();
+          }
+        }
+      });
+    } else {
+      getTipoProductos();
     }
   };
 
@@ -57,90 +107,103 @@ export default function Productos() {
     }
   };
 
-
-  const getCarreras = async () => {
+  const getProductos = async () => {
     setLoading(true);
     try {
-      if (search) {
-        const productRes = await fetchAPI("/productos", {
-          filters: {
-            $or: [
-              {
-                nombre: {
-                  $contains: search,
-                },
+      const productRes = await fetchAPI("/productos", {
+        filters: {
+          $or: [
+            {
+              nombre: {
+                $containsi: search,
               },
-              {
-                descripcion: {
-                  $contains: search,
-                },
-              },
-              {
-                descripcion_corta: {
-                  $contains: search,
-                },
-              },
-            ],
-            $and: [
-              {
-                categorias: {
-                  $or: [
-                    {
-                      slug: {
-                        $contains: cat,
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-          },
-          pagination: {
-            page: 1,
-            pageSize: 10,
-          },
-          //sort: [`createdAt:${orderFecha}`, `title:${orderAlfabetico}`],
-          populate: {
-            imagen_principal: "*",
-            rubros: "*",
-            marcas: "*",
-            tipos_de_productos: "*",
-            categorias: "*",
-          },
-        });
-        console.log(productRes);
-        setProdutos(productRes.data);
-        setLoading(false);
-      } else {
-        const productRes = await fetchAPI("/productos", {
-          //sort: [`createdAt:${orderFecha}`, `title:${orderAlfabetico}`],
-          filters: {
-            categorias: {
-              $or: [
-                {
-                  slug: {
-                    $contains: cat,
-                  },
-                },
-              ],
             },
-          },
-          pagination: {
-            page: 1,
-            pageSize: 10,
-          },
-          populate: {
-            imagen_principal: "*",
-            rubros: "*",
-            marcas: "*",
-            tipos_de_productos: "*",
-            categorias: "*",
-          },
-        });
-        console.log(productRes);
-        setProdutos(productRes.data);
-        setLoading(false);
-      }
+            {
+              descripcion: {
+                $containsi: search,
+              },
+            },
+            {
+              descripcion_corta: {
+                $containsi: search,
+              },
+            },
+            {
+              keywords: {
+                $and: [
+                  {
+                    tag: {
+                      $contains: search,
+                    },
+                  },
+                ],
+              },
+            },
+          ],
+          $and: [
+            {
+              categorias: {
+                $and: [
+                  {
+                    slug: {
+                      $contains: cat,
+                    },
+                  },
+                ],
+              },
+            },
+            {
+              tipos_de_productos: {
+                $and: [
+                  {
+                    slug: {
+                      $contains: tipo,
+                    },
+                  },
+                ],
+              },
+            },
+            {
+              marca: {
+                $and: [
+                  {
+                    slug: {
+                      $contains: marca,
+                    },
+                  },
+                ],
+              },
+            },
+            {
+              rubros: {
+                $and: [
+                  {
+                    slug: {
+                      $contains: rubro,
+                    },
+                  },
+                ],
+              },
+            },
+          ],
+        },
+        pagination: {
+          page: 1,
+          pageSize: 10,
+        },
+        //sort: [`createdAt:${orderFecha}`, `title:${orderAlfabetico}`],
+        populate: {
+          imagen_principal: "*",
+          rubros: "*",
+          marca: "*",
+          tipos_de_productos: "*",
+          keywords: "*",
+          categorias: "*",
+        },
+      });
+      console.log(productRes);
+      setProdutos(productRes.data);
+      setLoading(false);
     } catch (e: any) {
       console.error(e.response);
       setProdutos([]);
@@ -154,7 +217,9 @@ export default function Productos() {
         <div className="col-span-3">
           <Busqueda />
           <Categorias selected={cat} categorias={categorias} />
-          <TipoProductos selected={tipo} tipoProductos={tipoProductos}/>
+          <TipoProductos selected={tipo} tipoProductos={tipoProductos} />
+          <Marcas selected={marca} marcas={marcas} />
+          <Rubros selected={rubro} rubros={rubros} />
         </div>
         <div className="col-span-9">
           {loading ? (
