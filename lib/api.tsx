@@ -19,7 +19,7 @@ export function getStrapiURL(path = "") {
  * @returns Parsed API call response
  */
 
-export async function fetchAPI(path : any, urlParamsObject = {}, options = {}) {
+export async function fetchAPI(path: any, urlParamsObject = {}, options = {}) {
   // Merge default and user options
   const mergedOptions = {
     headers: {
@@ -34,14 +34,18 @@ export async function fetchAPI(path : any, urlParamsObject = {}, options = {}) {
     `/api${path}${queryString ? `?${queryString}` : ""}`
   )}`;
 
-  // Trigger API call
-  const response = await fetch(requestUrl, mergedOptions);
+  try {
+    // Trigger API call
+    const response = await fetch(requestUrl, mergedOptions);
 
-  // Handle response
-  if (!response.ok) {
-    console.error(response.statusText);
-    throw new Error(`An error occured please try again`);
+    // Handle response
+    if (!response.ok) {
+      console.error(response.statusText);
+      throw new Error(`An error occured please try again`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (e) {
+    console.log(e);
   }
-  const data = await response.json();
-  return data;
 }

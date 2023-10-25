@@ -10,6 +10,8 @@ import { TipoProductos } from "@/components/products/filtros/TipoProductos";
 import { Marcas } from "@/components/products/filtros/Marcas";
 import { Rubros } from "@/components/products/filtros/Rubros";
 
+import { CardProductos } from "@/components/products/CardProductos";
+
 export default function Productos() {
   const searchParams = useSearchParams();
   const search = searchParams.get("s");
@@ -74,6 +76,7 @@ export default function Productos() {
     }
   };
 
+  //Si la categoria tiene tipos los carga en tipos de productos
   const getCatSubtipos = () => {
     if (cat) {
       categorias.map((categoria: any) => {
@@ -227,13 +230,22 @@ export default function Productos() {
           ) : (
             <div>
               <p className="text-xs mb-6">Productos:</p>
+              <div className="grid grid-cols-4 gap-4">
               {productos && productos.length > 0
                 ? productos.map((prod: any) => (
-                    <div>
-                      <p>{prod.attributes.nombre}</p>
-                    </div>
+                    <CardProductos
+                      nombre={prod.attributes.nombre}
+                      imagen_principal={
+                        prod.attributes.imagen_principal.data.attributes.url
+                      }
+                      imagen_principal_alt={
+                        prod.attributes.imagen_principal.data.attributes.name
+                      }
+                      marca={prod.attributes.marca.data.attributes.nombre}
+                    />
                   ))
                 : null}
+                </div>
             </div>
           )}
         </div>
