@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 
@@ -7,6 +9,10 @@ interface CardProductos {
   imagen_principal_alt: string;
   marca: string;
 }
+
+const loaderProp = ({ src }: { src: string }) => {
+  return src;
+};
 
 export const CardProductos = ({
   nombre,
@@ -19,15 +25,14 @@ export const CardProductos = ({
         <Image
           src={process.env.NEXT_PUBLIC_STRAPI_API_URL + imagen_principal}
           alt={imagen_principal_alt}
-          sizes="500px"
           fill
           style={{
             objectFit: "contain",
           }}
+          loader={loaderProp}
         />
       </div>
       <h3 className="font-bold text-gray-600">{nombre}</h3>
-      {process.env.NEXT_PUBLIC_STRAPI_API_URL + imagen_principal}
     </div>
   );
 };

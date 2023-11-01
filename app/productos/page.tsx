@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { fetchAPI } from "@/lib/api";
 import { useSearchParams } from "next/navigation";
 
@@ -231,21 +231,24 @@ export default function Productos() {
             <div>
               <p className="text-xs mb-6">Productos:</p>
               <div className="grid grid-cols-4 gap-4">
-              {productos && productos.length > 0
-                ? productos.map((prod: any) => (
-                    <CardProductos
-                      nombre={prod.attributes.nombre}
-                      imagen_principal={
-                        prod.attributes.imagen_principal.data.attributes.url
-                      }
-                      imagen_principal_alt={
-                        prod.attributes.imagen_principal.data.attributes.name
-                      }
-                      marca={prod.attributes.marca.data.attributes.nombre}
-                    />
-                  ))
-                : null}
-                </div>
+                {productos && productos.length > 0
+                  ? productos.map((prod: any) => (
+                      <Fragment key={prod.id}>
+                        <CardProductos
+                          nombre={prod.attributes.nombre}
+                          imagen_principal={
+                            prod.attributes.imagen_principal.data.attributes.url
+                          }
+                          imagen_principal_alt={
+                            prod.attributes.imagen_principal.data.attributes
+                              .name
+                          }
+                          marca={prod.attributes.marca.data.attributes.nombre}
+                        />
+                      </Fragment>
+                    ))
+                  : null}
+              </div>
             </div>
           )}
         </div>
