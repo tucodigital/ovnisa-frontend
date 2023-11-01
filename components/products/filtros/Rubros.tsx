@@ -36,15 +36,18 @@ export const Rubros = ({
 
   return (
     <div>
-      <label className="text-xs">Rubros</label>
+      <label htmlFor="rubros" className="text-xs font-bold">
+        Rubros
+      </label>
       <select
-        className="px-4 py-2 rounded border border-gray-400 w-full"
+        id="rubros"
+        className="px-4 py-2 rounded border border-blue-600 text-blue-600 text-sm w-full"
         value={selected ? selected : ""}
         onChange={onSelect}
       >
         <option value=""></option>
         {rubros && rubros.length > 0
-          ? rubros.map((rubro:any) => (
+          ? rubros.map((rubro: any) => (
               <option key={rubro.id} value={rubro.attributes.slug}>
                 {rubro.attributes.nombre}
               </option>

@@ -35,16 +35,17 @@ export const Categorias = ({
   };
 
   return (
-    <div>
-      <label className="text-xs">Categorías</label>
+    <div className="mb-3">
+      <label htmlFor="categorias" className="text-xs font-bold">Categorías</label>
       <select
-        className="px-4 py-2 rounded border border-gray-400 w-full"
+        id="categorias"
+        className="px-4 py-2 rounded border border-blue-600 text-blue-600 text-sm w-full"
         value={selected ? selected : ""}
         onChange={onSelect}
       >
         <option value=""></option>
         {categorias && categorias.length > 0
-          ? categorias.map((cat:any) => (
+          ? categorias.map((cat: any) => (
               <option key={cat.id} value={cat.attributes.slug}>
                 {cat.attributes.nombre}
               </option>

@@ -18,9 +18,15 @@ export const CardProductos = ({
   nombre,
   imagen_principal,
   imagen_principal_alt,
+  marca,
 }: CardProductos) => {
   return (
-    <div className="border rounded shadow-sm bg-white">
+    <div className="border border-gray-200 rounded-lg bg-white p-4 relative">
+      {marca ? (
+        <div className="absolute top-4 right-5 z-50">
+          <h4>{marca}</h4>
+        </div>
+      ) : null}
       <div className="w-full h-56 relative">
         <Image
           src={process.env.NEXT_PUBLIC_STRAPI_API_URL + imagen_principal}

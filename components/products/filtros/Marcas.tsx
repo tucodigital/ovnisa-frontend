@@ -35,16 +35,19 @@ export const Marcas = ({
   };
 
   return (
-    <div>
-      <label className="text-xs">Marcas</label>
+    <div className="mb-3">
+      <label htmlFor="marcas" className="text-xs font-bold">
+        Marcas
+      </label>
       <select
-        className="px-4 py-2 rounded border border-gray-400 w-full"
+        id="marcas"
+        className="px-4 py-2 rounded border border-blue-600 text-blue-600 text-sm w-full"
         value={selected ? selected : ""}
         onChange={onSelect}
       >
         <option value=""></option>
         {marcas && marcas.length > 0
-          ? marcas.map((marca:any) => (
+          ? marcas.map((marca: any) => (
               <option key={marca.id} value={marca.attributes.slug}>
                 {marca.attributes.nombre}
               </option>

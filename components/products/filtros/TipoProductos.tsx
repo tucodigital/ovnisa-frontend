@@ -35,16 +35,19 @@ export const TipoProductos = ({
   };
 
   return (
-    <div>
-      <label className="text-xs">Tipo de Productos</label>
+    <div className="mb-3">
+      <label htmlFor="tipoProductos" className="text-xs font-bold">
+        Tipo de Productos
+      </label>
       <select
-        className="px-4 py-2 rounded border border-gray-400 w-full"
+        id="tipoProductos"
+        className="px-4 py-2 rounded border border-blue-600 text-blue-600 text-sm w-full"
         value={selected ? selected : ""}
         onChange={onSelect}
       >
         <option value=""></option>
         {tipoProductos && tipoProductos.length > 0
-          ? tipoProductos.map((tipo:any) => (
+          ? tipoProductos.map((tipo: any) => (
               <option key={tipo.id} value={tipo.attributes.slug}>
                 {tipo.attributes.nombre}
               </option>

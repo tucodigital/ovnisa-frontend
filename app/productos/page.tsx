@@ -216,8 +216,8 @@ export default function Productos() {
 
   return (
     <main className="PageMainContainer px-4 py-12 xl:px-16">
-      <div className="grid grid-cols-12 gap-4">
-        <div className="col-span-3">
+      <div className="grid grid-cols-12 gap-8">
+        <div className="col-span-2 border border-gray-200 rounded-lg p-4">
           <Busqueda />
           <Categorias selected={cat} categorias={categorias} />
           <TipoProductos selected={tipo} tipoProductos={tipoProductos} />
@@ -229,7 +229,6 @@ export default function Productos() {
             <p>Cargando...</p>
           ) : (
             <div>
-              <p className="text-xs mb-6">Productos:</p>
               <div className="grid grid-cols-4 gap-4">
                 {productos && productos.length > 0
                   ? productos.map((prod: any) => (
