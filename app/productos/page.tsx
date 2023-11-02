@@ -12,6 +12,8 @@ import { Rubros } from "@/components/products/filtros/Rubros";
 
 import { CardProductos } from "@/components/products/CardProductos";
 
+import Pagination from "@/components/Pagination/Pagination";
+
 export default function Productos() {
   const searchParams = useSearchParams();
   const search = searchParams.get("s");
@@ -19,6 +21,7 @@ export default function Productos() {
   const tipo = searchParams.get("tipoProducto");
   const marca = searchParams.get("marca");
   const rubro = searchParams.get("rubro");
+  const urlPage = searchParams.get("p");
 
   const [productos, setProdutos] = useState([]);
   const [categorias, setCategorias] = useState([]);
@@ -27,11 +30,22 @@ export default function Productos() {
   const [rubros, setRubros] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  let PageSize = 1;
+
+  useEffect(() => {
+    if (urlPage) {
+      setCurrentPage(parseInt(urlPage));
+    }
+  }, [urlPage]);
+
   useEffect(() => {
     getProductos();
   }, [searchParams]);
 
   useEffect(() => {
+    getProductos();
     getCategories();
     getTipoProductos();
     getMarcas();
@@ -191,8 +205,8 @@ export default function Productos() {
           ],
         },
         pagination: {
-          page: 1,
-          pageSize: 10,
+          page: currentPage,
+          pageSize: PageSize,
         },
         //sort: [`createdAt:${orderFecha}`, `title:${orderAlfabetico}`],
         populate: {
@@ -206,6 +220,7 @@ export default function Productos() {
       });
       console.log(productRes);
       setProdutos(productRes.data);
+      setTotalPages(productRes.meta.pagination.total);
       setLoading(false);
     } catch (e: any) {
       console.error(e.response);
@@ -248,6 +263,12 @@ export default function Productos() {
                     ))
                   : null}
               </div>
+              <Pagination
+                currentPage={currentPage}
+                totalCount={totalPages}
+                pageSize={PageSize}
+                onPageChange={(page: number) => setCurrentPage(page)}
+              />
             </div>
           )}
         </div>
