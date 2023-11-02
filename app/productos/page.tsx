@@ -253,6 +253,7 @@ export default function Productos() {
                           imagen_principal={
                             prod.attributes.imagen_principal.data.attributes.url
                           }
+                          slug={prod.attributes.slug}
                           imagen_principal_alt={
                             prod.attributes.imagen_principal.data.attributes
                               .name
