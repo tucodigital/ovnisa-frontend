@@ -24,7 +24,7 @@ export const CardProductos = ({
   slug,
 }: CardProductos) => {
   return (
-    <div className="border border-gray-200 rounded-lg bg-white p-4 relative hover:shadow-lg transition duration-300 group ">
+    <div className="border border-gray-200 rounded-lg bg-white p-4 relative hover:shadow-lg transition duration-300">
       <Link href={`/productos/${slug}`}>
         {marca ? <TagMarca marca={marca} /> : null}
         <div className="w-full h-56 relative">

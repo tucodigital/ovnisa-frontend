@@ -13,6 +13,7 @@ import { Rubros } from "@/components/products/filtros/Rubros";
 import { CardProductos } from "@/components/products/CardProductos";
 
 import Pagination from "@/components/Pagination/Pagination";
+import { LoadingProductsSkeleton } from "@/components/products/LoadingProductsSkeleton";
 
 export default function Productos() {
   const searchParams = useSearchParams();
@@ -241,7 +242,9 @@ export default function Productos() {
         </div>
         <div className="col-span-9">
           {loading ? (
-            <p>Cargando...</p>
+            <div className="grid grid-cols-4 gap-4">
+              <LoadingProductsSkeleton total={PageSize} />
+            </div>
           ) : (
             <div>
               <div className="grid grid-cols-4 gap-4">
