@@ -1,6 +1,6 @@
 import React from "react";
 import { usePagination, DOTS } from "./usePagination";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 interface PaginationProps {
@@ -9,10 +9,15 @@ interface PaginationProps {
   siblingCount?: number;
   currentPage: number;
   pageSize: number;
-};
+}
 
-const Pagination = ({ onPageChange, totalCount, siblingCount = 1, currentPage, pageSize}: PaginationProps) => {
-
+const Pagination = ({
+  onPageChange,
+  totalCount,
+  siblingCount = 1,
+  currentPage,
+  pageSize,
+}: PaginationProps) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -32,18 +37,17 @@ const Pagination = ({ onPageChange, totalCount, siblingCount = 1, currentPage, p
 
   const onNext = () => {
     onPageChange(currentPage + 1);
-    mutateURL(currentPage + 1)
+    mutateURL(currentPage + 1);
   };
 
   const onPrevious = () => {
     onPageChange(currentPage - 1);
-    mutateURL(currentPage - 1)
+    mutateURL(currentPage - 1);
   };
 
-  const mutateURL = (value : number) => {
+  const mutateURL = (value: number) => {
     // objeto de URL para leer y escribir
     const current = new URLSearchParams(Array.from(searchParams.entries()));
-
 
     if (!value) {
       current.delete("p");
@@ -65,7 +69,7 @@ const Pagination = ({ onPageChange, totalCount, siblingCount = 1, currentPage, p
       key={`paginator-item-ul-${uuidv4()}`}
       className="flex items-center justify-center transition duration-150 ease-in-out mt-10"
     >
-      <li className={currentPage === 1 ? "text-gray-300 dark:text-white" : "text-gray-700 dark:text-gray-300"}>
+      <li className={currentPage === 1 ? "text-gray-300 " : "text-gray-700 "}>
         <button
           className="py-2 px-3  rounded focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-opacity-50"
           onClick={onPrevious}
@@ -87,7 +91,7 @@ const Pagination = ({ onPageChange, totalCount, siblingCount = 1, currentPage, p
           </svg>
         </button>
       </li>
-      {paginationRange.map((pageNumber :any) => {
+      {paginationRange.map((pageNumber: any) => {
         //puntos suspensivos cuando son muchas páginas en el medio
         if (pageNumber === DOTS) {
           return (
@@ -105,18 +109,18 @@ const Pagination = ({ onPageChange, totalCount, siblingCount = 1, currentPage, p
         }
 
         return (
-          <li
-            key={`paginator-item-li-${uuidv4()}`}
-            className="text-white "
-          >
+          <li key={`paginator-item-li-${uuidv4()}`} className="text-gray-700 ">
             <button
               className={
                 currentPage === pageNumber
-                  ? "py-2 px-3  font-bold text-gray-700 dark:text-white text-xl "
-                  : "py-2 px-4 text-gray-400 dark:text-gray-500 font-medium text-sm rounded focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-opacity-50"
+                  ? "py-2 px-3 font-bold text-blue-600 "
+                  : "py-2 px-4 font-bold text-gray-400 dark:text-gray-500 text-sm rounded focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-opacity-50"
               }
               disabled={currentPage === pageNumber}
-              onClick={() => {onPageChange(pageNumber); mutateURL(pageNumber)}}
+              onClick={() => {
+                onPageChange(pageNumber);
+                mutateURL(pageNumber);
+              }}
             >
               {pageNumber}
             </button>
@@ -124,7 +128,9 @@ const Pagination = ({ onPageChange, totalCount, siblingCount = 1, currentPage, p
         );
       })}
       <li
-        className={currentPage === lastPage ? "text-gray-300 dark:text-white" : "text-gray-700 dark:text-gray-300"}
+        className={
+          currentPage === lastPage ? "text-gray-300 " : "text-gray-700"
+        }
       >
         <button
           className="py-2 px-3 rounded focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-opacity-50"

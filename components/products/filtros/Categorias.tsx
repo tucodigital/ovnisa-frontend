@@ -39,7 +39,7 @@ export const Categorias = ({
       <label htmlFor="categorias" className="text-xs font-bold">Categorías</label>
       <select
         id="categorias"
-        className="px-4 py-2 rounded border border-blue-600 text-blue-600 text-sm w-full"
+        className="px-4 py-2 rounded border border-blue-600 text-blue-600 text-sm w-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
         value={selected ? selected : ""}
         onChange={onSelect}
       >

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { TagMarca } from "./TagMarca";
 
 interface CardProductos {
   nombre: string;
@@ -22,11 +23,7 @@ export const CardProductos = ({
 }: CardProductos) => {
   return (
     <div className="border border-gray-200 rounded-lg bg-white p-4 relative">
-      {marca ? (
-        <div className="absolute top-4 right-5 z-50">
-          <h4>{marca}</h4>
-        </div>
-      ) : null}
+      {marca ? <TagMarca marca={marca} /> : null}
       <div className="w-full h-56 relative">
         <Image
           src={process.env.NEXT_PUBLIC_STRAPI_API_URL + imagen_principal}

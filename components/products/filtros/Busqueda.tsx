@@ -34,7 +34,7 @@ export const Busqueda = () => {
     <form onSubmit={(e) => handleSearch(e)}>
       <div className="mb-3 relative">
         <input
-          className="px-4 py-2 rounded w-full bg-blue-100 text-sm focus:border-blue-500 "
+          className="px-4 py-2 rounded w-full bg-blue-100 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
           type="text"
           name="search"
           placeholder="Buscar..."
