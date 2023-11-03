@@ -14,8 +14,11 @@ export default function Home() {
 
   const getHomePage = async () => {
     try {
-      const homePageRes = await fetchAPI(
+      /* const homePageRes = await fetchAPI(
         "/home?populate[0]=components&populate[1]=components.items&populate[2]=components.social_items&&populate[3]=components.site_map_items"
+      ); */
+      const homePageRes = await fetchAPI(
+        "/home"
       );
       console.log("Home Page Response -->", homePageRes);
       setHomeComponents(homePageRes?.data?.attributes?.components);
