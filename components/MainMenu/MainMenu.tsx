@@ -57,6 +57,7 @@ export const MainMenu = ({ component }: MainMenuContent) => {
             <ContactMainMenuItemDesktop
               text={component.email_text}
               icon={ICONS_CONSTANTS.EMAIL}
+              url={`mailto:${component.email_text}`}
             />
           ) : null}
           {component?.whatsapp_link && component.whatsapp_text ? (
