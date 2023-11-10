@@ -8,6 +8,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      spacing: {
+        '112': '28rem',
+        '128': '32rem',
+        '144': '36rem',
+      },
       colors: {
         ov: {
           primary: "#001748",
