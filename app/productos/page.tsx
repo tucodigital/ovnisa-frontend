@@ -232,15 +232,15 @@ export default function Productos() {
 
   return (
     <main className="PageMainContainer px-4 py-12 xl:px-16">
-      <div className="grid grid-cols-12 gap-8">
-        <div className="col-span-2 border border-gray-200 rounded-lg p-4">
+      <div className="xl:grid xl:grid-cols-12 gap-8">
+        <div className="xl:col-span-2 border border-gray-200 rounded-lg p-4">
           <Busqueda />
           <Categorias selected={cat} categorias={categorias} />
           <TipoProductos selected={tipo} tipoProductos={tipoProductos} />
           <Marcas selected={marca} marcas={marcas} />
           <Rubros selected={rubro} rubros={rubros} />
         </div>
-        <div className="col-span-9">
+        <div className="xl:col-span-9">
           {loading ? (
             <div className="grid grid-cols-4 gap-4">
               <LoadingProductsSkeleton total={PageSize} />
