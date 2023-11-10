@@ -59,10 +59,16 @@ export default function RootLayout({
 
   const getMainMenu = async () => {
     try {
-      const mainMenuResponse = await fetchAPI(
-        "/main-menu?populate[0]=component&populate[1]=component.items"
-      );
-      /* console.log("MainMenu Response -->", mainMenuResponse); */
+      const mainMenuResponse = await fetchAPI("/main-menu", {
+        populate: {
+          component: {
+            populate: {
+              items: "*",
+            },
+          },
+        },
+      });
+      console.log("MainMenu Response -->", mainMenuResponse);
       setMainMenuContent(mainMenuResponse?.data?.attributes);
     } catch (e: any) {
       console.error(e.response);
@@ -85,9 +91,20 @@ export default function RootLayout({
   const getFooter = async () => {
     try {
       const footerResponse = await fetchAPI(
-        "/footer?populate[0]=component&populate[1]=component.social_items&populate[2]=component.site_map_items&populate[3]=component.logo"
+        "/footer",
+        {
+          populate: {
+            component: {
+              populate: {
+                social_items: "*",
+                site_map_items: "*",
+                image: "*",
+              },
+            },
+          },
+        }
       );
-      /* console.log("Footer Response -->", footerResponse); */
+      console.log("Footer Response -->", footerResponse);
       setFooterContent(footerResponse?.data?.attributes);
     } catch (e: any) {
       console.error(e.response);
@@ -116,10 +133,10 @@ export default function RootLayout({
     }
   };
 
-  if (!mainMenuContent || !footerContent) return null;
+  //if (!mainMenuContent || !footerContent) return null;
 
   return (
-    <html lang="en">
+    <html lang="es-AR">
       <body className={inter.className}>
         <MainMenu
           component={mainMenuContent?.component}
