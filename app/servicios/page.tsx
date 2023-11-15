@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { Fragment, useEffect, useState } from "react";
 import { fetchAPI } from "@/lib/api";
 import { Servicio } from "../types/serviciosTypes";
+import { ServicioView } from "@/components/Servicios/ServicioView";
 
 export default function Servicios() {
   const [servicios, setServicios] = useState([]);
@@ -20,7 +21,7 @@ export default function Servicios() {
 
   const filterServicio = (slug: string) => {
     const result = servicios.filter((serv) => serv.attributes.slug === slug);
-    console.log("filtered servicio", result);
+    console.log("filtered servicio", result[0]);
     setFilteredServicio(result[0]);
   };
 
@@ -49,11 +50,15 @@ export default function Servicios() {
   return (
     <main className="PageMainContainer px-4 py-12 xl:px-16">
       <div className="xl:grid xl:grid-cols-12 gap-8">
-        <div className="xl:col-span-2 border border-gray-200 rounded-lg p-4">
+        <div className="xl:col-span-2 rounded-lg p-4 divide-y divide-slate-200">
+          <h2 className="font-bold text-blue-600 text-lg xl:text-2xl px-2 pb-4">
+            Servicio
+          </h2>
           {servicios && servicios.length > 0
             ? servicios.map((s) => (
                 <div
                   key={s.id}
+                  className="font-medium text-gray-500 p-2 hover:text-gray-800 duration-300 transition cursor-pointer"
                   onClick={() => setSelectedServ(s.attributes.slug)}
                 >
                   {s.attributes.nombre}
@@ -62,7 +67,15 @@ export default function Servicios() {
             : null}
         </div>
         <div className="xl:col-span-9">
-          <h1>{filteredServicio?.attributes?.nombre}</h1>
+          <ServicioView
+            nombre={filteredServicio?.attributes?.nombre}
+            galeria_imagenes={filteredServicio?.attributes?.galeria_imagenes}
+            imagen_principal={filteredServicio?.attributes?.imagen_principal?.data?.attributes?.url}
+            keywords={filteredServicio?.attributes?.keywords}
+            maquinarias={filteredServicio?.attributes?.maquinarias}
+            descripcion={filteredServicio?.attributes?.descripcion}
+            descripcion_corta={filteredServicio?.attributes?.descripcion_corta}
+          />
         </div>
       </div>
     </main>
