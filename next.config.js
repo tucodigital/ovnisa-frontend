@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'starfish-app-zuc9h.ondigitalocean.app', 'res.cloudinary.com'],
     remotePatterns: [
       {
         protocol: 'http',

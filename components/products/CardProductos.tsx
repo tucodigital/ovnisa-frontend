@@ -29,7 +29,7 @@ export const CardProductos = ({
         {marca ? <TagMarca marca={marca} /> : null}
         <div className="w-full h-56 relative">
           <Image
-            src={process.env.NEXT_PUBLIC_STRAPI_API_URL + imagen_principal}
+            src={imagen_principal}
             alt={imagen_principal_alt}
             fill
             style={{
