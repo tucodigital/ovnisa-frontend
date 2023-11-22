@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchAPI } from "@/lib/api";
 
-import Switcher from "@/components/Switcher";
+import ComponentSwitcher from "@/components/ComponentSwitcher";
 
 export default function Home() {
   const [homeComponents, setHomeComponents] = useState([]);
@@ -14,13 +14,26 @@ export default function Home() {
 
   const getHomePage = async () => {
     try {
-      /* const homePageRes = await fetchAPI(
-        "/home?populate[0]=components&populate[1]=components.items&populate[2]=components.social_items&&populate[3]=components.site_map_items"
-      ); */
-      const homePageRes = await fetchAPI(
-        "/home"
-      );
-      /* console.log("Home Page Response -->", homePageRes); */
+      const homePageRes = await fetchAPI("/home", {
+        populate: {
+          components: {
+            populate: {
+              slides: {
+                populate: {
+                  image_desktop: "*",
+                  image_mobile: "*",
+                },
+              },
+              brands: {
+                populate: {
+                  image: "*"
+                }
+              }
+            },
+          },
+        },
+      });
+      console.log("Home Page Response -->", homePageRes);
       setHomeComponents(homePageRes?.data?.attributes?.components);
     } catch (e: any) {
       console.error(e.response);
@@ -29,7 +42,7 @@ export default function Home() {
   };
   return (
     <div className="flex min-h-screen flex-col items-center justify-start">
-      <Switcher componentsList={homeComponents || []} />
+      <ComponentSwitcher componentsList={homeComponents || []} />
     </div>
   );
 }
