@@ -76,7 +76,7 @@ export const MainMenu = ({ component }: MainMenuContent) => {
           ) : null}
         </div>
       </div>
-      <div className="bg-gradient-to-b from-ov-primaryLight to-ov-primary h-20 w-full flex flex-row items-center justify-between pr-56 pl-56">
+      <div className="bg-gradient-to-b from-ov-primaryLight to-ov-primary h-12 w-full flex flex-row items-center justify-between pr-56 pl-56">
         {component?.items
           ? component.items.map((item, index) => (
               <NavigationMainMenuItemDesktop

@@ -4,12 +4,10 @@ import { useEffect, useState } from "react";
 import { fetchAPI } from "@/lib/api";
 
 import "./globals.css";
-import { Inter } from "next/font/google";
+import "./index.css"
 import { MainMenu } from "@/components/MainMenu/MainMenu";
 import { Footer, FooterContent } from "@/components/Footer/Footer";
 import { MainMenuContent } from "../components/MainMenu/MainMenu";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -137,7 +135,7 @@ export default function RootLayout({
 
   return (
     <html lang="es-AR">
-      <body className={inter.className}>
+      <body >
         <MainMenu
           component={mainMenuContent?.component}
           name={mainMenuContent?.name}

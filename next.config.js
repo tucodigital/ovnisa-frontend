@@ -5,10 +5,10 @@ const nextConfig = {
     domains: ['localhost', 'starfish-app-zuc9h.ondigitalocean.app', 'res.cloudinary.com'],
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '1337',
-        pathname: '/uploads/**',
+        protocol: "http",
+        hostname: "localhost",
+        port: "1337",
+        pathname: "/uploads/**",
       },
     ],
   },

@@ -15,11 +15,8 @@ export const ContactMainMenuItemDesktop = ({
     return (
       <Link href={`${url}`} target="_blank">
         <div className="flex flex-row gap-2">
-          <img
-            className=""
-            src={`${icon}`}
-          />
-          <div className="text-white text-sm">
+          <img src={`${icon}`} />
+          <div className="text-white text-sm font-semibold hover:text-sky-300">
             {text}
           </div>
         </div>
@@ -28,13 +25,8 @@ export const ContactMainMenuItemDesktop = ({
 
   return (
     <div className="flex flex-row gap-2">
-          <img
-            className=""
-            src={`${icon}`}
-          />
-          <div className="text-white text-sm">
-            {text}
-          </div>
-        </div>
+      <img src={`${icon}`} />
+      <div className="text-white font-semibold text-sm hover:text-sky-300">{text}</div>
+    </div>
   );
 };

@@ -19,6 +19,9 @@ const config: Config = {
           primaryLight: "#194092",
         },
       },
+      fontFamily: {
+        sans: ["Nunito Sans", "sans-serif"],
+      },
     },
   },
   plugins: [],
