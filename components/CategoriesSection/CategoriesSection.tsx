@@ -42,7 +42,7 @@ export const CategoriesSection = ({
         >
           {categorias.data.map((categoria, index) => (
             <SwiperSlide key={categoria?.id}>
-              <Link href={`/categorias/${categoria?.attributes?.slug}`}>
+              <Link href={`/productos?categoria=${categoria?.attributes?.slug}`}>
                 <div className="w-auto h-64 flex justify-center">
                   <Image
                     alt={"image_desktop?.data?.attributes?.alternativeText"}
