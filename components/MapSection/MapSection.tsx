@@ -60,8 +60,8 @@ export const MapSection = ({
                 <Image
                   alt={"image_desktop?.data?.attributes?.alternativeText"}
                   src={brand.image?.data?.attributes?.url}
-                  width={1200}
-                  height={1200}
+                  width={400}
+                  height={200}
                   objectFit="contain"
                   loader={loaderProp}
                 />

@@ -28,6 +28,11 @@ export default function Home() {
                 populate: {
                   image: "*"
                 }
+              },
+              categorias: {
+                populate: {
+                  image: "*"
+                }
               }
             },
           },

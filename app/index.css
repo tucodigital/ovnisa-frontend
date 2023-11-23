@@ -37,7 +37,7 @@ body {
 
 
 .swiper-pagination {
-  bottom: 35% !important;
+  bottom: 30% !important;
   width: auto !important;
   left: 14rem !important;
   --swiper-pagination-bullet-horizontal-gap: 18px;
@@ -84,4 +84,8 @@ body {
     top: 0;
     left: 0;
   }
+}
+
+.categories-swiper .swiper-wrapper {
+  padding-bottom: 32px;
 }

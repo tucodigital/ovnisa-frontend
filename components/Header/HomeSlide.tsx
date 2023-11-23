@@ -39,7 +39,7 @@ export default function HomeSlide({
 
       <div className="content-homeSlide-desk flex items-center">
         <div className="mx-auto px-4 lg:grid lg:grid-cols-3 lg:gap-3 w-full">
-          <div className="flex justify-center items-center ">
+          <div className="flex items-center">
             {title ? (
               <div className="headerTextContent">
                 <p className="font-bold prose prose-h1:font-medium prose-h1:text-white text-4xl xl:text-6xl mb-2 text-center lg:text-left text-white lg:mb-3 xl:mb-10">

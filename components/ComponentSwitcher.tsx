@@ -23,6 +23,7 @@ export default function ComponentSwitcher({ componentsList }: any) {
             key={`${CATEGORIES_SECTION}_${component?.id}`}
             title={component?.title}
             subtitle={component?.subtitle}
+            categorias={component?.categorias}
           />
         );
       case MAP_SECTION:
