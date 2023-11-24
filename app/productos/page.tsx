@@ -33,7 +33,7 @@ export default function Productos() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  let PageSize = 1;
+  let PageSize = 3;
 
   useEffect(() => {
     if (urlPage) {
@@ -232,22 +232,22 @@ export default function Productos() {
 
   return (
     <main className="PageMainContainer px-4 py-12 xl:px-16">
-      <div className="xl:grid xl:grid-cols-12 gap-8">
-        <div className="xl:col-span-2 border border-gray-200 rounded-lg p-4">
+      <div className="lg:grid lg:grid-cols-12 gap-8">
+        <div className="lg:col-span-2 border border-gray-200 rounded-lg p-4 mb-4 lg:mb-0">
           <Busqueda />
           <Categorias selected={cat} categorias={categorias} />
           <TipoProductos selected={tipo} tipoProductos={tipoProductos} />
           <Marcas selected={marca} marcas={marcas} />
           <Rubros selected={rubro} rubros={rubros} />
         </div>
-        <div className="xl:col-span-9">
+        <div className="lg:col-span-9">
           {loading ? (
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid lg:grid-cols-4 grid-cols-1 gap-4">
               <LoadingProductsSkeleton total={PageSize} />
             </div>
           ) : (
             <div>
-              <div className="grid grid-cols-4 gap-4">
+              <div className="grid lg:grid-cols-4 grid-cols-1 gap-4">
                 {productos && productos.length > 0
                   ? productos.map((prod: any) => (
                       <Fragment key={prod.id}>
