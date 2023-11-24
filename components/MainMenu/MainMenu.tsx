@@ -115,6 +115,7 @@ export const MainMenu = ({ component }: MainMenuContent) => {
               console.log('Hamburguer Menu Mobile State -->', open);
             }}
           >
+            {/* TODO: Pedir Logo Menu Mobile */}
             <img
               className="w-7 h-7"
               src={`/assets/main-menu/TEST-HAMBURGUER.svg`}
