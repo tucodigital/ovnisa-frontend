@@ -42,6 +42,17 @@ interface MenuItemContent {
   item_link: string;
 }
 
+const ContactMainMenuItemDesktopSkeleton = ({width = 32}) => {
+  return (
+    (
+      <div className="flex flex-row gap-2 items-center">
+        <div className="animate-pulse w-6 rounded-full bg-slate-200 h-6 " />
+        <div className={`animate-pulse w-${width} rounded-md bg-slate-200 h-4`} />
+      </div>
+    )
+  )
+}
+
 export const MainMenu = ({ component }: MainMenuContent) => {
   const [open, setOpen] = useState(false);
   return (
@@ -63,21 +74,28 @@ export const MainMenu = ({ component }: MainMenuContent) => {
                   text={component.phone_text}
                   icon={ICONS_CONSTANTS_DESKTOP.PHONE}
                 />
-              ) : null}
+              ) : (
+                <ContactMainMenuItemDesktopSkeleton width={56} />
+              )}
+
               {component?.email_text ? (
                 <ContactMainMenuItemDesktop
                   text={component.email_text}
                   icon={ICONS_CONSTANTS_DESKTOP.EMAIL}
                   url={`mailto:${component.email_text}`}
                 />
-              ) : null}
+              ) : (
+                <ContactMainMenuItemDesktopSkeleton />
+              )}
               {component?.whatsapp_link && component.whatsapp_text ? (
                 <ContactMainMenuItemDesktop
                   text={component.whatsapp_text}
                   icon={ICONS_CONSTANTS_DESKTOP.WHATSAPP}
                   url={component.whatsapp_link}
                 />
-              ) : null}
+              ) : (
+                <ContactMainMenuItemDesktopSkeleton />
+              )}
               {component?.mercado_libre_link &&
               component?.mercado_libre_text ? (
                 <ContactMainMenuItemDesktop
@@ -85,7 +103,9 @@ export const MainMenu = ({ component }: MainMenuContent) => {
                   icon={ICONS_CONSTANTS_DESKTOP.MERCADO_LIBRE}
                   url={component.mercado_libre_link}
                 />
-              ) : null}
+              ) : (
+                <ContactMainMenuItemDesktopSkeleton />
+              )}
             </div>
           </div>
           <div className="bg-gradient-to-b from-ov-primaryLight to-ov-primary h-12 w-full flex flex-row items-center justify-between pr-56 pl-56">
@@ -112,7 +132,7 @@ export const MainMenu = ({ component }: MainMenuContent) => {
             className="ml-10"
             onClick={() => {
               setOpen(!open);
-              console.log('Hamburguer Menu Mobile State -->', open);
+              console.log("Hamburguer Menu Mobile State -->", open);
             }}
           >
             {/* TODO: Pedir Logo Menu Mobile */}
@@ -131,9 +151,7 @@ export const MainMenu = ({ component }: MainMenuContent) => {
           {/* Nav Mobile Items */}
           <div className="flex justify-center items-center mr-10 gap-2">
             {component?.phone_text ? (
-              <ContactMainMenuItemMobile
-                icon={ICONS_CONSTANTS_MOBILE.PHONE}
-              />
+              <ContactMainMenuItemMobile icon={ICONS_CONSTANTS_MOBILE.PHONE} />
             ) : null}
             {component?.email_text ? (
               <ContactMainMenuItemMobile
