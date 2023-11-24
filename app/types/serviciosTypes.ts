@@ -14,8 +14,18 @@ export interface ServicioAttributes {
   keywords: Keyword[];
   imagen_principal: any;
   galeria_imagenes: any;
-  maquinarias: Maquinarias;
+  maquinarias: Maq;
 }
+
+export interface Maq {
+  data: DataClass[] | null;
+}
+
+export interface DataClass {
+  id:         number;
+  attributes: Maquinaria;
+}
+
 export interface Maquinaria {
   nombre: string;
   slug: string;
