@@ -39,7 +39,7 @@ export const Footer = ({ component }: FooterContent) => {
   if (!component) return null;
   return (
     <footer>
-      <div className="hidden lg:block bg-ov-primaryLight h-112 w-full flex justify-between py-16">
+      <div className="hidden lg:flex bg-ov-primaryLight h-112 w-full lg:flex-row justify-between py-16">
         <div className="ml-56 flex flex-col gap-6">
           <img
             className="w-48"
