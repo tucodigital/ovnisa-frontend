@@ -24,9 +24,9 @@ export const MapSection = ({
 }: MapSectionContent) => {
   console.log(brands);
   return (
-    <div className=" bg-gradient-to-b from-ov-primary to-ov-primaryLight bg-ov-primary py-20 px-56 flex flex-col w-full">
+    <div className=" bg-gradient-to-b from-ov-primary to-ov-primaryLight bg-ov-primary py-10 lg:py-20 px-10 lg:px-56 flex flex-col w-full">
       {title && description ? (
-        <div className="pt-8 pb-24  rounded-md flex flex-row w-full items-center gap-64">
+        <div className="pt-2 lg:pt-8 pb-8 lg:pb-24  rounded-md flex flex-col lg:flex-row w-full items-center gap-12 lg:gap-64">
           <div className="flex flex-col gap-8 max-w-xl">
             <Image
               alt={"image_desktop?.data?.attributes?.alternativeText"}
@@ -40,7 +40,7 @@ export const MapSection = ({
             <h3 className="text-white text-3xl font-bold">{title}</h3>
             <p className="text-white text-lg">{description}</p>
           </div>
-          <div>
+          <div className="mr-12 lg:mr-0">
             <Image
               alt={"image_desktop?.data?.attributes?.alternativeText"}
               src={`/assets/ruido-ovnisa-mapa-argentina-desktop.svg`}
@@ -53,7 +53,7 @@ export const MapSection = ({
         </div>
       ) : null}
       {brands.length > 0 ? (
-        <div className="py-12 px-16 bg-gray-100 rounded-md flex flex-col w-full">
+        <div className="hidden lg:block py-12 px-16 bg-gray-100 rounded-md flex flex-col w-full">
           <div className="flex flex-row justify-between">
             {brands.map((brand, index) => (
               <div className="w-64 border border-gray-500 h-20 bg-white flex">

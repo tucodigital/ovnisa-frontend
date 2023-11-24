@@ -24,41 +24,71 @@ export const CategoriesSection = ({
   categorias,
 }: CategoriesSectionContent) => {
   return (
-    <div className=" bg-white py-20 px-56 flex gap-10 flex-col w-full">
+    <div className=" bg-white py-10 lg:py-20 px-10 lg:px-56 flex gap-6 lg:gap-10 flex-col w-full">
       <div>
-        <h2 className="text-ov-primaryLight font-bold text-4xl mb-2">
+        <h2 className="text-ov-primaryLight font-bold text-2xl lg:text-4xl mb-2">
           {title}
         </h2>
-        <p className="text-lg">{subtitle}</p>
+        <p className="lg:text-lg">{subtitle}</p>
       </div>
       {categorias.data.length > 0 ? (
-        <Swiper
-          id="home"
-          /* navigation
+        <div>
+          <Swiper
+            id="home"
+            /* navigation
           modules={[Navigation]} */
-          className="categories-swiper w-full"
-          slidesPerView={3}
-          spaceBetween={20}
-        >
-          {categorias.data.map((categoria, index) => (
-            <SwiperSlide key={categoria?.id}>
-              <Link href={`/productos?categoria=${categoria?.attributes?.slug}`}>
-                <div className="w-auto h-64 flex justify-center">
-                  <Image
-                    alt={"image_desktop?.data?.attributes?.alternativeText"}
-                    src={categoria?.attributes?.image?.data?.attributes?.url}
-                    fill
-                    /* objectFit='contain' */
-                    loader={loaderProp}
-                  />
-                  <div className="absolute -bottom-8 bg-gradient-to-b from-ov-primaryLight to-ov-primary text-white py-4 px-16 rounded-full">
-                    Ver más
+            className="categories-swiper w-full hidden lg:block"
+            slidesPerView={3}
+            spaceBetween={20}
+          >
+            {categorias.data.map((categoria, index) => (
+              <SwiperSlide key={categoria?.id}>
+                <Link
+                  href={`/productos?categoria=${categoria?.attributes?.slug}`}
+                >
+                  <div className="w-auto h-64 flex justify-center">
+                    <Image
+                      alt={"image_desktop?.data?.attributes?.alternativeText"}
+                      src={categoria?.attributes?.image?.data?.attributes?.url}
+                      fill
+                      /* objectFit='contain' */
+                      loader={loaderProp}
+                    />
+                    <div className="absolute -bottom-8 bg-gradient-to-b from-ov-primaryLight to-ov-primary text-white py-4 px-16 rounded-full">
+                      Ver más
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+                </Link>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <Swiper
+            id="home"
+            /* navigation
+          modules={[Navigation]} */
+            className="categories-swiper w-full block lg:hidden"
+            slidesPerView={2.5}
+            spaceBetween={10}
+          >
+            {categorias.data.map((categoria, index) => (
+              <SwiperSlide key={categoria?.id}>
+                <Link
+                  href={`/productos?categoria=${categoria?.attributes?.slug}`}
+                >
+                  <div className="w-auto h-40 flex justify-center">
+                    <Image
+                      alt={"image_desktop?.data?.attributes?.alternativeText"}
+                      src={categoria?.attributes?.image?.data?.attributes?.url}
+                      fill
+                      /* objectFit='contain' */
+                      loader={loaderProp}
+                    />
+                  </div>
+                </Link>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       ) : null}
     </div>
   );
