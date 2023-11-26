@@ -42,16 +42,18 @@ interface MenuItemContent {
   item_link: string;
 }
 
-const ContactMainMenuItemDesktopSkeleton = ({width = 32}) => {
+const ContactMainMenuItemDesktopSkeleton = ({ width = 32 }) => {
   return (
-    (
-      <div className="flex flex-row gap-2 items-center">
-        <div className="animate-pulse w-6 rounded-full bg-slate-200 h-6 " />
-        <div className={`animate-pulse w-${width} rounded-md bg-slate-200 h-4`} />
-      </div>
-    )
-  )
-}
+    <div className="flex flex-row gap-2 items-center">
+      <div className="animate-pulse w-6 rounded-full bg-slate-200 h-6 " />
+      <div className={`animate-pulse w-${width} rounded-md bg-slate-200 h-4`} />
+    </div>
+  );
+};
+
+const NavigationMainMenuItemDesktopSkeleton = () => (
+  <div className="animate-pulse rounded-md bg-slate-200 h-4 w-28" />
+);
 
 export const MainMenu = ({ component }: MainMenuContent) => {
   const [open, setOpen] = useState(false);
@@ -75,7 +77,7 @@ export const MainMenu = ({ component }: MainMenuContent) => {
                   icon={ICONS_CONSTANTS_DESKTOP.PHONE}
                 />
               ) : (
-                <ContactMainMenuItemDesktopSkeleton width={56} />
+                <ContactMainMenuItemDesktopSkeleton width={64} />
               )}
 
               {component?.email_text ? (
@@ -109,15 +111,23 @@ export const MainMenu = ({ component }: MainMenuContent) => {
             </div>
           </div>
           <div className="bg-gradient-to-b from-ov-primaryLight to-ov-primary h-12 w-full flex flex-row items-center justify-between pr-56 pl-56">
-            {component?.items
-              ? component.items.map((item, index) => (
-                  <NavigationMainMenuItemDesktop
-                    key={`NavigationMainMenuItemDesktop_${index}`}
-                    text={item.item_text}
-                    url={item.item_link}
-                  />
-                ))
-              : null}
+            {component?.items?.length ? (
+              component.items.map((item, index) => (
+                <NavigationMainMenuItemDesktop
+                  key={`NavigationMainMenuItemDesktop_${index}`}
+                  text={item.item_text}
+                  url={item.item_link}
+                />
+              ))
+            ) : (
+              <>
+                <NavigationMainMenuItemDesktopSkeleton />
+                <NavigationMainMenuItemDesktopSkeleton />
+                <NavigationMainMenuItemDesktopSkeleton />
+                <NavigationMainMenuItemDesktopSkeleton />
+                <NavigationMainMenuItemDesktopSkeleton />
+              </>
+            )}
             <div className="text-white text-lg w-8 ">
               <img src={`/assets/main-menu/search.svg`} />
             </div>
