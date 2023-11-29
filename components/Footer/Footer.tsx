@@ -38,9 +38,9 @@ interface SiteMapItem {
 export const Footer = ({ component }: FooterContent) => {
   if (!component) return null;
   return (
-    <footer>
-      <div className="hidden lg:flex bg-ov-primaryLight h-112 w-full lg:flex-row justify-between py-16">
-        <div className="ml-56 flex flex-col gap-6">
+    <footer className="bg-ov-primaryLight">
+      <div className="hidden lg:flex h-auto w-full lg:flex-row justify-between py-16 px-4 PageMainContainer">
+        <div className="flex flex-col gap-6">
           <img
             className="w-48"
             src={`/assets/footer/ruido-ovnisa-logo-footer-desktop.svg`}
@@ -100,7 +100,7 @@ export const Footer = ({ component }: FooterContent) => {
             ) : null}
           </div>
         </div>
-        <div className="mr-96 flex flex-row gap-20">
+        <div className="flex flex-row gap-20 px-4">
           <div className="flex flex-col gap-4">
             <h5 className="text-white font-bold text-2xl mb-6">
               {component?.contact_section_title || "Contactanos"}

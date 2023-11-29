@@ -23,7 +23,7 @@ export default function Producto(context) {
           categorias: "*",
         },
       });
-      console.log(productRes);
+      console.log("product", productRes);
       setLoading(false);
     } catch (e: any) {
       console.error(e.response);
@@ -32,7 +32,7 @@ export default function Producto(context) {
   };
 
   return (
-    <main className="PageMainContainer px-4 py-12 xl:px-16">
+    <main className="PageMainContainer min-h-screen px-4 pt-44 pb-12">
       <div>
         Producto
       </div>

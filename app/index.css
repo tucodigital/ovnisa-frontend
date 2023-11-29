@@ -12,7 +12,8 @@ body {
 }
 
 .PageMainContainer {
-  max-width: 1810px;
+  max-width: 1600px;
+  margin: auto;
 }
 
 .homeSlide-desk {

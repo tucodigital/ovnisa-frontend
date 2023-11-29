@@ -58,19 +58,19 @@ const NavigationMainMenuItemDesktopSkeleton = () => (
 export const MainMenu = ({ component }: MainMenuContent) => {
   const [open, setOpen] = useState(false);
   return (
-    <header>
-      <nav className="hidden lg:block">
-        <div className="flex flex-col w-full">
-          <div className="bg-ov-primary h-20 w-full flex justify-between items-center">
+    <header className="">
+      <nav className="hidden lg:block fixed z-50 w-full">
+        <div className="flex flex-col w-full bg-ov-primary">
+          <div className="h-20 w-full flex justify-between items-center PageMainContainer px-4">
             {/* Business Logo */}
             <Link href="/">
               <img
-                className="w-48 ml-56"
+                className="w-48"
                 src={`/assets/main-menu/ruido-ovnisa-nav-logo-desktop.svg`}
               />
             </Link>
             {/* Business Logo */}
-            <div className="flex justify-center items-center mr-56 gap-8">
+            <div className="flex justify-center items-center gap-8">
               {component?.phone_text ? (
                 <ContactMainMenuItemDesktop
                   text={component.phone_text}
@@ -110,26 +110,28 @@ export const MainMenu = ({ component }: MainMenuContent) => {
               )}
             </div>
           </div>
-          <div className="bg-gradient-to-b from-ov-primaryLight to-ov-primary h-12 w-full flex flex-row items-center justify-between pr-56 pl-56">
-            {component?.items?.length ? (
-              component.items.map((item, index) => (
-                <NavigationMainMenuItemDesktop
-                  key={`NavigationMainMenuItemDesktop_${index}`}
-                  text={item.item_text}
-                  url={item.item_link}
-                />
-              ))
-            ) : (
-              <>
-                <NavigationMainMenuItemDesktopSkeleton />
-                <NavigationMainMenuItemDesktopSkeleton />
-                <NavigationMainMenuItemDesktopSkeleton />
-                <NavigationMainMenuItemDesktopSkeleton />
-                <NavigationMainMenuItemDesktopSkeleton />
-              </>
-            )}
-            <div className="text-white text-lg w-8 ">
-              <img src={`/assets/main-menu/search.svg`} />
+          <div className="bg-gradient-to-b from-ov-primaryLight to-ov-primary">
+            <div className="h-12 w-full flex flex-row items-center justify-between PageMainContainer px-4">
+              {component?.items?.length ? (
+                component.items.map((item, index) => (
+                  <NavigationMainMenuItemDesktop
+                    key={`NavigationMainMenuItemDesktop_${index}`}
+                    text={item.item_text}
+                    url={item.item_link}
+                  />
+                ))
+              ) : (
+                <>
+                  <NavigationMainMenuItemDesktopSkeleton />
+                  <NavigationMainMenuItemDesktopSkeleton />
+                  <NavigationMainMenuItemDesktopSkeleton />
+                  <NavigationMainMenuItemDesktopSkeleton />
+                  <NavigationMainMenuItemDesktopSkeleton />
+                </>
+              )}
+              <div className="text-white text-lg w-8 ">
+                <img src={`/assets/main-menu/search.svg`} />
+              </div>
             </div>
           </div>
         </div>
