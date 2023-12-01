@@ -61,7 +61,7 @@ export const MainMenu = ({ component }: MainMenuContent) => {
     <header className="">
       <nav className="hidden lg:block fixed z-50 w-full">
         <div className="flex flex-col w-full bg-ov-primary">
-          <div className="h-20 w-full flex justify-between items-center PageMainContainer px-4">
+          <div className="h-20 w-full flex justify-between items-center PageMainContainer px-20">
             {/* Business Logo */}
             <Link href="/">
               <img
@@ -111,7 +111,7 @@ export const MainMenu = ({ component }: MainMenuContent) => {
             </div>
           </div>
           <div className="bg-gradient-to-b from-ov-primaryLight to-ov-primary">
-            <div className="h-12 w-full flex flex-row items-center justify-between PageMainContainer px-4">
+            <div className="h-12 w-full flex flex-row items-center justify-between PageMainContainer px-20">
               {component?.items?.length ? (
                 component.items.map((item, index) => (
                   <NavigationMainMenuItemDesktop
