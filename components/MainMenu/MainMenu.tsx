@@ -5,6 +5,7 @@ import { ContactMainMenuItemDesktop } from "./ContactMainMenuItemDesktop";
 import { NavigationMainMenuItemDesktop } from "./NavigationMainMenuItemDesktop";
 import Link from "next/link";
 import { ContactMainMenuItemMobile } from "./ContactMainMenuItemMobile";
+import { NavigationMainMenuItemMobile } from "./NavigationMainMenuItemMobile";
 
 const ICONS_CONSTANTS_DESKTOP = {
   PHONE: "/assets/main-menu/ruido-ovnisa-nav-icono-celular-desktop.svg",
@@ -217,12 +218,12 @@ export const MainMenu = ({
           </div>
         </div>
         {open ? (
-          <div className=" bg-ov-primary pt-5 pb-8 px-8 w-full flex flex-col justify-between items-center">
-            <div className="w-full bg-slate-300 h-10 px-3 flex flex-row items-center gap-2">
+          <div className=" bg-ov-primary pt-5 pb-16 px-8 w-full flex flex-col gap-6 justify-between items-center absolute z-10">
+            <div className="w-full bg-slate-200 h-10 px-3 flex flex-row items-center gap-2">
               <img className="w-7" src={`/assets/ruido-search-mobile.svg`} />
               <input
                 value={inputValue}
-                className="w-full bg-slate-300 rounded-md h-8 outline-none"
+                className="w-full bg-slate-200 rounded-md h-8 outline-none"
                 type="text"
                 placeholder="Buscar..."
                 onChange={(e) => setInputValue(e.target.value)}
@@ -235,6 +236,20 @@ export const MainMenu = ({
                   }
                 }}
               />
+            </div>
+            <div className="w-full flex flex-col items-start justify-between PageMainContainer">
+              {component?.items?.length
+                ? component.items.map((item, index) => (
+                    <NavigationMainMenuItemMobile
+                      key={`NavigationMainMenuItemDesktop_${index}`}
+                      text={item.item_text}
+                      url={item.item_link}
+                      separator={component.items.length -1 !== index}
+                      setOpen={setOpen}
+                    />
+                  ))
+                  
+                : null}
             </div>
           </div>
         ) : null}

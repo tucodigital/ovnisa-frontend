@@ -133,7 +133,6 @@ export default function RootLayout({
     }
   };
 
-  console.log(showSearchOverlay);
 
   return (
     <html lang="es-AR">
