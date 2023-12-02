@@ -23,6 +23,8 @@ const ICONS_CONSTANTS_MOBILE = {
 export interface MainMenuContent {
   component: MainMenuComponentContent;
   name: String;
+  showSearchOverlay: Boolean;
+  setShowSearchOverlay: Function;
 }
 
 interface MainMenuComponentContent {
@@ -55,8 +57,14 @@ const NavigationMainMenuItemDesktopSkeleton = () => (
   <div className="animate-pulse rounded-md bg-slate-200 h-4 w-28" />
 );
 
-export const MainMenu = ({ component }: MainMenuContent) => {
+export const MainMenu = ({
+  component,
+  showSearchOverlay,
+  setShowSearchOverlay,
+}: MainMenuContent) => {
   const [open, setOpen] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+
   return (
     <header className="">
       <nav className="hidden lg:block fixed z-50 w-full">
@@ -112,15 +120,36 @@ export const MainMenu = ({ component }: MainMenuContent) => {
           </div>
           <div className="bg-gradient-to-b from-ov-primaryLight to-ov-primary">
             <div className="h-12 w-full flex flex-row items-center justify-between PageMainContainer px-20">
-              {component?.items?.length ? (
-                component.items.map((item, index) => (
-                  <NavigationMainMenuItemDesktop
-                    key={`NavigationMainMenuItemDesktop_${index}`}
-                    text={item.item_text}
-                    url={item.item_link}
-                  />
-                ))
-              ) : (
+              {component?.items?.length && !showSearchOverlay
+                ? component.items.map((item, index) => (
+                    <NavigationMainMenuItemDesktop
+                      key={`NavigationMainMenuItemDesktop_${index}`}
+                      text={item.item_text}
+                      url={item.item_link}
+                    />
+                  ))
+                : null}
+              {component?.items?.length && showSearchOverlay ? (
+                <input
+                  autoFocus
+                  value={inputValue}
+                  className="w-full rounded-md mr-8 px-2 h-8 outline-none"
+                  type="text"
+                  placeholder="Buscar..."
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Escape") {
+                      setInputValue("");
+                      setShowSearchOverlay(false);
+                    }
+                    if (e.key === "Enter") {
+                      setShowSearchOverlay(false);
+                      window.location.href = `/productos?s=${inputValue}`;
+                    }
+                  }}
+                />
+              ) : null}
+              {!component?.items?.length && !showSearchOverlay ? (
                 <>
                   <NavigationMainMenuItemDesktopSkeleton />
                   <NavigationMainMenuItemDesktopSkeleton />
@@ -128,9 +157,12 @@ export const MainMenu = ({ component }: MainMenuContent) => {
                   <NavigationMainMenuItemDesktopSkeleton />
                   <NavigationMainMenuItemDesktopSkeleton />
                 </>
-              )}
-              <div className="text-white text-lg w-8 ">
-                <img src={`/assets/main-menu/search.svg`} />
+              ) : null}
+              <div
+                className="w-8 cursor-pointer"
+                onClick={() => setShowSearchOverlay(!showSearchOverlay)}
+              >
+                <img src={`/assets/ruido-search-desktop.svg`} />
               </div>
             </div>
           </div>
@@ -144,7 +176,6 @@ export const MainMenu = ({ component }: MainMenuContent) => {
             className="ml-10"
             onClick={() => {
               setOpen(!open);
-              console.log("Hamburguer Menu Mobile State -->", open);
             }}
           >
             {/* TODO: Pedir Logo Menu Mobile */}
@@ -185,6 +216,28 @@ export const MainMenu = ({ component }: MainMenuContent) => {
             ) : null}
           </div>
         </div>
+        {open ? (
+          <div className=" bg-ov-primary pt-5 pb-8 px-8 w-full flex flex-col justify-between items-center">
+            <div className="w-full bg-slate-300 h-10 px-3 flex flex-row items-center gap-2">
+              <img className="w-7" src={`/assets/ruido-search-mobile.svg`} />
+              <input
+                value={inputValue}
+                className="w-full bg-slate-300 rounded-md h-8 outline-none"
+                type="text"
+                placeholder="Buscar..."
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Escape") {
+                    setInputValue("");
+                  }
+                  if (e.key === "Enter") {
+                    window.location.href = `/productos?s=${inputValue}`;
+                  }
+                }}
+              />
+            </div>
+          </div>
+        ) : null}
       </nav>
     </header>
   );

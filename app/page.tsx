@@ -46,7 +46,7 @@ export default function Home() {
     }
   };
   return (
-    <div className="flex min-h-screen flex-col items-center justify-start pt-32">
+    <div className="flex min-h-screen flex-col items-center justify-start lg:pt-32">
       <ComponentSwitcher componentsList={homeComponents || []} />
     </div>
   );

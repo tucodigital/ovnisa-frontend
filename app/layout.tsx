@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { fetchAPI } from "@/lib/api";
 
 import "./globals.css";
-import "./index.css"
+import "./index.css";
 import { MainMenu } from "@/components/MainMenu/MainMenu";
 import { Footer, FooterContent } from "@/components/Footer/Footer";
 import { MainMenuContent } from "../components/MainMenu/MainMenu";
@@ -14,6 +14,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [showSearchOverlay, setShowSearchOverlay] = useState(false);
   const [mainMenuContent, setMainMenuContent] = useState<MainMenuContent>({
     component: {
       email_text: "",
@@ -26,6 +27,8 @@ export default function RootLayout({
       items: [],
     },
     name: "",
+    showSearchOverlay,
+    setShowSearchOverlay,
   });
   const [footerContent, setFooterContent] = useState<FooterContent>({
     component: {
@@ -82,26 +85,25 @@ export default function RootLayout({
           items: [],
         },
         name: "",
+        showSearchOverlay,
+        setShowSearchOverlay,
       });
     }
   };
 
   const getFooter = async () => {
     try {
-      const footerResponse = await fetchAPI(
-        "/footer",
-        {
-          populate: {
-            component: {
-              populate: {
-                social_items: "*",
-                site_map_items: "*",
-                image: "*",
-              },
+      const footerResponse = await fetchAPI("/footer", {
+        populate: {
+          component: {
+            populate: {
+              social_items: "*",
+              site_map_items: "*",
+              image: "*",
             },
           },
-        }
-      );
+        },
+      });
       console.log("Footer Response -->", footerResponse);
       setFooterContent(footerResponse?.data?.attributes);
     } catch (e: any) {
@@ -131,15 +133,20 @@ export default function RootLayout({
     }
   };
 
-  //if (!mainMenuContent || !footerContent) return null;
+  console.log(showSearchOverlay);
 
   return (
     <html lang="es-AR">
-      <body >
+      <body>
         <MainMenu
           component={mainMenuContent?.component}
           name={mainMenuContent?.name}
+          showSearchOverlay={showSearchOverlay}
+          setShowSearchOverlay={setShowSearchOverlay}
         />
+        {showSearchOverlay ? (
+          <div className="w-full bg-slate-900 opacity-50 fixed searchOverlay"></div>
+        ) : null}
         {children}
         <Footer
           component={footerContent?.component}
