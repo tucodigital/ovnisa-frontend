@@ -2,10 +2,13 @@ import React, { Fragment } from "react";
 import { HomeHeader } from "./Header/Header";
 import { CategoriesSection } from "./CategoriesSection/CategoriesSection";
 import { MapSection } from "./MapSection/MapSection";
+import { BusinessPath } from "./BusinessPath/BusinessPath";
 
 const HOME_HEADER = "home-comp.header";
 const CATEGORIES_SECTION = "home-comp.cat-section";
 const MAP_SECTION = "home-comp.map-section";
+
+const BUSINESS_PATH = "empr-comp.business-path";
 
 export default function ComponentSwitcher({ componentsList }: any) {
   const RenderComponent = (component: any) => {
@@ -33,6 +36,17 @@ export default function ComponentSwitcher({ componentsList }: any) {
             title={component?.title}
             description={component?.description}
             brands={component?.brands}
+          />
+        );
+
+      case BUSINESS_PATH:
+        return (
+          <BusinessPath
+            key={`${MAP_SECTION}_${component?.id}`}
+            title={component?.title}
+            subtitle={component?.subtitle}
+            description={component?.description}
+            items={component?.items}
           />
         );
       default:

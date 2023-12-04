@@ -39,7 +39,7 @@ export const Footer = ({ component }: FooterContent) => {
   if (!component) return null;
   return (
     <footer className="bg-ov-primaryLight">
-      <div className="hidden lg:flex h-auto w-full lg:flex-row justify-between py-16 px-20 PageMainContainer">
+      <div className="hidden lg:flex h-auto w-full lg:flex-row justify-between py-16 px-4 PageMainContainer">
         <div className="flex flex-col gap-6">
           <img
             className="w-48"

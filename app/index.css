@@ -25,7 +25,7 @@ body {
   position: absolute;
   width: 100%;
   top: 0;
-  left: 14rem;
+  left: 9rem;
 }
 
 .headerTextContent {
@@ -40,7 +40,7 @@ body {
 .swiper-pagination {
   bottom: 25% !important;
   width: auto !important;
-  left: 14rem !important;
+  left: 9rem !important;
   --swiper-pagination-bullet-horizontal-gap: 18px;
 }
 
@@ -121,5 +121,10 @@ body {
   top: 128px;
   z-index: 2;
   height: 100vh;
+}
+
+.businessPathDivisor {
+  border: 1px rgba(0, 0, 0, 0.3) solid;
+  border-left: none;
 }
 

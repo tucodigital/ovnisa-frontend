@@ -24,7 +24,7 @@ export const CategoriesSection = ({
   categorias,
 }: CategoriesSectionContent) => {
   return (
-    <div className=" bg-white py-10 lg:py-20 px-10 lg:px-56 flex gap-6 lg:gap-10 flex-col w-full">
+    <div className=" bg-white py-10 lg:py-20 px-10 lg:px-40 flex gap-6 lg:gap-10 flex-col w-full">
       <div>
         <h2 className="text-ov-primaryLight font-bold text-2xl lg:text-4xl mb-2">
           {title}
@@ -46,7 +46,7 @@ export const CategoriesSection = ({
                 <Link
                   href={`/productos?categoria=${categoria?.attributes?.slug}`}
                 >
-                  <div className="w-auto h-64 flex justify-center">
+                  <div className="w-auto h-72 flex justify-center">
                     <Image
                       alt={"image_desktop?.data?.attributes?.alternativeText"}
                       src={categoria?.attributes?.image?.data?.attributes?.url}
