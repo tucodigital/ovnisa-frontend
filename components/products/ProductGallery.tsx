@@ -89,7 +89,7 @@ export default function ProductGallery({
                 },
               }}
             >
-              {galeria_imagenes?.data?.length > 1
+              {galeria_imagenes?.data?.length > 0
                 ? galeria_imagenes?.data?.map((img, i) => {
                     return (
                       <SwiperSlide key={"Product Image-" + i}>
