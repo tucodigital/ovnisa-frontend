@@ -46,7 +46,6 @@ export default function Productos() {
   }, [searchParams]);
 
   useEffect(() => {
-    getProductos();
     getCategories();
     getTipoProductos();
     getMarcas();
@@ -219,10 +218,10 @@ export default function Productos() {
           categorias: "*",
         },
       });
-      console.log(productRes);
       setProdutos(productRes.data);
       setTotalPages(productRes.meta.pagination.total);
       setLoading(false);
+      console.log("Productos", productRes)
     } catch (e: any) {
       console.error(e.response);
       setProdutos([]);
