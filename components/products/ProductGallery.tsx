@@ -34,7 +34,14 @@ export default function ProductGallery({
   if (galeria_imagenes?.data && galeria_imagenes?.data?.length > 0) {
     return (
       <section className="bg-white">
-        <div className="MainProductImage rounded-lg relative w-full hidden xl:block">
+        <div
+          className={
+            galeria_imagenes?.data?.length > 0 &&
+            galeria_imagenes?.data?.length === 1
+              ? "MainProductImage rounded-lg relative w-full block"
+              : "MainProductImage rounded-lg relative w-full hidden xl:block"
+          }
+        >
           {selectedImage ? (
             <Image
               alt={"main product image"}
@@ -55,7 +62,7 @@ export default function ProductGallery({
               navigation={true}
               modules={[Navigation]}
               className="mySwiper categorySlider"
-              spaceBetween={18}
+              spaceBetween={26}
               slidesPerView={6}
               allowTouchMove={false}
               breakpoints={{
@@ -85,11 +92,11 @@ export default function ProductGallery({
                 },
                 1040: {
                   slidesPerView: 6,
-                  spaceBetween: 10,
+                  spaceBetween: 26,
                 },
               }}
             >
-              {galeria_imagenes?.data?.length > 0
+              {galeria_imagenes?.data?.length > 1
                 ? galeria_imagenes?.data?.map((img, i) => {
                     return (
                       <SwiperSlide key={"Product Image-" + i}>
