@@ -170,7 +170,7 @@ export const MainMenu = ({
         </div>
       </nav>
 
-      <nav className="block lg:hidden w-full">
+      <nav className="block lg:hidden fixed z-50 w-full">
         <div className="bg-gradient-to-b from-ov-primaryLight to-ov-primary h-20 w-full flex flex-row justify-between items-center">
           {/* Hamburguer Menu */}
           <div

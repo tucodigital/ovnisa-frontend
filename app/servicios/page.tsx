@@ -48,7 +48,7 @@ export default function Servicios() {
   };
 
   return (
-    <main className="PageMainContainer min-h-screen px-4 pt-44 pb-12">
+    <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
       <div className="xl:grid xl:grid-cols-12 gap-8">
         <div className="xl:col-span-2 rounded-lg p-4 divide-y divide-slate-200">
           <h2 className="font-bold text-blue-600 text-lg xl:text-2xl px-2 pb-4">

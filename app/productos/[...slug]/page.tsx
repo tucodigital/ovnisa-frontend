@@ -61,7 +61,7 @@ export default function ProductoPage(context) {
 
   if (loading) {
     return (
-      <main className="PageMainContainer min-h-screen px-4 pt-44 pb-12">
+      <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
           <div className="MainProductImage rounded-lg relative w-full bg-gray-100 animate-pulse"></div>
           <div>
@@ -75,7 +75,7 @@ export default function ProductoPage(context) {
   }
 
   return (
-    <main className="PageMainContainer min-h-screen px-4 pt-44 pb-12">
+    <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
         <div>
           {data?.attributes?.galeria_imagenes.data &&
