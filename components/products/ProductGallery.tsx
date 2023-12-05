@@ -24,7 +24,10 @@ export default function ProductGallery({
   const [selectedImage, setSelectedImage] = useState("");
 
   useEffect(() => {
-    setSelectedImage(galeria_imagenes?.data[0]?.attributes?.url);
+    if (galeria_imagenes?.data && galeria_imagenes?.data?.length > 0) {
+      setSelectedImage(galeria_imagenes?.data[0]?.attributes?.url);
+    }
+
     console.log("gal img", galeria_imagenes?.data);
   }, []);
 
@@ -32,17 +35,19 @@ export default function ProductGallery({
     return (
       <section className="bg-white">
         <div className="MainProductImage rounded-lg relative w-full hidden xl:block">
-          <Image
-            alt={"main product image"}
-            src={selectedImage}
-            fill
-            className="border rounded-lg"
-            style={{
-              objectFit: "contain",
-            }}
-            priority
-            loader={loaderProp}
-          />
+          {selectedImage ? (
+            <Image
+              alt={"main product image"}
+              src={selectedImage}
+              fill
+              className="border rounded-lg"
+              style={{
+                objectFit: "contain",
+              }}
+              priority
+              loader={loaderProp}
+            />
+          ) : null}
         </div>
         <div className="py-0 xl:py-6 relative">
           <div className="relative mb-10">
@@ -50,7 +55,6 @@ export default function ProductGallery({
               navigation={true}
               modules={[Navigation]}
               className="mySwiper categorySlider"
-              loop={true}
               spaceBetween={18}
               slidesPerView={6}
               allowTouchMove={false}
@@ -85,10 +89,10 @@ export default function ProductGallery({
                 },
               }}
             >
-              {galeria_imagenes?.data?.length > 0
+              {galeria_imagenes?.data?.length > 1
                 ? galeria_imagenes?.data?.map((img, i) => {
                     return (
-                      <SwiperSlide key={i}>
+                      <SwiperSlide key={"Product Image-" + i}>
                         <div
                           className="relative MainProductImage w-full xl:h-24 xl:w-full cursor-pointer"
                           onClick={() => setSelectedImage(img.attributes.url)}
@@ -101,7 +105,6 @@ export default function ProductGallery({
                             style={{
                               objectFit: "cover",
                             }}
-                            priority
                             loader={loaderProp}
                           />
                         </div>

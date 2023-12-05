@@ -3,11 +3,20 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Producto } from "@/app/types/productoTypes";
 import { fetchAPI } from "@/lib/api";
-import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 import { CardProductosRelacionados } from "@/components/products/CardProductosRelacionados";
 import ProductGallery from "@/components/products/ProductGallery";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+// import required modules
+import { Navigation } from "swiper";
 
 const loaderProp = ({ src }: { src: string }) => {
   return src;
@@ -54,7 +63,7 @@ export default function ProductoPage(context) {
     <main className="PageMainContainer min-h-screen px-4 pt-44 pb-12">
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
         <div>
-          {data?.attributes?.galeria_imagenes.data.length > 0 ? (
+          {data?.attributes?.galeria_imagenes.data && data?.attributes?.galeria_imagenes.data.length > 0 ? (
             <ProductGallery
               galeria_imagenes={data?.attributes?.galeria_imagenes}
             />
@@ -85,9 +94,46 @@ export default function ProductoPage(context) {
             Productos y servicios relacionados
           </h2>
           <p>Conocé nuestros excelentes productos</p>
-          <div className="grid lg:grid-cols-3 grid-cols-1 gap-4 mt-6">
-            {data?.attributes?.productos?.data.map((prod) => (
-              <Fragment key={prod.id}>
+          <Swiper
+            navigation={true}
+            modules={[Navigation]}
+            className="mySwiper categorySlider mt-12"
+            spaceBetween={26}
+            slidesPerView={3}
+            allowTouchMove={false}
+            breakpoints={{
+              375: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              414: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              425: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              768: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              1024: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              1040: {
+                slidesPerView: 3,
+                spaceBetween: 10,
+              },
+            }}
+          >
+            {data?.attributes?.productos?.data.map((prod, i) => (
+              <SwiperSlide key={prod.attributes.nombre + i}>
                 <CardProductosRelacionados
                   nombre={prod.attributes.nombre}
                   imagen_principal={
@@ -99,9 +145,9 @@ export default function ProductoPage(context) {
                   }
                   categorias={prod.attributes.categorias}
                 />
-              </Fragment>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
       ) : null}
     </main>
