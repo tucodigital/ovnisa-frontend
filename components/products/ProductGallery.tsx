@@ -21,16 +21,12 @@ export default function ProductGallery({
 }: {
   galeria_imagenes: GaleriaImagenes;
 }) {
-  const [mainImage, setMainImage] = useState("");
-  const [selectedImage, setSelectedImage] = useState(mainImage);
+  const [selectedImage, setSelectedImage] = useState("");
 
   useEffect(() => {
-    if (galeria_imagenes && galeria_imagenes?.data?.length > 0) {
-      setMainImage(galeria_imagenes?.data[0]?.attributes?.url);
-    }
-    console.log("main img", mainImage);
+    setSelectedImage(galeria_imagenes?.data[0]?.attributes?.url);
     console.log("gal img", galeria_imagenes?.data);
-  }, [galeria_imagenes?.data?.length]);
+  }, []);
 
   if (galeria_imagenes?.data && galeria_imagenes?.data?.length > 0) {
     return (

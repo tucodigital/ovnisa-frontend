@@ -54,9 +54,11 @@ export default function ProductoPage(context) {
     <main className="PageMainContainer min-h-screen px-4 pt-44 pb-12">
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
         <div>
-          <ProductGallery
-            galeria_imagenes={data?.attributes?.galeria_imagenes}
-          />
+          {data?.attributes?.galeria_imagenes.data.length > 0 ? (
+            <ProductGallery
+              galeria_imagenes={data?.attributes?.galeria_imagenes}
+            />
+          ) : null}
         </div>
         <div>
           <h1 className="font-bold text-gray-800 text-2xl xl:text-4xl mb-4">
