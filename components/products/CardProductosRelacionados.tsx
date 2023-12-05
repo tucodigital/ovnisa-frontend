@@ -39,7 +39,7 @@ export const CardProductosRelacionados = ({
           />
         </div>
         <div className="col-span-4">
-          <h3 className="font-bold text-gray-900 text-base xl:text-lg">{nombre} dsad a dsada ds dsad a dsada ds</h3>
+          <h3 className="font-bold text-gray-900 text-base xl:text-lg">{nombre}</h3>
           {categorias.data.length > 0 ? (
             <p className="mt-1 mb-6">{categorias.data[0].attributes.nombre} </p>
           ) : null}

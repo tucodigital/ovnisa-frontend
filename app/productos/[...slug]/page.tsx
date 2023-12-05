@@ -59,11 +59,27 @@ export default function ProductoPage(context) {
     }
   };
 
+  if (loading) {
+    return (
+      <main className="PageMainContainer min-h-screen px-4 pt-44 pb-12">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
+          <div className="MainProductImage rounded-lg relative w-full bg-gray-100 animate-pulse"></div>
+          <div>
+            <div className="h-10 w-full rounded-lg bg-gray-100 animate-pulse mb-4"></div>
+            <div className="h-44 w-full rounded-lg bg-gray-100 animate-pulse mb-6"></div>
+            <div className="h-10 w-48 rounded-full bg-gray-100 animate-pulse"></div>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main className="PageMainContainer min-h-screen px-4 pt-44 pb-12">
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
         <div>
-          {data?.attributes?.galeria_imagenes.data && data?.attributes?.galeria_imagenes.data.length > 0 ? (
+          {data?.attributes?.galeria_imagenes.data &&
+          data?.attributes?.galeria_imagenes.data.length > 0 ? (
             <ProductGallery
               galeria_imagenes={data?.attributes?.galeria_imagenes}
             />
@@ -128,7 +144,7 @@ export default function ProductoPage(context) {
               },
               1040: {
                 slidesPerView: 3,
-                spaceBetween: 10,
+                spaceBetween: 26,
               },
             }}
           >
