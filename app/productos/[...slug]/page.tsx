@@ -97,7 +97,7 @@ export default function ProductoPage(context) {
               />
             </div>
           ) : null}
-          <Link href={`/contacto?m=${data?.attributes?.nombre}`}>
+          <Link href={`/contacto?m=Producto ${data?.attributes?.nombre}`}>
             <button className="bg-gradient-to-b from-ov-primaryLight to-ov-primary text-white py-2 px-10 rounded-full">
               Contactanos
             </button>

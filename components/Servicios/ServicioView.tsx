@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ServicioAttributes } from "@/app/types/serviciosTypes";
 import ReactMarkdown from "react-markdown";
-import { CardProductos } from "../products/CardProductos";
+import { CardMaquinarias } from "../Maquinarias/CardMaquinarias";
 
 const loaderProp = ({ src }: { src: string }) => {
   return src;
@@ -14,7 +14,6 @@ export const ServicioView = ({
   imagen_principal,
   slug,
   descripcion,
-  descripcion_corta,
   maquinarias,
 }: ServicioAttributes) => {
   return (
@@ -37,17 +36,19 @@ export const ServicioView = ({
           <h1 className="font-bold text-gray-800 text-2xl xl:text-4xl mb-4">
             {nombre}
           </h1>
-          {descripcion_corta ? (
+          {descripcion ? (
             <div className="mb-6">
               <ReactMarkdown
                 className="font-regular text-gray-800 prose prose-invert"
-                children={descripcion_corta}
+                children={descripcion}
               />
             </div>
           ) : null}
-          <button className="bg-gradient-to-b from-ov-primaryLight to-ov-primary text-white py-2 px-10 rounded-full">
-            Contactanos
-          </button>
+          <Link href={`/contacto?m=Servicio ${nombre}`}>
+            <button className="bg-gradient-to-b from-ov-primaryLight to-ov-primary text-white py-2 px-10 rounded-full">
+              Contactanos
+            </button>
+          </Link>
         </div>
       </div>
       {maquinarias?.data && maquinarias?.data?.length > 0 ? (
@@ -58,7 +59,7 @@ export const ServicioView = ({
           <div className="lg:grid lg:grid-cols-3 gap-4">
             {maquinarias.data.map((maq) => (
               <Fragment key={maq.id}>
-                <CardProductos
+                <CardMaquinarias
                   nombre={maq.attributes.nombre}
                   imagen_principal={
                     maq.attributes.imagen_principal.data.attributes.url
