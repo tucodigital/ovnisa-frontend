@@ -2,15 +2,16 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 
 import Image from "next/image";
+import { BusinessPathAccordeonItem } from "./BusinessPathAccordeonItem";
 
-interface BusinessPathContent {
+interface BusinessPathContentType {
   title: String;
   subtitle: String;
   description: string;
-  items: BusinessPathItem[];
+  items: BusinessPathItemType[];
 }
 
-interface BusinessPathItem {
+export interface BusinessPathItemType {
   id: number;
   title: String;
   description: String;
@@ -26,9 +27,9 @@ export const BusinessPath = ({
   subtitle,
   description,
   items,
-}: BusinessPathContent) => {
+}: BusinessPathContentType) => {
   return (
-    <div className=" bg-white py-4 lg:py-20 px-10 lg:px-40 flex gap-6 lg:gap-10 flex-row w-full ">
+    <div className=" bg-white py-4 pt-28 lg:py-20 px-10 lg:px-40 flex gap-4 lg:gap-10 flex-col lg:flex-row w-full ">
       <div className="flex flex-col lg:w-1/3">
         <h2 className="text-ov-primaryLight font-bold text-2xl lg:text-5xl mb-4">
           {title}
@@ -64,6 +65,45 @@ export const BusinessPath = ({
             </div>
           ))}
         </div>
+      </div>
+      <div className="flex lg:hidden flex-col gap-6">
+        {items.map((item, index) => (
+          <BusinessPathAccordeonItem id={item.id} title={item.title} description={item.description} icon={item.icon} />
+        ))}
+        {/* <div className="flex flex-col gap-4">
+          <div
+            className="flex flex-row items-center justify-between"
+          >
+            <div className="flex flex-row gap-4 items-center">
+              <Image
+                src={items[0].icon.data.attributes.url}
+                alt={
+                  "data.attributes.imagen_principal.data.attributes.alternativeText"
+                }
+                width={55}
+                height={55}
+                loader={loaderProp}
+              />
+              <h6 className="font-bold text-2xl">{items[0].title}</h6>
+            </div>
+            <Image
+              src={!itemOpen ? "/assets/chrevron-down-accordeon.svg" : "/assets/chevron-up-accordeon.svg"}
+              alt={
+                "data.attributes.imagen_principal.data.attributes.alternativeText"
+              }
+              width={45}
+              height={45}
+              loader={loaderProp}
+              onClick={() => setItemOpen(!itemOpen)}
+            />
+          </div>
+          {itemOpen ? (
+            <div>
+              <p className="text-xl font-regular">{items[0].description}</p>
+            </div>
+          ) : null}
+          <div className="businessPathItemDivisor"></div>
+        </div> */}
       </div>
     </div>
   );
