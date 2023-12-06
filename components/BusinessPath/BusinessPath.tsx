@@ -70,40 +70,6 @@ export const BusinessPath = ({
         {items.map((item, index) => (
           <BusinessPathAccordeonItem id={item.id} title={item.title} description={item.description} icon={item.icon} />
         ))}
-        {/* <div className="flex flex-col gap-4">
-          <div
-            className="flex flex-row items-center justify-between"
-          >
-            <div className="flex flex-row gap-4 items-center">
-              <Image
-                src={items[0].icon.data.attributes.url}
-                alt={
-                  "data.attributes.imagen_principal.data.attributes.alternativeText"
-                }
-                width={55}
-                height={55}
-                loader={loaderProp}
-              />
-              <h6 className="font-bold text-2xl">{items[0].title}</h6>
-            </div>
-            <Image
-              src={!itemOpen ? "/assets/chrevron-down-accordeon.svg" : "/assets/chevron-up-accordeon.svg"}
-              alt={
-                "data.attributes.imagen_principal.data.attributes.alternativeText"
-              }
-              width={45}
-              height={45}
-              loader={loaderProp}
-              onClick={() => setItemOpen(!itemOpen)}
-            />
-          </div>
-          {itemOpen ? (
-            <div>
-              <p className="text-xl font-regular">{items[0].description}</p>
-            </div>
-          ) : null}
-          <div className="businessPathItemDivisor"></div>
-        </div> */}
       </div>
     </div>
   );

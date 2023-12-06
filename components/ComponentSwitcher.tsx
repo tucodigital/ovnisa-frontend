@@ -3,12 +3,14 @@ import { HomeHeader } from "./Header/Header";
 import { CategoriesSection } from "./CategoriesSection/CategoriesSection";
 import { MapSection } from "./MapSection/MapSection";
 import { BusinessPath } from "./BusinessPath/BusinessPath";
+import { VideoSection } from "./VideoSection/VideoSection";
 
 const HOME_HEADER = "home-comp.header";
 const CATEGORIES_SECTION = "home-comp.cat-section";
 const MAP_SECTION = "home-comp.map-section";
 
 const BUSINESS_PATH = "empr-comp.business-path";
+const VIDEO_SECTION = "empr-comp.video-section";
 
 export default function ComponentSwitcher({ componentsList }: any) {
   const RenderComponent = (component: any) => {
@@ -46,6 +48,15 @@ export default function ComponentSwitcher({ componentsList }: any) {
             title={component?.title}
             subtitle={component?.subtitle}
             description={component?.description}
+            items={component?.items}
+          />
+        );
+
+        case VIDEO_SECTION:
+        return (
+          <VideoSection
+            key={`${VIDEO_SECTION}_${component?.id}`}
+            video_link={component?.video_link}
             items={component?.items}
           />
         );
