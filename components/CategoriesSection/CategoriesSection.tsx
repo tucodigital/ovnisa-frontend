@@ -24,7 +24,7 @@ export const CategoriesSection = ({
   categorias,
 }: CategoriesSectionContent) => {
   return (
-    <div className=" bg-white py-10 lg:py-20 px-10 lg:px-40 flex gap-6 lg:gap-10 flex-col w-full">
+    <div className=" bg-white py-10 lg:py-20 px-10 lg:px-28 flex gap-6 lg:gap-10 flex-col w-full">
       <div>
         <h2 className="text-ov-primaryLight font-bold text-2xl lg:text-4xl mb-2">
           {title}

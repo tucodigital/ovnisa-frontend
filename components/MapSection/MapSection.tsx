@@ -24,7 +24,7 @@ export const MapSection = ({
 }: MapSectionContent) => {
   console.log(brands);
   return (
-    <div className=" bg-gradient-to-b from-ov-primary to-ov-primaryLight bg-ov-primary py-10 lg:py-20 px-10 lg:px-40 flex flex-col w-full">
+    <div className=" bg-gradient-to-b from-ov-primary to-ov-primaryLight bg-ov-primary py-10 lg:py-20 px-10 lg:px-28 flex flex-col w-full">
       {title && description ? (
         <div className="pt-2 lg:pt-8 pb-8 lg:pb-24  rounded-md flex flex-col lg:flex-row w-full items-center gap-12 lg:gap-64">
           <div className="flex flex-col gap-8 max-w-xl">

@@ -4,6 +4,7 @@ import { CategoriesSection } from "./CategoriesSection/CategoriesSection";
 import { MapSection } from "./MapSection/MapSection";
 import { BusinessPath } from "./BusinessPath/BusinessPath";
 import { VideoSection } from "./VideoSection/VideoSection";
+import { LocationSection } from "./LocationSection/LocationSection";
 
 const HOME_HEADER = "home-comp.header";
 const CATEGORIES_SECTION = "home-comp.cat-section";
@@ -11,6 +12,7 @@ const MAP_SECTION = "home-comp.map-section";
 
 const BUSINESS_PATH = "empr-comp.business-path";
 const VIDEO_SECTION = "empr-comp.video-section";
+const LOCATION_SECTION = "empr-comp.location-section";
 
 export default function ComponentSwitcher({ componentsList }: any) {
   const RenderComponent = (component: any) => {
@@ -52,12 +54,20 @@ export default function ComponentSwitcher({ componentsList }: any) {
           />
         );
 
-        case VIDEO_SECTION:
+      case VIDEO_SECTION:
         return (
           <VideoSection
             key={`${VIDEO_SECTION}_${component?.id}`}
             video_link={component?.video_link}
             items={component?.items}
+          />
+        );
+
+      case LOCATION_SECTION:
+        return (
+          <LocationSection
+            key={`${LOCATION_SECTION}_${component?.id}`}
+            title={component?.title}
           />
         );
       default:
