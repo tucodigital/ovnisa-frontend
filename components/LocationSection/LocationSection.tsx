@@ -6,7 +6,7 @@ interface LocationSectionContentType {
 
 export const LocationSection = ({ title }: LocationSectionContentType) => {
   return (
-    <div className=" bg-white flex flex-col  w-full px-28 pt-20 ">
+    <div className=" bg-white hidden lg:flex flex-col  w-full px-28 pt-20 ">
         <h2 className="text-black font-bold text-2xl lg:text-5xl mb-12">
           {title}
         </h2>

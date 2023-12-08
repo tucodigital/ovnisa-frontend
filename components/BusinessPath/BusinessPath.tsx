@@ -29,7 +29,7 @@ export const BusinessPath = ({
   items,
 }: BusinessPathContentType) => {
   return (
-    <div className=" bg-white py-4 pt-28 lg:py-20 px-10 lg:px-28 flex gap-4 lg:gap-10 flex-col lg:flex-row w-full ">
+    <div className=" bg-white py-28 px-10 lg:px-28 flex gap-4 lg:gap-10 flex-col lg:flex-row w-full ">
       <div className="flex flex-col lg:w-1/3">
         <h2 className="text-ov-primaryLight font-bold text-2xl lg:text-5xl mb-4">
           {title}
