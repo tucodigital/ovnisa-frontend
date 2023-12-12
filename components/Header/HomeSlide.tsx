@@ -2,10 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 import { Slide } from "./Header";
-
-const loaderProp = ({ src }: { src: string }) => {
-  return src;
-};
+import { loaderProp } from "@/lib/utils";
 
 export default function HomeSlide({
   title,

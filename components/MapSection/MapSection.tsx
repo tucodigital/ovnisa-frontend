@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { loaderProp } from "@/lib/utils";
 
 interface MapSectionContent {
   /* id: number; */
@@ -12,10 +13,6 @@ interface BrandContent {
   title: String;
   image: any;
 }
-
-const loaderProp = ({ src }: { src: string }) => {
-  return src;
-};
 
 export const MapSection = ({
   title,

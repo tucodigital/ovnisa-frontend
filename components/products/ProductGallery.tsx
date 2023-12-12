@@ -11,10 +11,7 @@ import { Navigation } from "swiper";
 import Image from "next/image";
 
 import { GaleriaImagenes } from "@/app/types/productoTypes";
-
-const loaderProp = ({ src }: { src: string }) => {
-  return src;
-};
+import { loaderProp } from "@/lib/utils";
 
 export default function ProductGallery({
   galeria_imagenes,

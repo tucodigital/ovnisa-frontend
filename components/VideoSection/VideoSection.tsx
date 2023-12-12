@@ -2,6 +2,7 @@ import React from "react";
 import ReactPlayer from "react-player";
 
 import Image from "next/image";
+import { loaderProp } from "@/lib/utils";
 
 interface VideoSectionContentType {
   video_link: string;
@@ -14,10 +15,6 @@ export interface VideoSectionItemType {
   description: String;
   icon: any;
 }
-
-const loaderProp = ({ src }: { src: string }) => {
-  return src;
-};
 
 export const VideoSection = ({
   video_link,

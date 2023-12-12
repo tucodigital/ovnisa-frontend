@@ -18,10 +18,6 @@ import "swiper/css/navigation";
 // import required modules
 import { Navigation } from "swiper";
 
-const loaderProp = ({ src }: { src: string }) => {
-  return src;
-};
-
 export default function ProductoPage(context) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<Producto>();

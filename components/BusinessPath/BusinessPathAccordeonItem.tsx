@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import { BusinessPathItemType } from "./BusinessPath";
 import Image from "next/image";
-
-const loaderProp = ({ src }: { src: string }) => {
-  return src;
-};
+import { BusinessPathItemType } from "./BusinessPathTypes";
+import { loaderProp } from "@/lib/utils";
 
 export const BusinessPathAccordeonItem = ({
   id,

@@ -3,24 +3,8 @@ import ReactMarkdown from "react-markdown";
 
 import Image from "next/image";
 import { BusinessPathAccordeonItem } from "./BusinessPathAccordeonItem";
-
-interface BusinessPathContentType {
-  title: String;
-  subtitle: String;
-  description: string;
-  items: BusinessPathItemType[];
-}
-
-export interface BusinessPathItemType {
-  id: number;
-  title: String;
-  description: String;
-  icon: any;
-}
-
-const loaderProp = ({ src }: { src: string }) => {
-  return src;
-};
+import { BusinessPathContentType } from "./BusinessPathTypes";
+import { loaderProp } from "@/lib/utils";
 
 export const BusinessPath = ({
   title,

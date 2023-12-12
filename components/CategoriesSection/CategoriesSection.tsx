@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { loaderProp } from "@/lib/utils";
 
 interface CategoriesSectionContent {
   /* id: number; */
@@ -13,10 +14,6 @@ interface CategoriesSectionContent {
   subtitle: String;
   categorias: any;
 }
-
-const loaderProp = ({ src }: { src: string }) => {
-  return src;
-};
 
 export const CategoriesSection = ({
   title,

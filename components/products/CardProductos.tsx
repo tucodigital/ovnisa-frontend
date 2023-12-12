@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { TagMarca } from "./TagMarca";
+import { loaderProp } from "@/lib/utils";
 
 interface CardProductos {
   nombre: string;
@@ -11,10 +12,6 @@ interface CardProductos {
   marca?: string;
   slug: string;
 }
-
-const loaderProp = ({ src }: { src: string }) => {
-  return src;
-};
 
 export const CardProductos = ({
   nombre,

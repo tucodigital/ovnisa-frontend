@@ -8,10 +8,7 @@ import Link from "next/link";
 import ProductGallery from "@/components/products/ProductGallery";
 
 import Image from "next/image";
-
-const loaderProp = ({ src }: { src: string }) => {
-  return src;
-};
+import { loaderProp } from "@/lib/utils";
 
 export default function Maquinarias(context) {
   const [loading, setLoading] = useState(false);

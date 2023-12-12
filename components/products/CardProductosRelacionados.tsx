@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Categorias } from "@/app/types/productoTypes";
+import { loaderProp } from "@/lib/utils";
 
 interface CardProductosRelacionados {
   nombre: string;
@@ -11,10 +12,6 @@ interface CardProductosRelacionados {
   slug: string;
   categorias: Categorias;
 }
-
-const loaderProp = ({ src }: { src: string }) => {
-  return src;
-};
 
 export const CardProductosRelacionados = ({
   nombre,

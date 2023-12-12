@@ -4,10 +4,7 @@ import Image from "next/image";
 import { ServicioAttributes } from "@/app/types/serviciosTypes";
 import ReactMarkdown from "react-markdown";
 import { CardMaquinarias } from "../Maquinarias/CardMaquinarias";
-
-const loaderProp = ({ src }: { src: string }) => {
-  return src;
-};
+import { loaderProp } from "@/lib/utils";
 
 export const ServicioView = ({
   nombre,
