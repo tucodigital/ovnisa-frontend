@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React from "react";
-import { FooterContent } from "./FooterTypes";
+import { FooterContent } from "../../types/components/FooterTypes";
 
 export const Footer = ({ component }: FooterContent) => {
   if (!component) return null;

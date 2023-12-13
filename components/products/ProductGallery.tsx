@@ -10,7 +10,7 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import Image from "next/image";
 
-import { GaleriaImagenes } from "@/app/types/productoTypes";
+import { GaleriaImagenes } from "@/types/productoTypes";
 import { loaderProp } from "@/lib/utils";
 
 export default function ProductGallery({

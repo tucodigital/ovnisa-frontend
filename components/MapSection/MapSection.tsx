@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { loaderProp } from "@/lib/utils";
-import { MapSectionContent } from "./MapSectionTypes";
+import { MapSectionContent } from "../../types/components/MapSectionTypes";
 
 export const MapSection = ({
   title,

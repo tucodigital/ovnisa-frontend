@@ -2,16 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Categorias } from "@/app/types/productoTypes";
+import { CardProductosRelacionadosContent } from "@/types/productoTypes";
 import { loaderProp } from "@/lib/utils";
-
-interface CardProductosRelacionados {
-  nombre: string;
-  imagen_principal: any;
-  imagen_principal_alt: string;
-  slug: string;
-  categorias: Categorias;
-}
 
 export const CardProductosRelacionados = ({
   nombre,
@@ -19,7 +11,7 @@ export const CardProductosRelacionados = ({
   imagen_principal_alt,
   slug,
   categorias,
-}: CardProductosRelacionados) => {
+}: CardProductosRelacionadosContent) => {
   return (
     <Link href={`/productos/${slug}`}>
       <div className="rounded-lg bg-gray-100 p-4 relative hover:shadow-lg transition duration-300 grid grid-cols-6 gap-4">

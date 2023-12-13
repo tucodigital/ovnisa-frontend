@@ -1,5 +1,5 @@
 import React from "react";
-import { LocationSectionContent } from "./LocationSectionTypes";
+import { LocationSectionContent } from "../../types/components/LocationSectionTypes";
 
 export const LocationSection = ({ title }: LocationSectionContent) => {
   return (

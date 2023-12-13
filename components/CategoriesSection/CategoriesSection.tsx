@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { loaderProp } from "@/lib/utils";
-import { CategoriesSectionContent } from "./CategoriesSectionTypes";
+import { CategoriesSectionContent } from "../../types/components/CategoriesSectionTypes";
 
 export const CategoriesSection = ({
   title,

@@ -1,10 +1,7 @@
 "use client";
+import { TagMarcaSkeleton } from "@/types/productoTypes";
 
-interface TagMarca {
-  total: number;
-}
-
-export const LoadingProductsSkeleton = ({ total }: TagMarca) => {
+export const LoadingProductsSkeleton = ({ total }: TagMarcaSkeleton) => {
   const renderProductCardSkeleton = () => {
     const data = Array.from({ length: total }, (_, index) => (
       <div

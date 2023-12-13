@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ServicioAttributes } from "@/app/types/serviciosTypes";
+import { ServicioAttributes } from "@/types/serviciosTypes";
 import ReactMarkdown from "react-markdown";
 import { CardMaquinarias } from "../Maquinarias/CardMaquinarias";
 import { loaderProp } from "@/lib/utils";

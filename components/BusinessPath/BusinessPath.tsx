@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 
 import Image from "next/image";
 import { BusinessPathAccordeonItem } from "./BusinessPathAccordeonItem";
-import { BusinessPathContentType } from "./BusinessPathTypes";
+import { BusinessPathContentType } from "../../types/components/BusinessPathTypes";
 import { loaderProp } from "@/lib/utils";
 
 export const BusinessPath = ({

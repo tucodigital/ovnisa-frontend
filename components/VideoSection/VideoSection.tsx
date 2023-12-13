@@ -3,7 +3,7 @@ import ReactPlayer from "react-player";
 
 import Image from "next/image";
 import { loaderProp } from "@/lib/utils";
-import { VideoSectionContent } from "./VideoSectionTypes";
+import { VideoSectionContent } from "@/types/components/VideoSectionTypes";
 
 export const VideoSection = ({
   video_link,

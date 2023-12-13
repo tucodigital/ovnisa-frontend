@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Fragment, useEffect, useState } from "react";
-import { Producto } from "@/app/types/productoTypes";
+import { Producto } from "@/types/productoTypes";
 import { fetchAPI } from "@/lib/api";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";

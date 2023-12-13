@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import { BusinessPathItemType } from "./BusinessPathTypes";
+import { BusinessPathItemType } from "../../types/components/BusinessPathTypes";
 import { loaderProp } from "@/lib/utils";
 
 export const BusinessPathAccordeonItem = ({

@@ -1,10 +1,8 @@
 "use client";
 
-interface TagMarca {
-  marca: string;
-}
+import { TagMarcaContent } from "@/types/productoTypes";
 
-export const TagMarca = ({ marca }: TagMarca) => {
+export const TagMarca = ({ marca }: TagMarcaContent) => {
   switch (marca) {
     case "Ovniflex":
       return (

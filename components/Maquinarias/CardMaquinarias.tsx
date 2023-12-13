@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { loaderProp } from "@/lib/utils";
-import { CardMaquinariasContent } from "./MaquinariasTypes";
+import { CardMaquinariasContent } from "../../types/components/MaquinariasTypes";
 
 export const CardMaquinarias = ({
   nombre,

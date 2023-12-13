@@ -137,3 +137,27 @@ export interface TentacledAttributes {
   imagen_principal:  ImagenPrincipal;
   categorias:        Categorias;
 }
+
+export interface CardProductosContent {
+  nombre: string;
+  imagen_principal: any;
+  imagen_principal_alt: string;
+  marca?: string;
+  slug: string;
+}
+
+export interface CardProductosRelacionadosContent {
+  nombre: string;
+  imagen_principal: any;
+  imagen_principal_alt: string;
+  slug: string;
+  categorias: Categorias;
+}
+
+export interface TagMarcaContent {
+  marca: string;
+}
+
+export interface TagMarcaSkeleton {
+  total: number;
+}

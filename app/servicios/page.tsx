@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React, { Fragment, useEffect, useState } from "react";
 import { fetchAPI } from "@/lib/api";
-import { Servicio } from "../types/serviciosTypes";
+import { Servicio } from "../../types/serviciosTypes";
 import { ServicioView } from "@/components/Servicios/ServicioView";
 
 export default function Servicios() {

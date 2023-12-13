@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 import { loaderProp } from "@/lib/utils";
-import { SlideContent } from "./HeaderTypes";
+import { SlideContent } from "../../types/components/HeaderTypes";
 
 export default function HomeSlide({
   title,

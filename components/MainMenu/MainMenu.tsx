@@ -6,7 +6,7 @@ import { NavigationMainMenuItemDesktop } from "./NavigationMainMenuItemDesktop";
 import Link from "next/link";
 import { ContactMainMenuItemMobile } from "./ContactMainMenuItemMobile";
 import { NavigationMainMenuItemMobile } from "./NavigationMainMenuItemMobile";
-import { MainMenuContent } from "./MainMenuTypes";
+import { MainMenuContent } from "../../types/components/MainMenuTypes";
 import { ICONS_CONSTANTS_DESKTOP, ICONS_CONSTANTS_MOBILE } from "./MainMenuConstants";
 import { ContactMainMenuItemDesktopSkeleton, NavigationMainMenuItemDesktopSkeleton } from "./MainMenuSkeletons";
 
