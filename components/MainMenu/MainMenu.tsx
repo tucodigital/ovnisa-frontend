@@ -6,57 +6,9 @@ import { NavigationMainMenuItemDesktop } from "./NavigationMainMenuItemDesktop";
 import Link from "next/link";
 import { ContactMainMenuItemMobile } from "./ContactMainMenuItemMobile";
 import { NavigationMainMenuItemMobile } from "./NavigationMainMenuItemMobile";
-
-const ICONS_CONSTANTS_DESKTOP = {
-  PHONE: "/assets/main-menu/ruido-ovnisa-nav-icono-celular-desktop.svg",
-  EMAIL: "/assets/main-menu/ruido-ovnisa-nav-icono-mail-desktop.svg",
-  WHATSAPP: "/assets/main-menu/ruido-ovnisa-nav-icono-whatsapp-desktop.svg",
-  MERCADO_LIBRE: "/assets/main-menu/ruido-ovnisa-nav-icono-meli-desktop.svg",
-};
-
-const ICONS_CONSTANTS_MOBILE = {
-  PHONE: "/assets/main-menu/ruido-ovnisa-nav-icono-celular-desktop.svg",
-  EMAIL: "/assets/main-menu/ruido-ovnisa-nav-icono-mail-desktop.svg",
-  WHATSAPP: "/assets/main-menu/ruido-ovnisa-nav-icono-whatsapp-desktop.svg",
-  MERCADO_LIBRE: "/assets/main-menu/ruido-ovnisa-nav-meli-mobile.svg",
-};
-
-export interface MainMenuContent {
-  component: MainMenuComponentContent;
-  name: String;
-  showSearchOverlay: Boolean;
-  setShowSearchOverlay: Function;
-}
-
-interface MainMenuComponentContent {
-  id: number;
-  email_text: String;
-  phone_text: String;
-  whatsapp_text: String;
-  whatsapp_link: String;
-  mercado_libre_text: String;
-  mercado_libre_link: String;
-  items: MenuItemContent[];
-}
-
-interface MenuItemContent {
-  id: number;
-  item_text: string;
-  item_link: string;
-}
-
-const ContactMainMenuItemDesktopSkeleton = ({ width = 32 }) => {
-  return (
-    <div className="flex flex-row gap-2 items-center">
-      <div className="animate-pulse w-6 rounded-full bg-slate-200 h-6 " />
-      <div className={`animate-pulse w-${width} rounded-md bg-slate-200 h-4`} />
-    </div>
-  );
-};
-
-const NavigationMainMenuItemDesktopSkeleton = () => (
-  <div className="animate-pulse rounded-md bg-slate-200 h-4 w-28" />
-);
+import { MainMenuContent } from "./MainMenuTypes";
+import { ICONS_CONSTANTS_DESKTOP, ICONS_CONSTANTS_MOBILE } from "./MainMenuConstants";
+import { ContactMainMenuItemDesktopSkeleton, NavigationMainMenuItemDesktopSkeleton } from "./MainMenuSkeletons";
 
 export const MainMenu = ({
   component,

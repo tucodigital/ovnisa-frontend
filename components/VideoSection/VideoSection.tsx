@@ -3,23 +3,12 @@ import ReactPlayer from "react-player";
 
 import Image from "next/image";
 import { loaderProp } from "@/lib/utils";
-
-interface VideoSectionContentType {
-  video_link: string;
-  items: VideoSectionItemType[];
-}
-
-export interface VideoSectionItemType {
-  id: number;
-  title: String;
-  description: String;
-  icon: any;
-}
+import { VideoSectionContent } from "./VideoSectionTypes";
 
 export const VideoSection = ({
   video_link,
   items,
-}: VideoSectionContentType) => {
+}: VideoSectionContent) => {
   return (
     <div className=" bg-gradient-to-b from-ov-primary to-ov-primaryLight  flex flex-col lg:grid lg:grid-cols-2 lg:grid-flow-row w-full ">
       {video_link ? (

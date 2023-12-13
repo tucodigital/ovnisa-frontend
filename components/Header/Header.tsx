@@ -9,17 +9,7 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper";
 import HomeSlide from "./HomeSlide";
-
-interface SliderContent {
-  slides: Slide[];
-}
-
-export interface Slide {
-  id: number;
-  title?: string;
-  image_desktop: any;
-  image_mobile: any;
-}
+import { SliderContent } from "./HeaderTypes";
 
 export const HomeHeader = ({slides} : SliderContent) => {
   return (

@@ -1,14 +1,14 @@
 import React from "react";
 import Image from "next/image";
 
-import { Slide } from "./Header";
 import { loaderProp } from "@/lib/utils";
+import { SlideContent } from "./HeaderTypes";
 
 export default function HomeSlide({
   title,
   image_mobile,
   image_desktop,
-}: Slide) {
+}: SlideContent) {
   return (
     <div className="w-full bg-gray-100 relative">
       {image_desktop ? (
@@ -17,7 +17,6 @@ export default function HomeSlide({
             alt={"image_desktop?.data?.attributes?.alternativeText"}
             src={image_desktop?.data?.attributes?.url}
             fill
-            /* objectFit='contain' */
             loader={loaderProp}
           />
         </div>

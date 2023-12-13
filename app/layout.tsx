@@ -6,8 +6,9 @@ import { fetchAPI } from "@/lib/api";
 import "./globals.css";
 import "./index.css";
 import { MainMenu } from "@/components/MainMenu/MainMenu";
-import { Footer, FooterContent } from "@/components/Footer/Footer";
-import { MainMenuContent } from "../components/MainMenu/MainMenu";
+import { Footer } from "@/components/Footer/Footer";
+import { FooterContent } from "@/components/Footer/FooterTypes";
+import { MainMenuContent } from "@/components/MainMenu/MainMenuTypes";
 
 export default function RootLayout({
   children,

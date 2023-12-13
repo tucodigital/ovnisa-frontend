@@ -1,19 +1,12 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { loaderProp } from "@/lib/utils";
-
-interface CategoriesSectionContent {
-  /* id: number; */
-  title: String;
-  subtitle: String;
-  categorias: any;
-}
+import { CategoriesSectionContent } from "./CategoriesSectionTypes";
 
 export const CategoriesSection = ({
   title,
@@ -77,7 +70,6 @@ export const CategoriesSection = ({
                       alt={"image_desktop?.data?.attributes?.alternativeText"}
                       src={categoria?.attributes?.image?.data?.attributes?.url}
                       fill
-                      /* objectFit='contain' */
                       loader={loaderProp}
                     />
                   </div>
