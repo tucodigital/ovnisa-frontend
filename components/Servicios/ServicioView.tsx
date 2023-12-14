@@ -5,6 +5,7 @@ import { ServicioAttributes } from "@/types/serviciosTypes";
 import ReactMarkdown from "react-markdown";
 import { CardMaquinarias } from "../Maquinarias/CardMaquinarias";
 import { loaderProp } from "@/lib/utils";
+import { MainButton } from "../MainButton";
 
 export const ServicioView = ({
   nombre,
@@ -16,7 +17,6 @@ export const ServicioView = ({
   return (
     <>
       <div className="p-4 lg:grid lg:grid-cols-2 gap-10">
-        
         <div className="MainProductImage rounded-lg relative w-full mb-4 lg:mb-0">
           {imagen_principal ? (
             <Image
@@ -45,9 +45,7 @@ export const ServicioView = ({
             </div>
           ) : null}
           <Link href={`/contacto?m=Servicio ${nombre}`}>
-            <button className="bg-gradient-to-b from-ov-primaryLight to-ov-primary text-white py-2 px-10 rounded-full">
-              Contactanos
-            </button>
+            <MainButton paddingX="px-10" paddingY="py-2" name="Contactanos" />
           </Link>
         </div>
       </div>

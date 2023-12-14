@@ -33,7 +33,7 @@ export const CardProductosRelacionados = ({
             <p className="mt-1 mb-6">{categorias.data[0].attributes.nombre} </p>
           ) : null}
           <Link href={`/productos/${slug}`}>
-            <button className="bg-gradient-to-b from-ov-primaryLight to-ov-primary text-white py-2 text-sm px-10 rounded-full">
+            <button className="bg-gradient-to-b from-ov-primaryLight to-ov-primary hover:to-blue-800 text-white py-2 text-sm px-10 rounded-full">
               Ver Producto
             </button>
           </Link>

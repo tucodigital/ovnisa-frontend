@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 import { CardProductosRelacionados } from "@/components/products/CardProductosRelacionados";
 import ProductGallery from "@/components/products/ProductGallery";
+import { MainButton } from "@/components/MainButton";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -94,9 +95,7 @@ export default function ProductoPage(context) {
             </div>
           ) : null}
           <Link href={`/contacto?m=Producto ${data?.attributes?.nombre}`}>
-            <button className="bg-gradient-to-b from-ov-primaryLight to-ov-primary text-white py-2 px-10 rounded-full">
-              Contactanos
-            </button>
+            <MainButton paddingX="px-10" paddingY="py-2" name="Contactanos" />
           </Link>
         </div>
       </div>

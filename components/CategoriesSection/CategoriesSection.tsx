@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { loaderProp } from "@/lib/utils";
 import { CategoriesSectionContent } from "../../types/components/CategoriesSectionTypes";
+import { MainButton } from "../MainButton";
 
 export const CategoriesSection = ({
   title,
@@ -44,8 +45,8 @@ export const CategoriesSection = ({
                       /* objectFit='contain' */
                       loader={loaderProp}
                     />
-                    <div className="absolute -bottom-8 bg-gradient-to-b from-ov-primaryLight to-ov-primary text-white py-4 px-16 rounded-full">
-                      Ver más
+                    <div className="absolute -bottom-8 ">
+                      <MainButton paddingX="px-16" paddingY="py-4" name="Ver más" />
                     </div>
                   </div>
                 </Link>
