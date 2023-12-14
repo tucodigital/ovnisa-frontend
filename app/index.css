@@ -6,6 +6,21 @@ body {
   scroll-behavior: smooth;
 }
 
+/*Main Menu*/
+
+.MenuDecoration:after {
+  display:block;
+  content: '';
+  width: inherit;
+  border-bottom: solid 3px white;  
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+}
+
+.MenuDecoration:hover:after { transform: scaleX(1); }
+
+/*Main Menu*/
+
 .scrollPosition {
   padding-top: 60px;
   margin-top: -60px;

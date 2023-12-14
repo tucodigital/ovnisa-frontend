@@ -11,7 +11,7 @@ export const NavigationMainMenuItemDesktop = ({
 }: NavigationMainMenuItemContent) => {
   return (
     <Link href={`${url}`}>
-      <div className="text-white font-bold text-lg hover:underline underline-offset-4">{text}</div>
+      <div className="MenuDecoration text-gray-300 hover:text-white transition duration-300 font-bold text-lg">{text}</div>
     </Link>
   );
 };

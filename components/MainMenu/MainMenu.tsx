@@ -7,8 +7,14 @@ import Link from "next/link";
 import { ContactMainMenuItemMobile } from "./ContactMainMenuItemMobile";
 import { NavigationMainMenuItemMobile } from "./NavigationMainMenuItemMobile";
 import { MainMenuContent } from "../../types/components/MainMenuTypes";
-import { ICONS_CONSTANTS_DESKTOP, ICONS_CONSTANTS_MOBILE } from "./MainMenuConstants";
-import { ContactMainMenuItemDesktopSkeleton, NavigationMainMenuItemDesktopSkeleton } from "./MainMenuSkeletons";
+import {
+  ICONS_CONSTANTS_DESKTOP,
+  ICONS_CONSTANTS_MOBILE,
+} from "./MainMenuConstants";
+import {
+  ContactMainMenuItemDesktopSkeleton,
+  NavigationMainMenuItemDesktopSkeleton,
+} from "./MainMenuSkeletons";
 
 export const MainMenu = ({
   component,
@@ -112,10 +118,23 @@ export const MainMenu = ({
                 </>
               ) : null}
               <div
-                className="w-8 cursor-pointer"
+                className="w-8 cursor-pointer text-gray-300 hover:text-white transition duration-300"
                 onClick={() => setShowSearchOverlay(!showSearchOverlay)}
               >
-                <img src={`/assets/ruido-search-desktop.svg`} />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-8 h-8"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                  />
+                </svg>
               </div>
             </div>
           </div>
@@ -172,7 +191,21 @@ export const MainMenu = ({
         {open ? (
           <div className=" bg-ov-primary pt-5 pb-16 px-8 w-full flex flex-col gap-6 justify-between items-center absolute z-10">
             <div className="w-full bg-slate-200 h-10 px-3 flex flex-row items-center gap-2">
-              <img className="w-7" src={`/assets/ruido-search-mobile.svg`} />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                className="w-8 h-8"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                />
+              </svg>
+
               <input
                 value={inputValue}
                 className="w-full bg-slate-200 rounded-md h-8 outline-none"
@@ -196,11 +229,10 @@ export const MainMenu = ({
                       key={`NavigationMainMenuItemDesktop_${index}`}
                       text={item.item_text}
                       url={item.item_link}
-                      separator={component.items.length -1 !== index}
+                      separator={component.items.length - 1 !== index}
                       setOpen={setOpen}
                     />
                   ))
-                  
                 : null}
             </div>
           </div>
