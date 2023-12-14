@@ -16,15 +16,18 @@ export const ServicioView = ({
   return (
     <>
       <div className="p-4 lg:grid lg:grid-cols-2 gap-10">
-        <div className="w-full h-80 mb-4 lg:mb-0 relative rounded shadow">
+        
+        <div className="MainProductImage rounded-lg relative w-full mb-4 lg:mb-0">
           {imagen_principal ? (
             <Image
               src={imagen_principal}
               alt={nombre}
               fill
+              className="border rounded-lg"
               style={{
                 objectFit: "contain",
               }}
+              priority
               loader={loaderProp}
             />
           ) : null}

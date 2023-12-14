@@ -10,6 +10,7 @@ export default function Servicios() {
   const [servicios, setServicios] = useState([]);
   const [selectedServ, setSelectedServ] = useState("");
   const [filteredServicio, setFilteredServicio] = useState<Servicio>();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getServicios();
@@ -26,6 +27,7 @@ export default function Servicios() {
   };
 
   const getServicios = async () => {
+    setLoading(true);
     try {
       const serviciosRes = await fetchAPI("/servicios", {
         populate: {
@@ -42,10 +44,40 @@ export default function Servicios() {
       console.log("servicios: ", serviciosRes);
       setServicios(serviciosRes.data);
       setSelectedServ(serviciosRes.data[0].attributes.slug);
+      setLoading(false);
     } catch (e: any) {
       console.error(e.response);
+      setLoading(false);
     }
   };
+
+  if (loading) {
+    return (
+      <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
+        <div className="xl:grid xl:grid-cols-12 gap-8">
+          <div className="xl:col-span-2 rounded-lg p-4">
+            <h2 className="font-bold text-blue-600 text-lg xl:text-2xl px-2 pb-4">
+              Servicio
+            </h2>
+            <div className="h-8 w-full rounded-lg bg-gray-100 animate-pulse mb-2"></div>
+            <div className="h-8 w-full rounded-lg bg-gray-100 animate-pulse mb-2"></div>
+            <div className="h-8 w-full rounded-lg bg-gray-100 animate-pulse mb-2"></div>
+            <div className="h-8 w-full rounded-lg bg-gray-100 animate-pulse mb-2"></div>
+          </div>
+          <div className="xl:col-span-9">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
+              <div className="MainProductImage rounded-lg relative w-full bg-gray-100 animate-pulse"></div>
+              <div>
+                <div className="h-10 w-full rounded-lg bg-gray-100 animate-pulse mb-4"></div>
+                <div className="h-44 w-full rounded-lg bg-gray-100 animate-pulse mb-6"></div>
+                <div className="h-10 w-48 rounded-full bg-gray-100 animate-pulse"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
@@ -70,7 +102,10 @@ export default function Servicios() {
           <ServicioView
             nombre={filteredServicio?.attributes?.nombre}
             galeria_imagenes={filteredServicio?.attributes?.galeria_imagenes}
-            imagen_principal={filteredServicio?.attributes?.imagen_principal?.data?.attributes?.url}
+            imagen_principal={
+              filteredServicio?.attributes?.imagen_principal?.data?.attributes
+                ?.url
+            }
             keywords={filteredServicio?.attributes?.keywords}
             maquinarias={filteredServicio?.attributes?.maquinarias}
             descripcion={filteredServicio?.attributes?.descripcion}
