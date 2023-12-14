@@ -145,7 +145,7 @@ export default function RootLayout({
           setShowSearchOverlay={setShowSearchOverlay}
         />
         {showSearchOverlay ? (
-          <div className="w-full bg-slate-900 opacity-50 fixed searchOverlay"></div>
+          <div className="w-full bg-slate-900 opacity-50 fixed searchOverlay z-40"></div>
         ) : null}
         {children}
         <Footer

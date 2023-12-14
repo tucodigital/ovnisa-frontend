@@ -121,20 +121,37 @@ export const MainMenu = ({
                 className="w-8 cursor-pointer text-gray-300 hover:text-white transition duration-300"
                 onClick={() => setShowSearchOverlay(!showSearchOverlay)}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-8 h-8"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                  />
-                </svg>
+                {showSearchOverlay ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className="w-8 h-8"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className="w-8 h-8"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                    />
+                  </svg>
+                )}
               </div>
             </div>
           </div>
@@ -142,19 +159,29 @@ export const MainMenu = ({
       </nav>
 
       <nav className="block lg:hidden fixed z-50 w-full">
-        <div className="bg-gradient-to-b from-ov-primaryLight to-ov-primary h-20 w-full flex flex-row justify-between items-center">
+        <div className="bg-gradient-to-b from-ov-primaryLight to-ov-primary h-20 w-full flex flex-row justify-between items-center text-white px-4">
           {/* Hamburguer Menu */}
           <div
-            className="ml-10"
+            className=""
             onClick={() => {
               setOpen(!open);
             }}
           >
             {/* TODO: Pedir Logo Menu Mobile */}
-            <img
-              className="w-7 h-7"
-              src={`/assets/main-menu/TEST-HAMBURGUER.svg`}
-            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-8 h-8"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
           </div>
           {/* Business Logo */}
           <Link href="/" className="w-32 h-20">
@@ -164,7 +191,7 @@ export const MainMenu = ({
             />
           </Link>
           {/* Nav Mobile Items */}
-          <div className="flex justify-center items-center mr-10 gap-2">
+          <div className="flex justify-center items-center gap-2">
             {component?.phone_text ? (
               <ContactMainMenuItemMobile icon={ICONS_CONSTANTS_MOBILE.PHONE} />
             ) : null}
