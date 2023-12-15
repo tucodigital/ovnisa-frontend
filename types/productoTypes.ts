@@ -158,6 +158,6 @@ export interface TagMarcaContent {
   marca: string;
 }
 
-export interface TagMarcaSkeleton {
+export interface SkeletonContent {
   total: number;
 }
