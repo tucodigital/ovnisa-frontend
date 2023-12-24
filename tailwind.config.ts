@@ -22,6 +22,9 @@ const config: Config = {
       fontFamily: {
         sans: ["Nunito Sans", "sans-serif"],
       },
+      boxShadow: {
+        'contact': '0px 0px 10px rgba(0, 0, 0, 0.3)',
+      }
     },
   },
   plugins: [],
