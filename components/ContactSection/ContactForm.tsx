@@ -5,6 +5,7 @@ import axios from "axios";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import ContactFormLoader from "./ContactFormLoader";
+import { useSearchParams } from "next/navigation";
 
 const schema = yup
   .object({
@@ -34,8 +35,14 @@ export const ContactForm = ({
   subject_placeholder,
   message_placeholder,
 }) => {
+  // Agregar state con motivo que puede venir por QP
+
   const [isLoaded, setIsLoaded] = useState(false);
   const [message, setMessage] = useState("");
+
+  const searchParams = useSearchParams();
+  const subjectParam = searchParams.get("m");
+
   const {
     register,
     handleSubmit,
@@ -124,7 +131,7 @@ export const ContactForm = ({
               className="p-3 border shadow-lg rounded-lg w-full"
               type="text"
               placeholder={subject_placeholder}
-              {...register("motivo", {})}
+              {...register("motivo", { value: subjectParam })}
             />
             {errors.motivo?.message && (
               <p className="text-sm text-ov-primary font-bold mt-2">

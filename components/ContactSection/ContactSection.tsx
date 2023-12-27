@@ -1,11 +1,6 @@
 import React from "react";
-
-import Image from "next/image";
 import Link from "next/link";
-import { loaderProp } from "@/lib/utils";
 import { ContactForm } from "./ContactForm";
-
-// (+54 011) 4253-1184 | (+54 02229) 45-4004
 
 export const ContactSection = ({
   title,
@@ -338,7 +333,6 @@ export const ContactSection = ({
             <h2 className="block lg:hidden text-ov-primaryLight font-bold text-2xl mb-8">
               {title}
             </h2>
-            
 
             <ContactForm
               name_and_lastname_placeholder={name_and_lastname_placeholder}
