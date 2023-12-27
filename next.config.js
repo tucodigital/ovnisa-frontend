@@ -2,7 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost', 'starfish-app-zuc9h.ondigitalocean.app', 'res.cloudinary.com'],
+    domains: [
+      "localhost",
+      "starfish-app-zuc9h.ondigitalocean.app",
+      "res.cloudinary.com",
+    ],
     remotePatterns: [
       {
         protocol: "http",
@@ -14,7 +18,11 @@ const nextConfig = {
   },
   env: {
     NEXT_PUBLIC_STRAPI_API_URL: process.env.NEXT_PUBLIC_STRAPI_API_URL,
+    NEXT_PUBLIC_SMTP_HOST: process.env.NEXT_PUBLIC_SMTP_HOST,
+    NEXT_PUBLIC_SMTP_USER: process.env.NEXT_PUBLIC_SMTP_USER,
+    NEXT_PUBLIC_SMTP_PASSWORD: process.env.NEXT_PUBLIC_SMTP_PASSWORD,
+    NEXT_PUBLIC_SMTP_CONTACTEMAIL: process.env.NEXT_PUBLIC_SMTP_CONTACTEMAIL,
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

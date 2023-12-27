@@ -25,7 +25,7 @@ export const ContactSection = ({
   message_placeholder,
 }) => {
   return (
-    <div className="bg-white py-28 px-10 lg:px-28 flex gap-4 lg:gap-10 flex-col lg:flex-row w-full ">
+    <div className="bg-white pt-28 pb-12 px-10 lg:px-28 flex gap-4 lg:gap-10 flex-col lg:flex-row w-full ">
       {/* Título de la página que se muestra solo en Mobile */}
       <h2 className="block lg:hidden text-ov-primaryLight font-bold text-2xl mb-4">
         Contacto

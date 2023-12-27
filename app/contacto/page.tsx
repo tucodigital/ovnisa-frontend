@@ -16,7 +16,11 @@ export default function Contacto() {
       const contactoPageResponse = await fetchAPI("/contacto", {
         populate: {
           components: {
-            populate: "*"
+            populate: {
+              vendors: {
+                populate: "*",
+              },
+            },
           },
         },
       });

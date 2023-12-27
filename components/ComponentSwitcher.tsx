@@ -6,6 +6,7 @@ import { BusinessPath } from "./BusinessPath/BusinessPath";
 import { VideoSection } from "./VideoSection/VideoSection";
 import { LocationSection } from "./LocationSection/LocationSection";
 import { ContactSection } from "./ContactSection/ContactSection";
+import { VendorsSection } from "./VendorsSection/VendorsSection";
 
 const HOME_HEADER = "home-comp.header";
 const CATEGORIES_SECTION = "home-comp.cat-section";
@@ -16,6 +17,7 @@ const VIDEO_SECTION = "empr-comp.video-section";
 const LOCATION_SECTION = "empr-comp.location-section";
 
 const CONTACT_SECTION = "contacto.contact-section";
+const VENDORS_SECTION = "contacto.vendors-section";
 
 export default function ComponentSwitcher({ componentsList }: any) {
   const RenderComponent = (component: any) => {
@@ -88,11 +90,22 @@ export default function ComponentSwitcher({ componentsList }: any) {
             youtube_link={component?.youtube_link}
             linkedin_link={component?.linkedin_link}
             mercado_libre_link={component?.mercado_libre_link}
-            name_and_lastname_placeholder={component?.name_and_lastname_placeholder}
+            name_and_lastname_placeholder={
+              component?.name_and_lastname_placeholder
+            }
             phone_placeholder={component?.phone_placeholder}
             email_placeholder={component?.email_placeholder}
             subject_placeholder={component?.subject_placeholder}
             message_placeholder={component?.message_placeholder}
+          />
+        );
+
+      case VENDORS_SECTION:
+        return (
+          <VendorsSection
+            key={`${VENDORS_SECTION}_${component?.id}`}
+            title={component?.title}
+            vendors={component?.vendors}
           />
         );
       default:
