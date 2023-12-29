@@ -33,7 +33,7 @@ export default function Productos() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  let PageSize = 3;
+  let PageSize = 12;
 
   useEffect(() => {
     if (urlPage) {
@@ -150,7 +150,7 @@ export default function Productos() {
                 $and: [
                   {
                     tag: {
-                      $contains: search,
+                      $contains: search ? search : [],
                     },
                   },
                 ],
@@ -163,7 +163,7 @@ export default function Productos() {
                 $and: [
                   {
                     slug: {
-                      $contains: cat,
+                      $contains: cat ? cat : [],
                     },
                   },
                 ],
@@ -174,7 +174,7 @@ export default function Productos() {
                 $and: [
                   {
                     slug: {
-                      $contains: tipo,
+                      $contains: tipo ? tipo : [],
                     },
                   },
                 ],
@@ -185,7 +185,7 @@ export default function Productos() {
                 $and: [
                   {
                     slug: {
-                      $contains: marca,
+                      $contains: marca ? marca : [],
                     },
                   },
                 ],
@@ -196,7 +196,7 @@ export default function Productos() {
                 $and: [
                   {
                     slug: {
-                      $contains: rubro,
+                      $contains: rubro ? rubro : [],
                     },
                   },
                 ],
@@ -208,10 +208,10 @@ export default function Productos() {
           page: currentPage,
           pageSize: PageSize,
         },
-        //sort: [`createdAt:${orderFecha}`, `title:${orderAlfabetico}`],
+        sort: [`createdAt:ASC`],
         populate: {
           imagen_principal: "*",
-          rubros: "*",
+          // rubros: "*",
           marca: "*",
           tipos_de_productos: "*",
           keywords: "*",
@@ -221,7 +221,7 @@ export default function Productos() {
       setProdutos(productRes.data);
       setTotalPages(productRes.meta.pagination.total);
       setLoading(false);
-      console.log("Productos", productRes)
+      console.log("Productos", productRes);
     } catch (e: any) {
       console.error(e.response);
       setProdutos([]);
@@ -232,12 +232,14 @@ export default function Productos() {
   return (
     <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
       <div className="lg:grid lg:grid-cols-12 gap-8">
-        <div className="lg:col-span-2 border border-gray-200 rounded-lg p-4 mb-4 lg:mb-0">
-          <Busqueda />
-          <Categorias selected={cat} categorias={categorias} />
-          <TipoProductos selected={tipo} tipoProductos={tipoProductos} />
-          <Marcas selected={marca} marcas={marcas} />
-          <Rubros selected={rubro} rubros={rubros} />
+        <div className="lg:col-span-2 mb-4 lg:mb-0">
+          <div className="border border-gray-200 rounded-lg p-4">
+            <Busqueda />
+            <Categorias selected={cat} categorias={categorias} />
+            <TipoProductos selected={tipo} tipoProductos={tipoProductos} />
+            <Marcas selected={marca} marcas={marcas} />
+            <Rubros selected={rubro} rubros={rubros} />
+          </div>
         </div>
         <div className="lg:col-span-9">
           {loading ? (
@@ -253,14 +255,26 @@ export default function Productos() {
                         <CardProductos
                           nombre={prod.attributes.nombre}
                           imagen_principal={
-                            prod.attributes.imagen_principal.data.attributes.url
+                            prod?.attributes?.imagen_principal?.data?.attributes
+                              ?.url
+                              ? prod?.attributes?.imagen_principal?.data
+                                  ?.attributes?.url
+                              : ""
                           }
                           slug={prod.attributes.slug}
                           imagen_principal_alt={
-                            prod.attributes.imagen_principal.data.attributes
+                            prod?.attributes?.imagen_principal?.data?.attributes
                               .name
+                              ? prod?.attributes?.imagen_principal?.data
+                                  ?.attributes.name
+                              : ""
                           }
-                          marca={prod.attributes.marca.data.attributes.nombre}
+                          marca={
+                            prod?.attributes?.marca?.data?.attributes?.nombre
+                              ? prod?.attributes?.marca?.data?.attributes
+                                  ?.nombre
+                              : ""
+                          }
                         />
                       </Fragment>
                     ))
