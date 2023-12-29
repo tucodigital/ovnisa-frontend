@@ -34,9 +34,7 @@ export const BusinessPath = ({
             <div className="flex flex-col">
               <Image
                 src={item.icon.data.attributes.url}
-                alt={
-                  "data.attributes.imagen_principal.data.attributes.alternativeText"
-                }
+                alt={item.icon.data.attributes?.alternativeText}
                 width={70}
                 height={70}
                 loader={loaderProp}

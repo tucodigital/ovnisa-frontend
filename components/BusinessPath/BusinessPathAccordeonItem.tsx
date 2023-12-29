@@ -17,7 +17,7 @@ export const BusinessPathAccordeonItem = ({
           <Image
             src={icon.data.attributes.url}
             alt={
-              "data.attributes.imagen_principal.data.attributes.alternativeText"
+              icon.data.attributes?.alternativeText
             }
             width={55}
             height={55}
@@ -32,7 +32,9 @@ export const BusinessPathAccordeonItem = ({
               : "/assets/chevron-up-accordeon.svg"
           }
           alt={
-            "data.attributes.imagen_principal.data.attributes.alternativeText"
+            !itemOpen
+              ? "Icono Desplegar"
+              : "Icono Colapsar"
           }
           width={45}
           height={45}
