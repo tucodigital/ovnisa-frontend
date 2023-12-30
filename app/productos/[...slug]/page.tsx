@@ -8,6 +8,7 @@ import Link from "next/link";
 import { CardProductosRelacionados } from "@/components/products/CardProductosRelacionados";
 import ProductGallery from "@/components/products/ProductGallery";
 import { MainButton } from "@/components/MainButton";
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -46,7 +47,7 @@ export default function ProductoPage(context) {
 
   const updateGaleria = () => {
     const updatedGaleria =
-    galeriaImagenes && galeriaImagenes.length > 0
+      galeriaImagenes && galeriaImagenes.length > 0
         ? [imgPrincipal, ...galeriaImagenes]
         : [imgPrincipal];
     setgaleria(updatedGaleria);
@@ -76,11 +77,14 @@ export default function ProductoPage(context) {
       setData(productRes.data);
       if (productRes.data.attributes.imagen_principal.data) {
         setImgPrincipal(productRes.data.attributes.imagen_principal.data);
-        if (productRes.data.attributes.galeria_imagenes.data && productRes.data.attributes.galeria_imagenes.data.length > 0) {
+        if (
+          productRes.data.attributes.galeria_imagenes.data &&
+          productRes.data.attributes.galeria_imagenes.data.length > 0
+        ) {
           setGaleriaImagenes(productRes.data.attributes.galeria_imagenes.data);
         }
       }
-      
+
       setLoading(false);
     } catch (e: any) {
       console.error(e.response);
@@ -104,7 +108,7 @@ export default function ProductoPage(context) {
   }
 
   return (
-    <main className="PageMainContaine r min-h-screen px-4 pt-28 xl:pt-44 pb-12">
+    <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
         <div>
           {galeria && galeria.length > 0 ? (
@@ -136,10 +140,23 @@ export default function ProductoPage(context) {
           </Link>
         </div>
       </div>
+      {data?.attributes?.link_youtube ? (
+        <>
+          <div className="bg-gradient-to-b from-ov-primary to-ov-primaryLight videoContainer">
+            <LiteYouTubeEmbed
+              id={data.attributes.link_youtube}
+              wrapperClass="yt-main-img"
+              playerClass="lty-playbtn"
+              title={"Video " + data?.attributes?.nombre}
+              iframeClass="yt-main-iframe"
+            />
+          </div>
+        </>
+      ) : null}
       {data?.attributes?.productos?.data.length > 0 ? (
         <div className="mt-10">
           <h2 className="font-bold text-ov-primaryLight text-lg xl:text-3xl pb-3">
-            Productos y servicios relacionados
+            Productos relacionados
           </h2>
           <p>Conocé nuestros excelentes productos</p>
           <Swiper
