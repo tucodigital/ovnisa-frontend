@@ -18,14 +18,39 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Navigation } from "swiper";
+import { GaleriaImagenesData, GaleriaImagenes } from "@/types/productoTypes";
 
 export default function ProductoPage(context) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<Producto>();
+  const [imgPrincipal, setImgPrincipal] = useState<GaleriaImagenesData>();
+  const [galeriaImagenes, setGaleriaImagenes] = useState<GaleriaImagenes[]>([]);
+  const [galeria, setgaleria] = useState([]);
 
   useEffect(() => {
     getProductos();
   }, [context.params.slug]);
+
+  useEffect(() => {
+    console.log("gal merge", imgPrincipal, galeriaImagenes);
+    console.log("gal merge result", galeria);
+
+    if (imgPrincipal && galeriaImagenes) {
+      updateGaleria();
+    }
+  }, [imgPrincipal, galeriaImagenes]);
+
+  useEffect(() => {
+    console.log("gal merge result", galeria);
+  }, [galeria]);
+
+  const updateGaleria = () => {
+    const updatedGaleria =
+    galeriaImagenes && galeriaImagenes.length > 0
+        ? [imgPrincipal, ...galeriaImagenes]
+        : [imgPrincipal];
+    setgaleria(updatedGaleria);
+  };
 
   const getProductos = async () => {
     setLoading(true);
@@ -49,6 +74,13 @@ export default function ProductoPage(context) {
       });
       console.log("product", productRes.data);
       setData(productRes.data);
+      if (productRes.data.attributes.imagen_principal.data) {
+        setImgPrincipal(productRes.data.attributes.imagen_principal.data);
+        if (productRes.data.attributes.galeria_imagenes.data && productRes.data.attributes.galeria_imagenes.data.length > 0) {
+          setGaleriaImagenes(productRes.data.attributes.galeria_imagenes.data);
+        }
+      }
+      
       setLoading(false);
     } catch (e: any) {
       console.error(e.response);
@@ -72,20 +104,25 @@ export default function ProductoPage(context) {
   }
 
   return (
-    <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
+    <main className="PageMainContaine r min-h-screen px-4 pt-28 xl:pt-44 pb-12">
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
         <div>
-          {data?.attributes?.galeria_imagenes.data &&
-          data?.attributes?.galeria_imagenes.data.length > 0 ? (
-            <ProductGallery
-              galeria_imagenes={data?.attributes?.galeria_imagenes}
-            />
+          {galeria && galeria.length > 0 ? (
+            <ProductGallery galeria_imagenes={galeria} />
           ) : null}
         </div>
         <div>
           <h1 className="font-bold text-gray-800 text-2xl xl:text-4xl mb-4">
             {data?.attributes?.nombre}
           </h1>
+          {data?.attributes?.descripcion_corta ? (
+            <div className="mb-6">
+              <ReactMarkdown
+                className="font-regular text-gray-800 prose prose-invert"
+                children={data?.attributes?.descripcion_corta}
+              />
+            </div>
+          ) : null}
           {data?.attributes?.descripcion ? (
             <div className="mb-6">
               <ReactMarkdown

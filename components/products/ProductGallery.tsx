@@ -10,31 +10,30 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import Image from "next/image";
 
-import { GaleriaImagenes } from "@/types/productoTypes";
+import { GaleriaImagenesData } from "@/types/productoTypes";
 import { loaderProp } from "@/lib/utils";
 
 export default function ProductGallery({
   galeria_imagenes,
 }: {
-  galeria_imagenes: GaleriaImagenes;
+  galeria_imagenes: GaleriaImagenesData[];
 }) {
   const [selectedImage, setSelectedImage] = useState("");
 
   useEffect(() => {
-    if (galeria_imagenes?.data && galeria_imagenes?.data?.length > 0) {
-      setSelectedImage(galeria_imagenes?.data[0]?.attributes?.url);
+    if (galeria_imagenes && galeria_imagenes?.length > 0) {
+      setSelectedImage(galeria_imagenes[0]?.attributes?.url);
     }
-
-    console.log("gal img", galeria_imagenes?.data);
+    console.log(galeria_imagenes)
   }, []);
 
-  if (galeria_imagenes?.data && galeria_imagenes?.data?.length > 0) {
+  if (galeria_imagenes && galeria_imagenes?.length > 0) {
     return (
       <section className="bg-white">
         <div
           className={
-            galeria_imagenes?.data?.length > 0 &&
-            galeria_imagenes?.data?.length === 1
+            galeria_imagenes?.length > 0 &&
+            galeria_imagenes?.length === 1
               ? "MainProductImage rounded-lg relative w-full block"
               : "MainProductImage rounded-lg relative w-full hidden xl:block"
           }
@@ -93,8 +92,8 @@ export default function ProductGallery({
                 },
               }}
             >
-              {galeria_imagenes?.data?.length > 1
-                ? galeria_imagenes?.data?.map((img, i) => {
+              {galeria_imagenes?.length > 1
+                ? galeria_imagenes?.map((img, i) => {
                     return (
                       <SwiperSlide key={"Product Image-" + i}>
                         <div
