@@ -72,6 +72,7 @@ export const CategoriesSection = ({
                       src={categoria?.attributes?.image?.data?.attributes?.url}
                       fill
                       objectFit="cover"
+                      priority
                       loader={loaderProp}
                     />
                   </div>

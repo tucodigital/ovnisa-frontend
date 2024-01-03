@@ -2,13 +2,19 @@
 
 import { useEffect, useState } from "react";
 import { fetchAPI } from "@/lib/api";
-
+import dynamic from "next/dynamic";
 import "./globals.css";
 import "./index.css";
 import { MainMenu } from "@/components/MainMenu/MainMenu";
-import { Footer } from "@/components/Footer/Footer";
+//import { Footer } from "@/components/Footer/Footer";
 import { FooterContent } from "@/types/components/FooterTypes";
 import { MainMenuContent } from "@/types/components/MainMenuTypes";
+
+const Footer = dynamic(() =>
+  import("@/components/Footer/Footer").then(
+    (module) => module.Footer
+  )
+);
 
 export default function RootLayout({
   children,

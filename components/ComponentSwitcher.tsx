@@ -1,12 +1,40 @@
 import React, { Fragment } from "react";
+import dynamic from "next/dynamic";
+
+const BusinessPath = dynamic(() =>
+  import("./BusinessPath/BusinessPath").then((module) => module.BusinessPath)
+);
+
+const VideoSection = dynamic(() =>
+  import("./VideoSection/VideoSection").then((module) => module.VideoSection)
+);
+
+const LocationSection = dynamic(() =>
+  import("./LocationSection/LocationSection").then(
+    (module) => module.LocationSection
+  )
+);
+
+const ContactSection = dynamic(() =>
+  import("./ContactSection/ContactSection").then(
+    (module) => module.ContactSection
+  )
+);
+
+const VendorsSection = dynamic(() =>
+  import("./VendorsSection/VendorsSection").then(
+    (module) => module.VendorsSection
+  )
+);
+
 import { HomeHeader } from "./Header/Header";
 import { CategoriesSection } from "./CategoriesSection/CategoriesSection";
 import { MapSection } from "./MapSection/MapSection";
-import { BusinessPath } from "./BusinessPath/BusinessPath";
-import { VideoSection } from "./VideoSection/VideoSection";
-import { LocationSection } from "./LocationSection/LocationSection";
-import { ContactSection } from "./ContactSection/ContactSection";
-import { VendorsSection } from "./VendorsSection/VendorsSection";
+// import { BusinessPath } from "./BusinessPath/BusinessPath";
+// import { VideoSection } from "./VideoSection/VideoSection";
+// import { LocationSection } from "./LocationSection/LocationSection";
+// import { ContactSection } from "./ContactSection/ContactSection";
+// import { VendorsSection } from "./VendorsSection/VendorsSection";
 
 const HOME_HEADER = "home-comp.header";
 const CATEGORIES_SECTION = "home-comp.cat-section";
