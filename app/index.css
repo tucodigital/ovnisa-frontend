@@ -116,11 +116,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: .5rem;
 }
 
 .yt-main-iframe {
   height: 600px;
   width: 100%;
+  border-radius: .5rem;
 }
 
 .lty-playbtn {

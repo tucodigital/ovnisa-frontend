@@ -53,7 +53,7 @@ export default function ProductGallery({
           ) : null}
         </div>
         <div className="py-0 xl:py-6 relative">
-          <div className="relative mb-10">
+          <div className="relative mb-4 lg:mb-10">
             <Swiper
               navigation={true}
               modules={[Navigation]}

@@ -109,7 +109,7 @@ export default function ProductoPage(context) {
 
   return (
     <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-2 lg:gap-10">
         <div>
           {galeria && galeria.length > 0 ? (
             <ProductGallery galeria_imagenes={galeria} />
@@ -142,7 +142,7 @@ export default function ProductoPage(context) {
       </div>
       {data?.attributes?.link_youtube ? (
         <>
-          <div className="bg-gradient-to-b from-ov-primary to-ov-primaryLight videoContainer">
+          <div className="bg-gradient-to-b from-ov-primary to-ov-primaryLight videoContainer mt-6 rounded-lg">
             <LiteYouTubeEmbed
               id={data.attributes.link_youtube}
               wrapperClass="yt-main-img"
