@@ -9,12 +9,13 @@ export default function HomeSlide({
   image_mobile,
   image_desktop,
 }: SlideContent) {
+  console.log(image_mobile, image_desktop)
   return (
     <div className="w-full bg-gray-100 relative">
       {image_desktop ? (
         <div className="homeSlide-desk hidden lg:block">
           <Image
-            alt={"image_desktop?.data?.attributes?.alternativeText"}
+            alt={image_desktop?.data?.attributes?.name}
             src={image_desktop?.data?.attributes?.url}
             fill
             loader={loaderProp}
@@ -24,7 +25,7 @@ export default function HomeSlide({
       {image_mobile ? (
         <div className="homeSlide-mobile block lg:hidden">
           <Image
-            alt={image_mobile?.data?.attributes?.alternativeText}
+            alt={image_mobile?.data?.attributes?.name}
             src={image_mobile?.data?.attributes?.url}
             layout="fill"
             objectFit="cover"

@@ -58,7 +58,7 @@ export const CategoriesSection = ({
             /* navigation
           modules={[Navigation]} */
             className="categories-swiper w-full block lg:hidden"
-            slidesPerView={2.5}
+            slidesPerView={1.5}
             spaceBetween={10}
           >
             {categorias.data.map((categoria, index) => (
@@ -68,9 +68,10 @@ export const CategoriesSection = ({
                 >
                   <div className="w-auto h-40 flex justify-center">
                     <Image
-                      alt={"image_desktop?.data?.attributes?.alternativeText"}
+                      alt={categoria?.attributes?.image?.data?.attributes?.name}
                       src={categoria?.attributes?.image?.data?.attributes?.url}
                       fill
+                      objectFit="cover"
                       loader={loaderProp}
                     />
                   </div>

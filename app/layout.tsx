@@ -134,9 +134,21 @@ export default function RootLayout({
     }
   };
 
-
   return (
     <html lang="es-AR">
+      <head>
+        <title>Ovnisa</title>
+        <meta
+          name="description"
+          content="Soluciones técnicas al servicio de la industria"
+        />
+        <meta property="og:title" content="Ovnisa" />
+        <meta property="og:url" content="https://www.ovnisa.com/" />
+        <meta
+          property="og:description"
+          content="Soluciones técnicas al servicio de la industria"
+        />
+      </head>
       <body>
         <MainMenu
           component={mainMenuContent?.component}

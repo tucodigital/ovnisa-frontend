@@ -34,12 +34,14 @@ export const MainMenu = ({
               <img
                 className="w-48"
                 src={`/assets/main-menu/ruido-ovnisa-nav-logo-desktop.svg`}
+                alt="Ovnisa Logo Desktop"
               />
             </Link>
             {/* Business Logo */}
             <div className="flex justify-center items-center gap-8">
               {component?.phone_text ? (
                 <ContactMainMenuItemDesktop
+                  alt="Icono telefono"
                   text={component.phone_text}
                   icon={ICONS_CONSTANTS_DESKTOP.PHONE}
                 />
@@ -52,6 +54,7 @@ export const MainMenu = ({
                   text={component.email_text}
                   icon={ICONS_CONSTANTS_DESKTOP.EMAIL}
                   url={`mailto:${component.email_text}`}
+                  alt="Icono email"
                 />
               ) : (
                 <ContactMainMenuItemDesktopSkeleton />
@@ -61,6 +64,7 @@ export const MainMenu = ({
                   text={component.whatsapp_text}
                   icon={ICONS_CONSTANTS_DESKTOP.WHATSAPP}
                   url={component.whatsapp_link}
+                  alt="Icono whatsapp"
                 />
               ) : (
                 <ContactMainMenuItemDesktopSkeleton />
@@ -71,6 +75,7 @@ export const MainMenu = ({
                   text={component.mercado_libre_text}
                   icon={ICONS_CONSTANTS_DESKTOP.MERCADO_LIBRE}
                   url={component.mercado_libre_link}
+                  alt="Icono mercado libre"
                 />
               ) : (
                 <ContactMainMenuItemDesktopSkeleton />
@@ -188,29 +193,33 @@ export const MainMenu = ({
             <img
               className="w-48 h-20"
               src={`/assets/main-menu/ruido-ovnisa-nav-logo-desktop.svg`}
+              alt="Ovnisa Logo"
             />
           </Link>
           {/* Nav Mobile Items */}
           <div className="flex justify-center items-center gap-2">
             {component?.phone_text ? (
-              <ContactMainMenuItemMobile icon={ICONS_CONSTANTS_MOBILE.PHONE} />
+              <ContactMainMenuItemMobile icon={ICONS_CONSTANTS_MOBILE.PHONE} alt="Icono telefono" />
             ) : null}
             {component?.email_text ? (
               <ContactMainMenuItemMobile
                 icon={ICONS_CONSTANTS_MOBILE.EMAIL}
                 url={`mailto:${component.email_text}`}
+                alt="Icono email"
               />
             ) : null}
             {component?.whatsapp_link && component.whatsapp_text ? (
               <ContactMainMenuItemMobile
                 icon={ICONS_CONSTANTS_MOBILE.WHATSAPP}
                 url={component.whatsapp_link}
+                alt="Icono whatsapp"
               />
             ) : null}
             {component?.mercado_libre_link && component?.mercado_libre_text ? (
               <ContactMainMenuItemMobile
                 icon={ICONS_CONSTANTS_MOBILE.MERCADO_LIBRE}
                 url={component.mercado_libre_link}
+                alt="Icono mercado libre"
               />
             ) : null}
           </div>

@@ -13,6 +13,7 @@ export const Footer = ({ component }: FooterContent) => {
           <img
             className="w-48"
             src={`/assets/footer/ruido-ovnisa-logo-footer-desktop.svg`}
+            alt="Ovnisa Logo"
           />
           {component?.description_text ? (
             <p className="text-white">{component.description_text}</p>
@@ -22,6 +23,7 @@ export const Footer = ({ component }: FooterContent) => {
               <img
                 className="h-5"
                 src="/assets/footer/ruido-ovnisa-icono-footer-ubicacion.svg"
+                alt="Icono ubicación"
               />
               <p className="text-white">{component.location_text}</p>
             </div>
@@ -32,6 +34,7 @@ export const Footer = ({ component }: FooterContent) => {
                 <img
                   className="h-7"
                   src="/assets/footer/ruido-ovnisa-footer-icono-facebook.svg"
+                  alt="Icono Facebook"
                 />
               </Link>
             ) : null}
@@ -40,6 +43,7 @@ export const Footer = ({ component }: FooterContent) => {
                 <img
                   className="h-7"
                   src="/assets/footer/ruido-ovnisa-icono-footer-instagram-desktop.svg"
+                  alt="Icono Instagram"
                 />
               </Link>
             ) : null}
@@ -48,6 +52,7 @@ export const Footer = ({ component }: FooterContent) => {
                 <img
                   className="h-7"
                   src="/assets/footer/ruido-ovnisa-icono-footer-youtube.svg"
+                  alt="Icono Youtube"
                 />
               </Link>
             ) : null}
@@ -56,6 +61,7 @@ export const Footer = ({ component }: FooterContent) => {
                 <img
                   className="h-7"
                   src="/assets/footer/ruido-ovnisa-footer-icono-linkedin.svg"
+                  alt="Icono Linkedin"
                 />
               </Link>
             ) : null}
@@ -64,6 +70,7 @@ export const Footer = ({ component }: FooterContent) => {
                 <img
                   className="h-7"
                   src="/assets/footer/ruido-ovnisa-footer-icono-meli.svg"
+                  alt="Icono Mercado libre"
                 />
               </Link>
             ) : null}
@@ -79,6 +86,7 @@ export const Footer = ({ component }: FooterContent) => {
                 <img
                   className="h-5"
                   src="/assets/footer/ruido-ovnisa-icono-footer-mail-desktop.svg"
+                  alt="Icono Email"
                 />
                 <Link href={`mailto:${component.email_text}`} target="_blank">
                   <p className="text-white">{component.email_text}</p>
@@ -90,6 +98,7 @@ export const Footer = ({ component }: FooterContent) => {
                 <img
                   className="h-6"
                   src="/assets/footer/ruido-ovnisa-footer-icono-whatsapp.svg"
+                  alt="Icono Whatsapp"
                 />
                 <Link href={`${component.whatsapp_link}`} target="_blank">
                   <p className="text-white">{component.whatsapp_text}</p>
@@ -102,6 +111,7 @@ export const Footer = ({ component }: FooterContent) => {
                 <img
                   className="h-6"
                   src="/assets/footer/ruido-ovnisa-icono-footer-celular.svg"
+                  alt="Icono Teléfono"
                 />
                 <div className="flex flex-col items-start">
                   {component?.phone_text_1 ? (
@@ -133,6 +143,7 @@ export const Footer = ({ component }: FooterContent) => {
           <img
             className="w-48"
             src={`/assets/footer/ruido-ovnisa-logo-footer-desktop.svg`}
+            alt="Logo Ovnisa"
           />
           {component?.description_text ? (
             <p className="text-white">{component.description_text}</p>
@@ -142,20 +153,22 @@ export const Footer = ({ component }: FooterContent) => {
               <img
                 className="h-5"
                 src="/assets/footer/ruido-ovnisa-icono-footer-ubicacion.svg"
+                alt="Icono Ubicación"
               />
               <p className="text-white">{component.location_text}</p>
             </div>
           ) : null}
           <div className="mr-8 flex flex-row gap-20">
             <div className="flex flex-col gap-4">
-              <h5 className="text-white font-bold text-xl">
+              <h3 className="text-white font-bold text-xl">
                 {component?.contact_section_title || "Contactanos"}
-              </h5>
+              </h3>
               {component?.email_text ? (
                 <div className="flex flex-row gap-2 items-center">
                   <img
                     className="h-5"
                     src="/assets/footer/ruido-ovnisa-icono-footer-mail-desktop.svg"
+                    alt="Icono Email"
                   />
                   <Link href={`mailto:${component.email_text}`} target="_blank">
                     <p className="text-white">{component.email_text}</p>
@@ -167,6 +180,7 @@ export const Footer = ({ component }: FooterContent) => {
                   <img
                     className="h-6"
                     src="/assets/footer/ruido-ovnisa-footer-icono-whatsapp.svg"
+                    alt="Icono whatsapp"
                   />
                   <Link href={`${component.whatsapp_link}`} target="_blank">
                     <p className="text-white">{component.whatsapp_text}</p>
@@ -179,6 +193,7 @@ export const Footer = ({ component }: FooterContent) => {
                   <img
                     className="h-6"
                     src="/assets/footer/ruido-ovnisa-icono-footer-celular.svg"
+                    alt="Icono telefono"
                   />
                   <div className="flex flex-col items-start">
                     {component?.phone_text_1 ? (
@@ -198,6 +213,7 @@ export const Footer = ({ component }: FooterContent) => {
                 <img
                   className="h-7"
                   src="/assets/footer/ruido-ovnisa-footer-icono-facebook.svg"
+                  alt="Icono facebook"
                 />
               </Link>
             ) : null}
@@ -206,6 +222,7 @@ export const Footer = ({ component }: FooterContent) => {
                 <img
                   className="h-7"
                   src="/assets/footer/ruido-ovnisa-icono-footer-instagram-desktop.svg"
+                  alt="Icono Instagram"
                 />
               </Link>
             ) : null}
@@ -214,6 +231,7 @@ export const Footer = ({ component }: FooterContent) => {
                 <img
                   className="h-7"
                   src="/assets/footer/ruido-ovnisa-icono-footer-youtube.svg"
+                  alt="Icono Youtube"
                 />
               </Link>
             ) : null}
@@ -222,6 +240,7 @@ export const Footer = ({ component }: FooterContent) => {
                 <img
                   className="h-7"
                   src="/assets/footer/ruido-ovnisa-footer-icono-linkedin.svg"
+                  alt="Icono Linkedin"
                 />
               </Link>
             ) : null}
@@ -230,6 +249,7 @@ export const Footer = ({ component }: FooterContent) => {
                 <img
                   className="h-7"
                   src="/assets/footer/ruido-ovnisa-footer-icono-meli.svg"
+                  alt="Icono Mercado libre"
                 />
               </Link>
             ) : null}
