@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { fetchAPI } from "@/lib/api";
 import dynamic from "next/dynamic";
 import "./globals.css";
@@ -11,9 +11,7 @@ import { FooterContent } from "@/types/components/FooterTypes";
 import { MainMenuContent } from "@/types/components/MainMenuTypes";
 
 const Footer = dynamic(() =>
-  import("@/components/Footer/Footer").then(
-    (module) => module.Footer
-  )
+  import("@/components/Footer/Footer").then((module) => module.Footer)
 );
 
 export default function RootLayout({
@@ -165,7 +163,7 @@ export default function RootLayout({
         {showSearchOverlay ? (
           <div className="w-full bg-slate-900 opacity-50 fixed searchOverlay z-40"></div>
         ) : null}
-        {children}
+        <Suspense>{children}</Suspense>
         <Footer
           component={footerContent?.component}
           name={footerContent?.name}
