@@ -3,27 +3,38 @@
 import Link from "next/link";
 import React from "react";
 import { FooterContent } from "../../types/components/FooterTypes";
+import Image from "next/image";
+import { loaderProp } from "@/lib/utils";
 
 export const Footer = ({ component }: FooterContent) => {
   if (!component) return null;
+  console.log(component);
   return (
     <footer className="bg-ov-primaryLight">
       <div className="hidden lg:flex h-auto w-full lg:flex-row justify-between py-16 px-4 PageMainContainer">
         <div className="flex flex-col gap-6">
-          <img
+          <Image
+            width={10}
+            height={10}
+            objectFit="fill"
+            loader={loaderProp}
             className="w-48"
+            alt="Logo Ovnisa"
             src={`/assets/footer/ruido-ovnisa-logo-footer-desktop.svg`}
-            alt="Ovnisa Logo"
           />
           {component?.description_text ? (
             <p className="text-white">{component.description_text}</p>
           ) : null}
           {component?.location_text ? (
             <div className="flex flex-row gap-2 items-center">
-              <img
-                className="h-5"
-                src="/assets/footer/ruido-ovnisa-icono-footer-ubicacion.svg"
-                alt="Icono ubicación"
+              <Image
+                width={15}
+                height={15}
+                objectFit="fill"
+                loader={loaderProp}
+                className="h-7"
+                alt="Icono Ubicación"
+                src={`/assets/footer/ruido-ovnisa-icono-footer-ubicacion.svg`}
               />
               <p className="text-white">{component.location_text}</p>
             </div>
@@ -31,46 +42,66 @@ export const Footer = ({ component }: FooterContent) => {
           <div className="flex flex-row gap-2 mt-4">
             {component?.facebook_link ? (
               <Link href={`${component.facebook_link}`} target="_blank">
-                <img
+                <Image
+                  width={30}
+                  height={30}
+                  objectFit="fill"
+                  loader={loaderProp}
                   className="h-7"
-                  src="/assets/footer/ruido-ovnisa-footer-icono-facebook.svg"
                   alt="Icono Facebook"
+                  src={`/assets/footer/ruido-ovnisa-footer-icono-facebook.svg`}
                 />
               </Link>
             ) : null}
             {component?.instagram_link ? (
               <Link href={`${component.instagram_link}`} target="_blank">
-                <img
+                <Image
+                  width={30}
+                  height={30}
+                  objectFit="fill"
+                  loader={loaderProp}
                   className="h-7"
-                  src="/assets/footer/ruido-ovnisa-icono-footer-instagram-desktop.svg"
                   alt="Icono Instagram"
+                  src={`/assets/footer/ruido-ovnisa-icono-footer-instagram-desktop.svg`}
                 />
               </Link>
             ) : null}
             {component?.youtube_link ? (
               <Link href={`${component.youtube_link}`} target="_blank">
-                <img
+                <Image
+                  width={30}
+                  height={30}
+                  objectFit="fill"
+                  loader={loaderProp}
                   className="h-7"
-                  src="/assets/footer/ruido-ovnisa-icono-footer-youtube.svg"
                   alt="Icono Youtube"
+                  src={`/assets/footer/ruido-ovnisa-icono-footer-youtube.svg`}
                 />
               </Link>
             ) : null}
             {component?.linkedin_link ? (
               <Link href={`${component.linkedin_link}`} target="_blank">
-                <img
+                <Image
+                  width={30}
+                  height={30}
+                  objectFit="fill"
+                  loader={loaderProp}
                   className="h-7"
-                  src="/assets/footer/ruido-ovnisa-footer-icono-linkedin.svg"
                   alt="Icono Linkedin"
+                  src={`/assets/footer/ruido-ovnisa-footer-icono-linkedin.svg`}
                 />
               </Link>
             ) : null}
             {component?.mercado_libre_link ? (
               <Link href={`${component.mercado_libre_link}`} target="_blank">
-                <img
+                <Image
+                  width={30}
+                  height={30}
+                  objectFit="fill"
+                  loader={loaderProp}
                   className="h-7"
-                  src="/assets/footer/ruido-ovnisa-footer-icono-meli.svg"
-                  alt="Icono Mercado libre"
+                  alt="Icono Mercado Libre"
+                  src={`/assets/footer/ruido-ovnisa-footer-icono-meli.svg`}
                 />
               </Link>
             ) : null}
@@ -83,10 +114,14 @@ export const Footer = ({ component }: FooterContent) => {
             </h5>
             {component?.email_text ? (
               <div className="flex flex-row gap-2 items-center">
-                <img
+                <Image
+                  width={30}
+                  height={30}
+                  objectFit="fill"
+                  loader={loaderProp}
                   className="h-5"
-                  src="/assets/footer/ruido-ovnisa-icono-footer-mail-desktop.svg"
-                  alt="Icono Email"
+                  alt="Icono Correo Electrónico"
+                  src={`/assets/footer/ruido-ovnisa-icono-footer-mail-desktop.svg`}
                 />
                 <Link href={`mailto:${component.email_text}`} target="_blank">
                   <p className="text-white">{component.email_text}</p>
@@ -95,10 +130,14 @@ export const Footer = ({ component }: FooterContent) => {
             ) : null}
             {component?.whatsapp_text && component?.whatsapp_link ? (
               <div className="flex flex-row gap-2 items-center">
-                <img
+                <Image
+                  width={30}
+                  height={30}
+                  objectFit="fill"
+                  loader={loaderProp}
                   className="h-6"
-                  src="/assets/footer/ruido-ovnisa-footer-icono-whatsapp.svg"
                   alt="Icono Whatsapp"
+                  src={`/assets/footer/ruido-ovnisa-footer-icono-whatsapp.svg`}
                 />
                 <Link href={`${component.whatsapp_link}`} target="_blank">
                   <p className="text-white">{component.whatsapp_text}</p>
@@ -108,10 +147,14 @@ export const Footer = ({ component }: FooterContent) => {
 
             {component?.phone_text_1 || component?.phone_text_2 ? (
               <div className="flex flex-row gap-2 items-start">
-                <img
+                <Image
+                  width={30}
+                  height={30}
+                  objectFit="fill"
+                  loader={loaderProp}
                   className="h-6"
-                  src="/assets/footer/ruido-ovnisa-icono-footer-celular.svg"
                   alt="Icono Teléfono"
+                  src={`/assets/footer/ruido-ovnisa-icono-footer-celular.svg`}
                 />
                 <div className="flex flex-col items-start">
                   {component?.phone_text_1 ? (
@@ -138,22 +181,30 @@ export const Footer = ({ component }: FooterContent) => {
       </div>
 
       {/* Footer Mobile */}
-      <div className="block lg:hidden bg-ov-primaryLight w-full flex justify-between py-8">
-        <div className="ml-8 flex flex-col gap-4">
-          <img
+      <div className=" lg:hidden bg-ov-primaryLight w-full flex justify-between py-8">
+        <div className="mx-8 flex flex-col gap-4 w-full">
+          <Image
+            width={30}
+            height={30}
+            objectFit="fill"
+            loader={loaderProp}
             className="w-48"
+            alt="Icono Mercado Libre"
             src={`/assets/footer/ruido-ovnisa-logo-footer-desktop.svg`}
-            alt="Logo Ovnisa"
           />
           {component?.description_text ? (
             <p className="text-white">{component.description_text}</p>
           ) : null}
           {component?.location_text ? (
             <div className="flex flex-row gap-2 items-center mb-2">
-              <img
+              <Image
+                width={30}
+                height={30}
+                objectFit="fill"
+                loader={loaderProp}
                 className="h-5"
-                src="/assets/footer/ruido-ovnisa-icono-footer-ubicacion.svg"
                 alt="Icono Ubicación"
+                src={`/assets/footer/ruido-ovnisa-icono-footer-ubicacion.svg`}
               />
               <p className="text-white">{component.location_text}</p>
             </div>
@@ -165,10 +216,14 @@ export const Footer = ({ component }: FooterContent) => {
               </h3>
               {component?.email_text ? (
                 <div className="flex flex-row gap-2 items-center">
-                  <img
+                  <Image
+                    width={30}
+                    height={30}
+                    objectFit="fill"
+                    loader={loaderProp}
                     className="h-5"
-                    src="/assets/footer/ruido-ovnisa-icono-footer-mail-desktop.svg"
-                    alt="Icono Email"
+                    alt="Icono Correo Electrónico"
+                    src={`/assets/footer/ruido-ovnisa-icono-footer-mail-desktop.svg`}
                   />
                   <Link href={`mailto:${component.email_text}`} target="_blank">
                     <p className="text-white">{component.email_text}</p>
@@ -177,10 +232,14 @@ export const Footer = ({ component }: FooterContent) => {
               ) : null}
               {component?.whatsapp_text && component?.whatsapp_link ? (
                 <div className="flex flex-row gap-2 items-center">
-                  <img
+                  <Image
+                    width={30}
+                    height={30}
+                    objectFit="fill"
+                    loader={loaderProp}
                     className="h-6"
-                    src="/assets/footer/ruido-ovnisa-footer-icono-whatsapp.svg"
-                    alt="Icono whatsapp"
+                    alt="Icono Whatsapp"
+                    src={`/assets/footer/ruido-ovnisa-footer-icono-whatsapp.svg`}
                   />
                   <Link href={`${component.whatsapp_link}`} target="_blank">
                     <p className="text-white">{component.whatsapp_text}</p>
@@ -190,10 +249,14 @@ export const Footer = ({ component }: FooterContent) => {
 
               {component?.phone_text_1 || component?.phone_text_2 ? (
                 <div className="flex flex-row gap-2 items-center">
-                  <img
+                  <Image
+                    width={30}
+                    height={30}
+                    objectFit="fill"
+                    loader={loaderProp}
                     className="h-6"
-                    src="/assets/footer/ruido-ovnisa-icono-footer-celular.svg"
-                    alt="Icono telefono"
+                    alt="Icono Teléfono"
+                    src={`/assets/footer/ruido-ovnisa-icono-footer-celular.svg`}
                   />
                   <div className="flex flex-col items-start">
                     {component?.phone_text_1 ? (
@@ -207,50 +270,70 @@ export const Footer = ({ component }: FooterContent) => {
               ) : null}
             </div>
           </div>
-          <div className="flex flex-row gap-2 mt-4 justify-between">
+          <div className="flex flex-row mt-4 justify-between">
             {component?.facebook_link ? (
               <Link href={`${component.facebook_link}`} target="_blank">
-                <img
-                  className="h-7"
-                  src="/assets/footer/ruido-ovnisa-footer-icono-facebook.svg"
-                  alt="Icono facebook"
-                />
+                <Image
+                    width={30}
+                    height={30}
+                    objectFit="fill"
+                    loader={loaderProp}
+                    className="h-7"
+                    alt="Icono Facebook"
+                    src={`/assets/footer/ruido-ovnisa-footer-icono-facebook.svg`}
+                  />
               </Link>
             ) : null}
             {component?.instagram_link ? (
               <Link href={`${component.instagram_link}`} target="_blank">
-                <img
-                  className="h-7"
-                  src="/assets/footer/ruido-ovnisa-icono-footer-instagram-desktop.svg"
-                  alt="Icono Instagram"
-                />
+                <Image
+                    width={30}
+                    height={30}
+                    objectFit="fill"
+                    loader={loaderProp}
+                    className="h-7"
+                    alt="Icono Instagram"
+                    src={`/assets/footer/ruido-ovnisa-icono-footer-instagram-desktop.svg`}
+                  />
               </Link>
             ) : null}
             {component?.youtube_link ? (
               <Link href={`${component.youtube_link}`} target="_blank">
-                <img
-                  className="h-7"
-                  src="/assets/footer/ruido-ovnisa-icono-footer-youtube.svg"
-                  alt="Icono Youtube"
-                />
+                <Image
+                    width={30}
+                    height={30}
+                    objectFit="fill"
+                    loader={loaderProp}
+                    className="h-7"
+                    alt="Icono Youtube"
+                    src={`/assets/footer/ruido-ovnisa-icono-footer-youtube.svg`}
+                  />
               </Link>
             ) : null}
             {component?.linkedin_link ? (
               <Link href={`${component.linkedin_link}`} target="_blank">
-                <img
-                  className="h-7"
-                  src="/assets/footer/ruido-ovnisa-footer-icono-linkedin.svg"
-                  alt="Icono Linkedin"
-                />
+                <Image
+                    width={30}
+                    height={30}
+                    objectFit="fill"
+                    loader={loaderProp}
+                    className="h-7"
+                    alt="Icono Linkedin"
+                    src={`/assets/footer/ruido-ovnisa-footer-icono-linkedin.svg`}
+                  />
               </Link>
             ) : null}
             {component?.mercado_libre_link ? (
               <Link href={`${component.mercado_libre_link}`} target="_blank">
-                <img
-                  className="h-7"
-                  src="/assets/footer/ruido-ovnisa-footer-icono-meli.svg"
-                  alt="Icono Mercado libre"
-                />
+                <Image
+                    width={30}
+                    height={30}
+                    objectFit="fill"
+                    loader={loaderProp}
+                    className="h-7"
+                    alt="Icono Mercado Libre"
+                    src={`/assets/footer/ruido-ovnisa-footer-icono-meli.svg`}
+                  />
               </Link>
             ) : null}
           </div>
