@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { loaderProp } from "@/lib/utils";
 import { MapSectionContent } from "../../types/components/MapSectionTypes";
+import { MapMarker } from "./MapMarker";
 
 export const MapSection = ({
   title,
@@ -26,7 +27,7 @@ export const MapSection = ({
             <h3 className="text-white text-3xl font-bold">{title}</h3>
             <p className="text-white text-lg">{description}</p>
           </div>
-          <div className="mr-12 lg:mr-0">
+          <div className="mr-12 lg:mr-0 relative">
             <Image
               alt={"image_desktop?.data?.attributes?.alternativeText"}
               src={`/assets/ruido-ovnisa-mapa-argentina-desktop.svg`}
@@ -35,6 +36,7 @@ export const MapSection = ({
               objectFit="contain"
               loader={loaderProp}
             />
+            <MapMarker top={39} right={27} info={"Informacion de este punto del mapa"} />
           </div>
         </div>
       ) : null}
