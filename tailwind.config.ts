@@ -1,6 +1,11 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+
+  safelist: [
+    'top-[5%]',
+    'right-[62%]',
+  ],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
