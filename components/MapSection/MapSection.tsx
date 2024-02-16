@@ -37,6 +37,9 @@ export const MapSection = ({
               loader={loaderProp}
             />
             <MapMarker top={5} right={62} info={"Informacion de este punto del mapa"} />
+            <MapMarker top={15} right={43} info={"Informacion de este punto del mapa"} />
+            <MapMarker top={20} right={62} info={"Informacion de este punto del mapa"} />
+            <MapMarker top={28} right={80} info={"Informacion de este punto del mapa"} />
           </div>
         </div>
       ) : null}

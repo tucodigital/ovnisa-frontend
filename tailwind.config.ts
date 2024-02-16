@@ -4,7 +4,12 @@ const config: Config = {
 
   safelist: [
     'top-[5%]',
+    'top-[15%]',
+    'top-[20%]',
+    'top-[28%]',
+    'right-[43%]',
     'right-[62%]',
+    'right-[80%]',
   ],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
