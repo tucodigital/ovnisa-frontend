@@ -40,6 +40,15 @@ export const MapSection = ({
             <MapMarker top={15} right={43} info={"Informacion de este punto del mapa"} />
             <MapMarker top={20} right={62} info={"Informacion de este punto del mapa"} />
             <MapMarker top={28} right={80} info={"Informacion de este punto del mapa"} />
+            <MapMarker top={32} right={56} info={"Informacion de este punto del mapa"} />
+            <MapMarker top={38} right={38} info={"Informacion de este punto del mapa"} />
+            <MapMarker top={42} right={80} info={"Informacion de este punto del mapa"} />
+            <MapMarker top={46} right={58} info={"Informacion de este punto del mapa"} />
+            <MapMarker top={54} right={83} info={"Informacion de este punto del mapa"} />
+            <MapMarker top={65} right={72} info={"Informacion de este punto del mapa"} />
+            <MapMarker top={70} right={89} info={"Informacion de este punto del mapa"} />
+            <MapMarker top={77} right={68} info={"Informacion de este punto del mapa"} />
+            <MapMarker top={97} right={64} info={"Informacion de este punto del mapa"} />
           </div>
         </div>
       ) : null}
