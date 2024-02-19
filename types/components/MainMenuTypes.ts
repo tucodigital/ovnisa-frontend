@@ -1,6 +1,4 @@
 export interface MainMenuContent {
-  component: MainMenuComponentContent;
-  name: String;
   showSearchOverlay: Boolean;
   setShowSearchOverlay: Function;
 }

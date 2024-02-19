@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ContactMainMenuItemDesktop } from "./ContactMainMenuItemDesktop";
 import { NavigationMainMenuItemDesktop } from "./NavigationMainMenuItemDesktop";
 import Link from "next/link";
@@ -15,14 +15,59 @@ import {
   ContactMainMenuItemDesktopSkeleton,
   NavigationMainMenuItemDesktopSkeleton,
 } from "./MainMenuSkeletons";
+import { fetchAPI } from "@/lib/api";
+import Image from "next/image";
+import { loaderProp } from "@/lib/utils";
 
 export const MainMenu = ({
-  component,
   showSearchOverlay,
   setShowSearchOverlay,
 }: MainMenuContent) => {
+  const [mainMenuContent, setMainMenuContent] = useState({
+    email_text: "",
+    phone_text: "",
+    whatsapp_link: "",
+    whatsapp_text: "",
+    id: 0,
+    mercado_libre_link: "",
+    mercado_libre_text: "",
+    items: [],
+  });
+
   const [open, setOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
+
+  const getMainMenu = async () => {
+    try {
+      const mainMenuResponse = await fetchAPI("/main-menu", {
+        populate: {
+          component: {
+            populate: {
+              items: "*",
+            },
+          },
+        },
+      });
+      console.log("MainMenu Response -->", mainMenuResponse);
+      setMainMenuContent(mainMenuResponse?.data?.attributes?.component);
+    } catch (e: any) {
+      console.error(e.response);
+      setMainMenuContent({
+        email_text: "",
+        phone_text: "",
+        whatsapp_link: "",
+        whatsapp_text: "",
+        id: 0,
+        mercado_libre_link: "",
+        mercado_libre_text: "",
+        items: [],
+      });
+    }
+  };
+
+  useEffect(() => {
+    getMainMenu();
+  }, []);
 
   return (
     <header className="">
@@ -31,50 +76,54 @@ export const MainMenu = ({
           <div className="h-20 w-full flex justify-between items-center PageMainContainer px-4">
             {/* Business Logo */}
             <Link href="/">
-              <img
+              <Image
                 className="w-48"
                 src={`/assets/main-menu/ruido-ovnisa-nav-logo-desktop.svg`}
                 alt="Ovnisa Logo Desktop"
+                loader={loaderProp}
+                width={0}
+                height={0}
               />
             </Link>
             {/* Business Logo */}
             <div className="flex justify-center items-center gap-8">
-              {component?.phone_text ? (
+              {mainMenuContent?.phone_text ? (
                 <ContactMainMenuItemDesktop
                   alt="Icono telefono"
-                  text={component.phone_text}
+                  text={mainMenuContent.phone_text}
                   icon={ICONS_CONSTANTS_DESKTOP.PHONE}
                 />
               ) : (
                 <ContactMainMenuItemDesktopSkeleton width={64} />
               )}
 
-              {component?.email_text ? (
+              {mainMenuContent?.email_text ? (
                 <ContactMainMenuItemDesktop
-                  text={component.email_text}
+                  text={mainMenuContent.email_text}
                   icon={ICONS_CONSTANTS_DESKTOP.EMAIL}
-                  url={`mailto:${component.email_text}`}
+                  url={`mailto:${mainMenuContent.email_text}`}
                   alt="Icono email"
                 />
               ) : (
                 <ContactMainMenuItemDesktopSkeleton />
               )}
-              {component?.whatsapp_link && component.whatsapp_text ? (
+              {mainMenuContent?.whatsapp_link &&
+              mainMenuContent.whatsapp_text ? (
                 <ContactMainMenuItemDesktop
-                  text={component.whatsapp_text}
+                  text={mainMenuContent.whatsapp_text}
                   icon={ICONS_CONSTANTS_DESKTOP.WHATSAPP}
-                  url={component.whatsapp_link}
+                  url={mainMenuContent.whatsapp_link}
                   alt="Icono whatsapp"
                 />
               ) : (
                 <ContactMainMenuItemDesktopSkeleton />
               )}
-              {component?.mercado_libre_link &&
-              component?.mercado_libre_text ? (
+              {mainMenuContent?.mercado_libre_link &&
+              mainMenuContent?.mercado_libre_text ? (
                 <ContactMainMenuItemDesktop
-                  text={component.mercado_libre_text}
+                  text={mainMenuContent.mercado_libre_text}
                   icon={ICONS_CONSTANTS_DESKTOP.MERCADO_LIBRE}
-                  url={component.mercado_libre_link}
+                  url={mainMenuContent.mercado_libre_link}
                   alt="Icono mercado libre"
                 />
               ) : (
@@ -84,8 +133,8 @@ export const MainMenu = ({
           </div>
           <div className="bg-gradient-to-b from-ov-primaryLight to-ov-primary">
             <div className="h-12 w-full flex flex-row items-center justify-between PageMainContainer px-4">
-              {component?.items?.length && !showSearchOverlay
-                ? component.items.map((item, index) => (
+              {mainMenuContent?.items?.length && !showSearchOverlay
+                ? mainMenuContent.items.map((item, index) => (
                     <NavigationMainMenuItemDesktop
                       key={`NavigationMainMenuItemDesktop_${index}`}
                       text={item.item_text}
@@ -93,7 +142,7 @@ export const MainMenu = ({
                     />
                   ))
                 : null}
-              {component?.items?.length && showSearchOverlay ? (
+              {mainMenuContent?.items?.length && showSearchOverlay ? (
                 <input
                   autoFocus
                   value={inputValue}
@@ -113,7 +162,7 @@ export const MainMenu = ({
                   }}
                 />
               ) : null}
-              {!component?.items?.length && !showSearchOverlay ? (
+              {!mainMenuContent?.items?.length && !showSearchOverlay ? (
                 <>
                   <NavigationMainMenuItemDesktopSkeleton />
                   <NavigationMainMenuItemDesktopSkeleton />
@@ -190,35 +239,42 @@ export const MainMenu = ({
           </div>
           {/* Business Logo */}
           <Link href="/" className="w-32 h-20">
-            <img
-              className="w-48 h-20"
-              src={`/assets/main-menu/ruido-ovnisa-nav-logo-desktop.svg`}
-              alt="Ovnisa Logo"
-            />
+          <Image
+                className="w-48 h-20"
+                src={`/assets/main-menu/ruido-ovnisa-nav-logo-desktop.svg`}
+                alt="Ovnisa Logo Mobile"
+                loader={loaderProp}
+                width={0}
+                height={0}
+              />
           </Link>
           {/* Nav Mobile Items */}
           <div className="flex justify-center items-center gap-2">
-            {component?.phone_text ? (
-              <ContactMainMenuItemMobile icon={ICONS_CONSTANTS_MOBILE.PHONE} alt="Icono telefono" />
+            {mainMenuContent?.phone_text ? (
+              <ContactMainMenuItemMobile
+                icon={ICONS_CONSTANTS_MOBILE.PHONE}
+                alt="Icono telefono"
+              />
             ) : null}
-            {component?.email_text ? (
+            {mainMenuContent?.email_text ? (
               <ContactMainMenuItemMobile
                 icon={ICONS_CONSTANTS_MOBILE.EMAIL}
-                url={`mailto:${component.email_text}`}
+                url={`mailto:${mainMenuContent.email_text}`}
                 alt="Icono email"
               />
             ) : null}
-            {component?.whatsapp_link && component.whatsapp_text ? (
+            {mainMenuContent?.whatsapp_link && mainMenuContent.whatsapp_text ? (
               <ContactMainMenuItemMobile
                 icon={ICONS_CONSTANTS_MOBILE.WHATSAPP}
-                url={component.whatsapp_link}
+                url={mainMenuContent.whatsapp_link}
                 alt="Icono whatsapp"
               />
             ) : null}
-            {component?.mercado_libre_link && component?.mercado_libre_text ? (
+            {mainMenuContent?.mercado_libre_link &&
+            mainMenuContent?.mercado_libre_text ? (
               <ContactMainMenuItemMobile
                 icon={ICONS_CONSTANTS_MOBILE.MERCADO_LIBRE}
-                url={component.mercado_libre_link}
+                url={mainMenuContent.mercado_libre_link}
                 alt="Icono mercado libre"
               />
             ) : null}
@@ -259,13 +315,13 @@ export const MainMenu = ({
               />
             </div>
             <div className="w-full flex flex-col items-start justify-between PageMainContainer">
-              {component?.items?.length
-                ? component.items.map((item, index) => (
+              {mainMenuContent?.items?.length
+                ? mainMenuContent.items.map((item, index) => (
                     <NavigationMainMenuItemMobile
                       key={`NavigationMainMenuItemDesktop_${index}`}
                       text={item.item_text}
                       url={item.item_link}
-                      separator={component.items.length - 1 !== index}
+                      separator={mainMenuContent.items.length - 1 !== index}
                       setOpen={setOpen}
                     />
                   ))

@@ -6,9 +6,7 @@ import dynamic from "next/dynamic";
 import "./globals.css";
 import "./index.css";
 import { MainMenu } from "@/components/MainMenu/MainMenu";
-//import { Footer } from "@/components/Footer/Footer";
 import { FooterContent } from "@/types/components/FooterTypes";
-import { MainMenuContent } from "@/types/components/MainMenuTypes";
 
 const Footer = dynamic(() =>
   import("@/components/Footer/Footer").then((module) => module.Footer)
@@ -20,21 +18,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [showSearchOverlay, setShowSearchOverlay] = useState(false);
-  const [mainMenuContent, setMainMenuContent] = useState<MainMenuContent>({
-    component: {
-      email_text: "",
-      phone_text: "",
-      whatsapp_link: "",
-      whatsapp_text: "",
-      id: 0,
-      mercado_libre_link: "",
-      mercado_libre_text: "",
-      items: [],
-    },
-    name: "",
-    showSearchOverlay,
-    setShowSearchOverlay,
-  });
   const [footerContent, setFooterContent] = useState<FooterContent>({
     component: {
       id: 0,
@@ -59,42 +42,8 @@ export default function RootLayout({
   });
 
   useEffect(() => {
-    getMainMenu();
     getFooter();
   }, []);
-
-  const getMainMenu = async () => {
-    try {
-      const mainMenuResponse = await fetchAPI("/main-menu", {
-        populate: {
-          component: {
-            populate: {
-              items: "*",
-            },
-          },
-        },
-      });
-      console.log("MainMenu Response -->", mainMenuResponse);
-      setMainMenuContent(mainMenuResponse?.data?.attributes);
-    } catch (e: any) {
-      console.error(e.response);
-      setMainMenuContent({
-        component: {
-          email_text: "",
-          phone_text: "",
-          whatsapp_link: "",
-          whatsapp_text: "",
-          id: 0,
-          mercado_libre_link: "",
-          mercado_libre_text: "",
-          items: [],
-        },
-        name: "",
-        showSearchOverlay,
-        setShowSearchOverlay,
-      });
-    }
-  };
 
   const getFooter = async () => {
     try {
@@ -155,8 +104,8 @@ export default function RootLayout({
       </head>
       <body>
         <MainMenu
-          component={mainMenuContent?.component}
-          name={mainMenuContent?.name}
+          /* component={mainMenuContent?.component}
+          name={mainMenuContent?.name} */
           showSearchOverlay={showSearchOverlay}
           setShowSearchOverlay={setShowSearchOverlay}
         />
