@@ -27,23 +27,15 @@ export const CardCatalogos = ({
         />
       </div>
       <div className="hidden relative -mt-16 lg:flex z-10 justify-center">
-        <Link
-          target="_blank"
-          href={
-            "https://www.correoargentino.com.ar/sites/default/files/f-202-fisica.pdf"
-          }
-        >
+        {/* Desktop Card */}
+        <Link target="_blank" href={file}>
           <MainButton paddingX="px-10" paddingY="py-3" name="Descargar" />
         </Link>
       </div>
 
       <div className="flex mt-4 relative lg:hidden z-10 justify-center">
-        <Link
-          target="_blank"
-          href={
-            "https://www.correoargentino.com.ar/sites/default/files/f-202-fisica.pdf"
-          }
-        >
+        {/* Mobile Card */}
+        <Link target="_blank" href={file}>
           <MainButton paddingX="px-10" paddingY="py-3" name="Descargar" />
         </Link>
       </div>
