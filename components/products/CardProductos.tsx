@@ -30,9 +30,13 @@ export const CardProductos = ({
             />
           ) : (
             <div className="bg-ov-primaryLight rounded w-full h-full flex items-center justify-center">
-              <img
+              <Image
                 className="w-48 h-20"
                 src={`/assets/main-menu/ruido-ovnisa-nav-logo-desktop.svg`}
+                alt="Ovnisa Logo Desktop"
+                loader={loaderProp}
+                width={0}
+                height={0}
               />
             </div>
           )}
