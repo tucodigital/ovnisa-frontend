@@ -211,7 +211,6 @@ export default function Productos() {
         sort: [`createdAt:ASC`],
         populate: {
           imagen_principal: "*",
-          // rubros: "*",
           marca: "*",
           tipos_de_productos: "*",
           keywords: "*",
@@ -255,16 +254,14 @@ export default function Productos() {
                         <CardProductos
                           nombre={prod.attributes.nombre}
                           imagen_principal={
-                            prod?.attributes?.imagen_principal?.data?.attributes
-                              ?.url
+                            prod?.attributes?.imagen_principal?.data
                               ? prod?.attributes?.imagen_principal?.data
                                   ?.attributes?.url
                               : ""
                           }
                           slug={prod.attributes.slug}
                           imagen_principal_alt={
-                            prod?.attributes?.imagen_principal?.data?.attributes
-                              .name
+                            prod?.attributes?.imagen_principal?.data
                               ? prod?.attributes?.imagen_principal?.data
                                   ?.attributes.name
                               : ""

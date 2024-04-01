@@ -24,7 +24,6 @@ export default function ProductGallery({
     if (galeria_imagenes && galeria_imagenes?.length > 0) {
       setSelectedImage(galeria_imagenes[0]?.attributes?.url);
     }
-    console.log(galeria_imagenes)
   }, []);
 
   if (galeria_imagenes && galeria_imagenes?.length > 0) {

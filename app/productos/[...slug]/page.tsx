@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Fragment, useEffect, useState } from "react";
-import { Producto } from "@/types/productoTypes";
+import { Producto, Datum } from "@/types/productoTypes";
 import { fetchAPI } from "@/lib/api";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
@@ -26,6 +26,9 @@ export default function ProductoPage(context) {
   const [data, setData] = useState<Producto>();
   const [imgPrincipal, setImgPrincipal] = useState<GaleriaImagenesData>();
   const [galeriaImagenes, setGaleriaImagenes] = useState<GaleriaImagenes[]>([]);
+  const [prodRelacionados, setProdRelacionados] = useState<Datum[]>([]);
+  const [servRelacionados, setServRelacionados] = useState<Datum[]>([]);
+  const [relGalery, setRelGalery] = useState<Datum[]>([]);
   const [galeria, setgaleria] = useState([]);
 
   useEffect(() => {
@@ -33,17 +36,16 @@ export default function ProductoPage(context) {
   }, [context.params.slug]);
 
   useEffect(() => {
-    console.log("gal merge", imgPrincipal, galeriaImagenes);
-    console.log("gal merge result", galeria);
-
     if (imgPrincipal && galeriaImagenes) {
       updateGaleria();
     }
   }, [imgPrincipal, galeriaImagenes]);
 
   useEffect(() => {
-    console.log("gal merge result", galeria);
-  }, [galeria]);
+    setRelGalery(prodRelacionados.concat(servRelacionados));
+  }, [prodRelacionados.length, servRelacionados.length]);
+
+  useEffect(() => {}, [galeria]);
 
   const updateGaleria = () => {
     const updatedGaleria =
@@ -71,9 +73,13 @@ export default function ProductoPage(context) {
               categorias: "*",
             },
           },
+          servicios: {
+            populate: {
+              imagen_principal: "*",
+            },
+          },
         },
       });
-      console.log("product", productRes.data);
       setData(productRes.data);
       if (productRes.data.attributes.imagen_principal.data) {
         setImgPrincipal(productRes.data.attributes.imagen_principal.data);
@@ -83,6 +89,14 @@ export default function ProductoPage(context) {
         ) {
           setGaleriaImagenes(productRes.data.attributes.galeria_imagenes.data);
         }
+      }
+
+      if (productRes.data.attributes.productos.data.length > 0) {
+        setProdRelacionados(productRes.data.attributes.productos.data);
+      }
+
+      if (productRes.data.attributes.servicios.data.length > 0) {
+        setServRelacionados(productRes.data.attributes.servicios.data);
       }
 
       setLoading(false);
@@ -141,7 +155,7 @@ export default function ProductoPage(context) {
         </div>
       </div>
       {data?.attributes?.link_youtube ? (
-        <>
+        <div className=" max-w-5xl m-auto">
           <div className="bg-gradient-to-b from-ov-primary to-ov-primaryLight videoContainer mt-6 rounded-lg">
             <LiteYouTubeEmbed
               id={data.attributes.link_youtube}
@@ -149,16 +163,17 @@ export default function ProductoPage(context) {
               playerClass="lty-playbtn"
               title={"Video " + data?.attributes?.nombre}
               iframeClass="yt-main-iframe"
+              poster="maxresdefault"
             />
           </div>
-        </>
+        </div>
       ) : null}
-      {data?.attributes?.productos?.data.length > 0 ? (
+      {relGalery.length > 0 ? (
         <div className="mt-10">
           <h2 className="font-bold text-ov-primaryLight text-lg xl:text-3xl pb-3">
-            Productos relacionados
+            Productos y servicios relacionados
           </h2>
-          <p>Conocé nuestros excelentes productos</p>
+          <p>Conocé nuestros excelentes productos y servicios</p>
           <Swiper
             navigation={true}
             modules={[Navigation]}
@@ -197,16 +212,22 @@ export default function ProductoPage(context) {
               },
             }}
           >
-            {data?.attributes?.productos?.data.map((prod, i) => (
+            {relGalery.map((prod, i) => (
               <SwiperSlide key={prod.attributes.nombre + i}>
                 <CardProductosRelacionados
                   nombre={prod.attributes.nombre}
                   imagen_principal={
-                    prod.attributes.imagen_principal.data.attributes.url
+                    prod?.attributes?.imagen_principal?.data
+                      ? prod?.attributes?.imagen_principal?.data?.attributes
+                          ?.url
+                      : ""
                   }
                   slug={prod.attributes.slug}
                   imagen_principal_alt={
-                    prod.attributes.imagen_principal.data.attributes.name
+                    prod?.attributes?.imagen_principal?.data
+                      ? prod?.attributes?.imagen_principal?.data?.attributes
+                          .name
+                      : ""
                   }
                   categorias={prod.attributes.categorias}
                 />

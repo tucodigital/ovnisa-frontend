@@ -21,6 +21,7 @@ export interface ProductoAttributes {
   keywords:           any[];
   categorias:         Categorias;
   productos:          Productos;
+  servicios:          Productos;
 }
 
 export interface Categorias {
