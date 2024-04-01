@@ -132,7 +132,7 @@ export const MainMenu = ({
             </div>
           </div>
           <div className="bg-gradient-to-b from-ov-primaryLight to-ov-primary">
-            <div className="h-12 w-full flex flex-row items-center justify-between PageMainContainer px-4">
+            <div className="h-12 w-full flex flex-row items-center justify-between max-w-5xl m-auto px-4">
               {mainMenuContent?.items?.length && !showSearchOverlay
                 ? mainMenuContent.items.map((item, index) => (
                     <NavigationMainMenuItemDesktop
