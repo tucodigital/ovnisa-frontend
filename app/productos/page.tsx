@@ -64,7 +64,7 @@ export default function Productos() {
           tipos_de_productos: "*",
         },
       });
-      console.log("categorias: ", catRes);
+      /* console.log("categorias: ", catRes); */
       setCategorias(catRes.data);
     } catch (e: any) {
       console.error(e.response);
@@ -74,7 +74,7 @@ export default function Productos() {
   const getRubros = async () => {
     try {
       const rubrosRes = await fetchAPI("/rubros");
-      console.log("rubros: ", rubrosRes);
+      /* console.log("rubros: ", rubrosRes); */
       setRubros(rubrosRes.data);
     } catch (e: any) {
       console.error(e.response);
@@ -84,7 +84,7 @@ export default function Productos() {
   const getMarcas = async () => {
     try {
       const marcasRes = await fetchAPI("/marcas");
-      console.log("marcas: ", marcasRes);
+      /* console.log("marcas: ", marcasRes); */
       setMarcas(marcasRes.data);
     } catch (e: any) {
       console.error(e.response);
@@ -100,10 +100,10 @@ export default function Productos() {
             categoria.attributes.tipos_de_productos.data &&
             categoria.attributes.tipos_de_productos.data.length > 0
           ) {
-            console.log(
+            /* console.log(
               "tipos filtrados",
               categoria.attributes.tipos_de_productos.data
-            );
+            ); */
             setTipoProductos(categoria.attributes.tipos_de_productos.data);
           } else {
             getTipoProductos();
@@ -118,7 +118,7 @@ export default function Productos() {
   const getTipoProductos = async () => {
     try {
       const tipoProdRes = await fetchAPI("/tipos-de-productos");
-      console.log("tipos de productos: ", tipoProdRes);
+      /* console.log("tipos de productos: ", tipoProdRes); */
       setTipoProductos(tipoProdRes.data);
     } catch (e: any) {
       console.error(e.response);
@@ -221,7 +221,7 @@ export default function Productos() {
       setProdutos(productRes.data);
       setTotalPages(productRes.meta.pagination.total);
       setLoading(false);
-      console.log("Productos", productRes);
+      /* console.log("Productos", productRes); */
     } catch (e: any) {
       console.error(e.response);
       setProdutos([]);

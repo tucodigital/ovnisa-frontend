@@ -9,7 +9,6 @@ export default function HomeSlide({
   image_mobile,
   image_desktop,
 }: SlideContent) {
-  console.log(image_mobile, image_desktop)
   return (
     <div className="w-full bg-gray-100 relative">
       {image_desktop ? (

@@ -29,7 +29,7 @@ export default function Maquinarias(context) {
           },
         }
       );
-      console.log("product", maquinariasRes.data);
+      /* console.log("product", maquinariasRes.data); */
       setData(maquinariasRes.data);
       setLoading(false);
     } catch (e: any) {

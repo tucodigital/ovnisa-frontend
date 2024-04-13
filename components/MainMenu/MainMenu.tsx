@@ -48,7 +48,7 @@ export const MainMenu = ({
           },
         },
       });
-      console.log("MainMenu Response -->", mainMenuResponse);
+      /* console.log("MainMenu Response -->", mainMenuResponse); */
       setMainMenuContent(mainMenuResponse?.data?.attributes?.component);
     } catch (e: any) {
       console.error(e.response);

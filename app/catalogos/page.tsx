@@ -52,7 +52,7 @@ export default function Catalogos() {
           tipos_de_productos: "*",
         },
       });
-      console.log("categorias: ", catRes);
+      /* console.log("categorias: ", catRes); */
       setCategorias(catRes.data);
     } catch (e: any) {
       console.error(e.response);
@@ -62,7 +62,7 @@ export default function Catalogos() {
   const getRubros = async () => {
     try {
       const rubrosRes = await fetchAPI("/rubros");
-      console.log("rubros: ", rubrosRes);
+      /* console.log("rubros: ", rubrosRes); */
       setRubros(rubrosRes.data);
     } catch (e: any) {
       console.error(e.response);
@@ -121,7 +121,7 @@ export default function Catalogos() {
       setCatalogos(catalogRes.data);
       setTotalPages(catalogRes.meta.pagination.total);
       setLoading(false);
-      console.log("Catalogos", catalogRes);
+      /* console.log("Catalogos", catalogRes); */
     } catch (e: any) {
       console.error(e.response);
       setCatalogos([]);

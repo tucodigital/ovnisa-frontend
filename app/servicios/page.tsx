@@ -23,7 +23,7 @@ export default function Servicios() {
 
   const filterServicio = (slug: string) => {
     const result = servicios.filter((serv) => serv.attributes.slug === slug);
-    console.log("filtered servicio", result[0]);
+    /* console.log("filtered servicio", result[0]); */
     setFilteredServicio(result[0]);
   };
 
@@ -42,7 +42,7 @@ export default function Servicios() {
           },
         },
       });
-      console.log("servicios: ", serviciosRes);
+      /* console.log("servicios: ", serviciosRes); */
       setServicios(serviciosRes.data);
       setSelectedServ(serviciosRes.data[0].attributes.slug);
       setLoading(false);

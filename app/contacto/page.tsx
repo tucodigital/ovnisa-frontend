@@ -24,7 +24,7 @@ export default function Contacto() {
           },
         },
       });
-      console.log("Contacto Page Response -->", contactoPageResponse);
+      /* console.log("Contacto Page Response -->", contactoPageResponse); */
       setContactoComponents(contactoPageResponse?.data?.attributes?.components);
     } catch (e: any) {
       console.error(e.response);

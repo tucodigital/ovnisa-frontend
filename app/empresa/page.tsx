@@ -26,7 +26,7 @@ export default function Empresa() {
           },
         },
       });
-      console.log("Empresa Page Response -->", empresaPageResponse);
+      /* console.log("Empresa Page Response -->", empresaPageResponse); */
       setEmpresaComponents(empresaPageResponse?.data?.attributes?.components);
     } catch (e: any) {
       console.error(e.response);

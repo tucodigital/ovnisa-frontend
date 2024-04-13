@@ -40,7 +40,7 @@ export const Footer = () => {
           },
         },
       });
-      console.log("Footer Response -->", footerResponse);
+      /* console.log("Footer Response -->", footerResponse); */
       setFooterContent(footerResponse?.data?.attributes?.component);
     } catch (e: any) {
       console.error(e.response);

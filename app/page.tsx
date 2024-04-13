@@ -38,7 +38,7 @@ export default function Home() {
           },
         },
       });
-      console.log("Home Page Response -->", homePageRes);
+      /* console.log("Home Page Response -->", homePageRes); */
       setHomeComponents(homePageRes?.data?.attributes?.components);
     } catch (e: any) {
       console.error(e.response);
