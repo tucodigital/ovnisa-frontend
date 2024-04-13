@@ -5,6 +5,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { fetchAPI } from "@/lib/api";
 import { Servicio } from "../../types/serviciosTypes";
 import { ServicioView } from "@/components/Servicios/ServicioView";
+import SeoComponent from "@/components/SEOComponent/SEOComponent";
 
 export default function Servicios() {
   const [servicios, setServicios] = useState([]);
@@ -79,8 +80,14 @@ export default function Servicios() {
     );
   }
 
+  const SEO_SERVICIOS_CONSTANTS = {
+    meta_title: 'Ovnisa - Servicios',
+    meta_url: 'https://www.ovnisa.com/servicios',
+  };
+
   return (
     <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
+      <SeoComponent {...SEO_SERVICIOS_CONSTANTS} />
       <div className="xl:grid xl:grid-cols-12 gap-8">
         <div className="xl:col-span-2 rounded-lg p-4 divide-y divide-slate-200">
           <h2 className="font-bold text-blue-600 text-lg xl:text-2xl px-2 pb-4">

@@ -12,6 +12,7 @@ import Pagination from "@/components/Pagination/Pagination";
 
 import { CardCatalogos } from "@/components/Catalogos/CardCatalogos";
 import { LoadingCatalogsSkeleton } from "@/components/Catalogos/LoadingCatalogsSkeleton";
+import SeoComponent from "@/components/SEOComponent/SEOComponent";
 
 export default function Catalogos() {
   const searchParams = useSearchParams();
@@ -128,8 +129,14 @@ export default function Catalogos() {
     }
   };
 
+  const SEO_CATALOGOS_CONSTANTS = {
+    meta_title: 'Ovnisa - Catálogos',
+    meta_url: 'https://www.ovnisa.com/catalogos',
+  };
+
   return (
     <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
+      <SeoComponent {...SEO_CATALOGOS_CONSTANTS} />
       <div className="lg:grid lg:grid-cols-12 gap-8">
         <div className="lg:col-span-2 border border-gray-200 rounded-lg p-4 mb-4 lg:mb-0">
           <Busqueda />

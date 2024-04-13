@@ -14,6 +14,7 @@ import { CardProductos } from "@/components/products/CardProductos";
 
 import Pagination from "@/components/Pagination/Pagination";
 import { LoadingProductsSkeleton } from "@/components/products/LoadingProductsSkeleton";
+import SeoComponent from "@/components/SEOComponent/SEOComponent";
 
 export default function Productos() {
   const searchParams = useSearchParams();
@@ -228,8 +229,14 @@ export default function Productos() {
     }
   };
 
+  const SEO_PRODUCTOS_CONSTANTS = {
+    meta_title: 'Ovnisa - Productos',
+    meta_url: 'https://www.ovnisa.com/productos',
+  };
+
   return (
     <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
+      <SeoComponent {...SEO_PRODUCTOS_CONSTANTS} />
       <div className="lg:grid lg:grid-cols-12 gap-8">
         <div className="lg:col-span-2 mb-4 lg:mb-0">
           <div className="border border-gray-200 rounded-lg p-4">

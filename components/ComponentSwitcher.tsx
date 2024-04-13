@@ -30,11 +30,7 @@ const VendorsSection = dynamic(() =>
 import { HomeHeader } from "./Header/Header";
 import { CategoriesSection } from "./CategoriesSection/CategoriesSection";
 import { MapSection } from "./MapSection/MapSection";
-// import { BusinessPath } from "./BusinessPath/BusinessPath";
-// import { VideoSection } from "./VideoSection/VideoSection";
-// import { LocationSection } from "./LocationSection/LocationSection";
-// import { ContactSection } from "./ContactSection/ContactSection";
-// import { VendorsSection } from "./VendorsSection/VendorsSection";
+import SeoComponent from "./SEOComponent/SEOComponent";
 
 const HOME_HEADER = "home-comp.header";
 const CATEGORIES_SECTION = "home-comp.cat-section";
@@ -46,6 +42,8 @@ const LOCATION_SECTION = "empr-comp.location-section";
 
 const CONTACT_SECTION = "contacto.contact-section";
 const VENDORS_SECTION = "contacto.vendors-section";
+
+const SEO_COMPONENT = "seo.seo";
 
 export default function ComponentSwitcher({ componentsList }: any) {
   const RenderComponent = (component: any) => {
@@ -134,6 +132,17 @@ export default function ComponentSwitcher({ componentsList }: any) {
             key={`${VENDORS_SECTION}_${component?.id}`}
             title={component?.title}
             vendors={component?.vendors}
+          />
+        );
+
+      case SEO_COMPONENT:
+        return (
+          <SeoComponent
+            key={`${VENDORS_SECTION}_${component?.id}`}
+            meta_title={component?.meta_title}
+            meta_url={component?.meta_url}
+            meta_description={component?.meta_description}
+            meta_image={component?.meta_image}
           />
         );
       default:

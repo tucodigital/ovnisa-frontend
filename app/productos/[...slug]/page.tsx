@@ -21,6 +21,9 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { GaleriaImagenesData, GaleriaImagenes } from "@/types/productoTypes";
 
+import { usePathname } from "next/navigation";
+import SeoComponent from "@/components/SEOComponent/SEOComponent";
+
 export default function ProductoPage(context) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<Producto>();
@@ -30,6 +33,7 @@ export default function ProductoPage(context) {
   const [servRelacionados, setServRelacionados] = useState<Datum[]>([]);
   const [relGalery, setRelGalery] = useState<Datum[]>([]);
   const [galeria, setgaleria] = useState([]);
+  const pathname = usePathname();
 
   useEffect(() => {
     getProductos();
@@ -123,6 +127,11 @@ export default function ProductoPage(context) {
 
   return (
     <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
+      <SeoComponent
+        meta_title={`Ovnisa - ${data?.attributes?.nombre}`}
+        meta_description={`Página del producto ${data?.attributes?.nombre}`}
+        meta_url={`https://www.ovnisa.com/servicios${pathname}`}
+      />
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-2 lg:gap-10">
         <div>
           {galeria && galeria.length > 0 ? (
