@@ -65,13 +65,15 @@ export const Footer = () => {
       });
     }
   };
-  
+
   useEffect(() => {
     getFooter();
   }, []);
 
   if (!footerContent) return null;
-  
+
+  const currentDate = new Date();
+
   return (
     <footer className="bg-ov-primaryLight">
       <div className="hidden lg:flex h-auto w-full lg:flex-row justify-between py-16 px-4 PageMainContainer">
@@ -156,7 +158,10 @@ export const Footer = () => {
               </Link>
             ) : null}
             {footerContent?.mercado_libre_link ? (
-              <Link href={`${footerContent.mercado_libre_link}`} target="_blank">
+              <Link
+                href={`${footerContent.mercado_libre_link}`}
+                target="_blank"
+              >
                 <Image
                   width={30}
                   height={30}
@@ -186,7 +191,10 @@ export const Footer = () => {
                   alt="Icono Correo Electrónico"
                   src={`/assets/footer/ruido-ovnisa-icono-footer-mail-desktop.svg`}
                 />
-                <Link href={`mailto:${footerContent.email_text}`} target="_blank">
+                <Link
+                  href={`mailto:${footerContent.email_text}`}
+                  target="_blank"
+                >
                   <p className="text-white">{footerContent.email_text}</p>
                 </Link>
               </div>
@@ -288,7 +296,10 @@ export const Footer = () => {
                     alt="Icono Correo Electrónico"
                     src={`/assets/footer/ruido-ovnisa-icono-footer-mail-desktop.svg`}
                   />
-                  <Link href={`mailto:${footerContent.email_text}`} target="_blank">
+                  <Link
+                    href={`mailto:${footerContent.email_text}`}
+                    target="_blank"
+                  >
                     <p className="text-white">{footerContent.email_text}</p>
                   </Link>
                 </div>
@@ -387,7 +398,10 @@ export const Footer = () => {
               </Link>
             ) : null}
             {footerContent?.mercado_libre_link ? (
-              <Link href={`${footerContent.mercado_libre_link}`} target="_blank">
+              <Link
+                href={`${footerContent.mercado_libre_link}`}
+                target="_blank"
+              >
                 <Image
                   width={30}
                   height={30}
@@ -402,6 +416,8 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+
+      <div className="text-white text-sm text-center lg:py-6 pb-10 pt-4">{`@ ${currentDate.getFullYear()} Ovnisa. Todos los derechos reservados.`}</div>
     </footer>
   );
 };
