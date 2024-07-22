@@ -55,7 +55,7 @@ export const MapSection = ({
         <div className="hidden lg:block py-12 px-16 bg-gray-100 rounded-md flex flex-col w-full">
           <div className="flex flex-row justify-between">
             {brands.map((brand, index) => (
-              <div key={index} className="w-64 border border-gray-500 h-20 bg-white flex">
+              <div key={index} className="w-64 h-20 bg-white flex">
                 <Image
                   alt={brand.image?.data?.attributes?.name}
                   src={brand.image?.data?.attributes?.url}
