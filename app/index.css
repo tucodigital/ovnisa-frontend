@@ -50,6 +50,7 @@ body {
 
 .homeSlide-mobile {
   display: none;
+  filter: brightness(0.7);
 }
 
 .MainProductImage{
@@ -164,7 +165,7 @@ body {
     height: 55vh;
   }
   .content-homeSlide-desk {
-    height: 750px;
+    height: 700px;
     position: absolute;
     width: 100%;
     top: 0;
@@ -172,7 +173,7 @@ body {
   }
 
   .swiper-pagination {
-    bottom: 30px !important;
+    bottom: 20px !important;
     width: 100% !important;
     left: 0 !important;
     --swiper-pagination-bullet-horizontal-gap: 15px;
