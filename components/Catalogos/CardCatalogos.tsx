@@ -13,8 +13,8 @@ export const CardCatalogos = ({
   file,
 }: CardCatalogosContent) => {
   return (
-    <div className="relative w-80">
-      <div className=" h-80 lg:h-96 relative rounded-lg">
+    <div className="relative ">
+      <div className=" h-80 w-80 lg:w-96 lg:h-96 relative rounded-lg">
         {image ? (
           <Image
             src={image}

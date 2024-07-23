@@ -236,7 +236,7 @@ export default function ProductoPage(context) {
                     prod?.attributes?.imagen_principal?.data
                       ? prod?.attributes?.imagen_principal?.data?.attributes
                           .name
-                      : ""
+                      : "Imagen Producto"
                   }
                   categorias={prod.attributes.categorias}
                 />

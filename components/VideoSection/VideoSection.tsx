@@ -30,7 +30,7 @@ export const VideoSection = ({ video_link, items }: VideoSectionContent) => {
             <div className="flex flex-col gap-3">
               <Image
                 src={item.icon.data.attributes.url}
-                alt={item.icon.data.attributes?.alternativeText || "Ícono"}
+                alt={item.icon.data.attributes?.alternativeText || "Icono secciòn video."}
                 width={70}
                 height={70}
                 loader={loaderProp}

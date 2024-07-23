@@ -271,7 +271,7 @@ export default function Productos() {
                             prod?.attributes?.imagen_principal?.data
                               ? prod?.attributes?.imagen_principal?.data
                                   ?.attributes.name
-                              : ""
+                              : "Imagen Producto"
                           }
                           marca={
                             prod?.attributes?.marca?.data?.attributes?.nombre

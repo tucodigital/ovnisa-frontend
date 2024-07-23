@@ -17,7 +17,7 @@ export const BusinessPathAccordeonItem = ({
           <Image
             src={icon.data.attributes.url}
             alt={
-              icon.data.attributes?.alternativeText
+              icon.data.attributes?.alternativeText || 'Imagen item trayectoria'
             }
             width={55}
             height={55}

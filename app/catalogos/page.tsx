@@ -135,7 +135,7 @@ export default function Catalogos() {
   };
 
   return (
-    <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
+    <main className="PageMainContainer min-h-screen px-4 pt-28 lg:pt-44 pb-12">
       <SeoComponent {...SEO_CATALOGOS_CONSTANTS} />
       <div className="lg:grid lg:grid-cols-12 gap-8">
         <div className="lg:col-span-2 border border-gray-200 rounded-lg p-4 mb-4 lg:mb-0">
@@ -150,7 +150,7 @@ export default function Catalogos() {
             </div>
           ) : (
             <div>
-              <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 lg:gap-y-24 gap-y-10 justify-items-center">
+              <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 gap-y-10 lg:gap-y-24 justify-items-center">
                 {catalogos && catalogos.length > 0
                   ? catalogos.map((catalogo: any) => (
                       <Fragment key={catalogo.id}>
