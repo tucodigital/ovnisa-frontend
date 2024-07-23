@@ -15,16 +15,29 @@ export const CardCatalogos = ({
   return (
     <div className="relative w-80">
       <div className=" h-80 lg:h-96 relative rounded-lg">
-        <Image
-          src={image}
-          alt={image_alt}
-          fill
-          style={{
-            objectFit: "cover",
-            borderRadius: "0.5rem",
-          }}
-          loader={loaderProp}
-        />
+        {image ? (
+          <Image
+            src={image}
+            alt={image_alt}
+            fill
+            style={{
+              objectFit: "cover",
+              borderRadius: "0.5rem",
+            }}
+            loader={loaderProp}
+          />
+        ) : (
+          <div className="bg-ov-primaryLight rounded w-full h-full flex items-center justify-center">
+            <Image
+              className="w-48 h-20"
+              src={`/assets/main-menu/ruido-ovnisa-nav-logo-desktop.svg`}
+              alt="Ovnisa Logo Desktop"
+              loader={loaderProp}
+              width={0}
+              height={0}
+            />
+          </div>
+        )}
       </div>
       <div className="hidden relative -mt-16 lg:flex z-10 justify-center">
         {/* Desktop Card */}

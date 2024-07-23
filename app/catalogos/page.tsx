@@ -134,8 +134,6 @@ export default function Catalogos() {
     meta_url: "https://www.ovnisa.com/catalogos",
   };
 
-  console.log("catalogos ->", catalogos);
-
   return (
     <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
       <SeoComponent {...SEO_CATALOGOS_CONSTANTS} />
