@@ -130,8 +130,8 @@ export default function Catalogos() {
   };
 
   const SEO_CATALOGOS_CONSTANTS = {
-    meta_title: 'Ovnisa - Catálogos',
-    meta_url: 'https://www.ovnisa.com/catalogos',
+    meta_title: "Ovnisa - Catálogos",
+    meta_url: "https://www.ovnisa.com/catalogos",
   };
 
   return (
@@ -156,11 +156,14 @@ export default function Catalogos() {
                       <Fragment key={catalogo.id}>
                         <CardCatalogos
                           title={catalogo.attributes.title}
-                          image={catalogo.attributes.image.data.attributes.url}
-                          image_alt={
-                            catalogo.attributes.image.data.attributes.name
+                          image={
+                            catalogo?.attributes?.image?.data?.attributes?.url
                           }
-                          file={catalogo.attributes.file.data.attributes.url}
+                          image_alt={
+                            catalogo?.attributes?.image?.data?.attributes
+                              ?.name || "Imagen de catálogo."
+                          }
+                          file={catalogo?.attributes?.file?.data?.attributes?.url}
                         />
                       </Fragment>
                     ))
