@@ -14,6 +14,7 @@ export const CategoriesSection = ({
   subtitle,
   categorias,
 }: CategoriesSectionContent) => {
+  console.log("categorias ->", categorias);
   return (
     <div className=" bg-white py-10 lg:py-20 px-10 lg:px-28 flex gap-6 lg:gap-10 flex-col w-full">
       <div>
@@ -26,27 +27,46 @@ export const CategoriesSection = ({
         <div>
           <Swiper
             id="home"
-            /* navigation
-          modules={[Navigation]} */
             className="categories-swiper w-full hidden lg:block"
             slidesPerView={3}
             spaceBetween={20}
           >
-            {categorias.data.map((categoria, index) => (
+            {categorias.data.map((categoria: any) => (
               <SwiperSlide key={categoria?.id}>
                 <Link
                   href={`/productos?categoria=${categoria?.attributes?.slug}`}
                 >
                   <div className="w-auto h-72 flex justify-center">
-                    <Image
-                      alt={"image_desktop?.data?.attributes?.alternativeText"}
-                      src={categoria?.attributes?.image?.data?.attributes?.url}
-                      fill
-                      /* objectFit='contain' */
-                      loader={loaderProp}
-                    />
+                    {categoria?.attributes?.image?.data ? (
+                      <Image
+                        alt={
+                          categoria?.attributes?.image?.data?.attributes
+                            ?.alternativeText || "Imagen de categoría"
+                        }
+                        src={
+                          categoria?.attributes?.image?.data?.attributes?.url
+                        }
+                        fill
+                        loader={loaderProp}
+                      />
+                    ) : (
+                      <div className="bg-ov-primaryLight rounded w-full h-full flex items-center justify-center">
+                        <Image
+                          className="w-48 h-20"
+                          src={`/assets/main-menu/ruido-ovnisa-nav-logo-desktop.svg`}
+                          alt="Ovnisa Logo Desktop"
+                          loader={loaderProp}
+                          width={0}
+                          height={0}
+                        />
+                      </div>
+                    )}
                     <div className="absolute -bottom-8 ">
-                      <MainButton paddingX="px-16" paddingY="py-4" name="Ver más" />
+                      <MainButton
+                        paddingX="px-16"
+                        paddingY="py-4"
+                        name="Ver más"
+                      />
                     </div>
                   </div>
                 </Link>
