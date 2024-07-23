@@ -28,7 +28,7 @@ export default function Catalogos() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  let PageSize = 3;
+  let PageSize = 6;
 
   useEffect(() => {
     if (urlPage) {
@@ -77,7 +77,7 @@ export default function Catalogos() {
           $or: [
             {
               title: {
-                $containsi: search,
+                $containsi: search ? search : [],
               },
             },
           ],
@@ -87,7 +87,7 @@ export default function Catalogos() {
                 $and: [
                   {
                     slug: {
-                      $contains: cat,
+                      $contains: cat ? cat : [],
                     },
                   },
                 ],
@@ -98,7 +98,7 @@ export default function Catalogos() {
                 $and: [
                   {
                     slug: {
-                      $contains: rubro,
+                      $contains: rubro ? rubro : [],
                     },
                   },
                 ],
@@ -134,6 +134,8 @@ export default function Catalogos() {
     meta_url: "https://www.ovnisa.com/catalogos",
   };
 
+  console.log("catalogos ->", catalogos);
+
   return (
     <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
       <SeoComponent {...SEO_CATALOGOS_CONSTANTS} />
@@ -163,7 +165,9 @@ export default function Catalogos() {
                             catalogo?.attributes?.image?.data?.attributes
                               ?.name || "Imagen de catálogo."
                           }
-                          file={catalogo?.attributes?.file?.data?.attributes?.url}
+                          file={
+                            catalogo?.attributes?.file?.data?.attributes?.url
+                          }
                         />
                       </Fragment>
                     ))

@@ -14,7 +14,6 @@ export const CategoriesSection = ({
   subtitle,
   categorias,
 }: CategoriesSectionContent) => {
-  console.log("categorias ->", categorias);
   return (
     <div className=" bg-white py-10 lg:py-20 px-10 lg:px-28 flex gap-6 lg:gap-10 flex-col w-full">
       <div>
