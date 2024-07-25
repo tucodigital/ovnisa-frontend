@@ -40,7 +40,7 @@ export default function HomeSlide({
           <div className="flex items-center w-full">
             {title ? (
               <div className="headerTextContent">
-                <p className="font-bold prose prose-h1:font-medium prose-h1:text-white text-2xl lg:text-4xl min-w-full xl:text-6xl mb-0 md:mb-2 text-left text-white lg:mb-3 xl:mb-10">
+                <p className="font-bold prose prose-h1:font-medium prose-h1:text-white text-2xl lg:text-4xl text-center lg:text-start min-w-full xl:text-6xl mb-0 md:mb-2 text-left text-white lg:mb-3 xl:mb-10">
                   {title}
                 </p>
               </div>
