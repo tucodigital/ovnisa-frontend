@@ -72,10 +72,10 @@ export const CategoriesSection = ({
               </SwiperSlide>
             ))}
           </Swiper>
+
+          {/* Mobile */}
           <Swiper
             id="home"
-            /* navigation
-          modules={[Navigation]} */
             className="categories-swiper w-full block lg:hidden"
             slidesPerView={1.5}
             spaceBetween={10}
@@ -86,14 +86,31 @@ export const CategoriesSection = ({
                   href={`/productos?categoria=${categoria?.attributes?.slug}`}
                 >
                   <div className="w-auto h-40 flex justify-center">
-                    <Image
-                      alt={categoria?.attributes?.image?.data?.attributes?.name}
-                      src={categoria?.attributes?.image?.data?.attributes?.url}
-                      fill
-                      objectFit="cover"
-                      priority
-                      loader={loaderProp}
-                    />
+                    {categoria?.attributes?.image?.data ? (
+                      <Image
+                        alt={
+                          categoria?.attributes?.image?.data?.attributes?.name
+                        }
+                        src={
+                          categoria?.attributes?.image?.data?.attributes?.url
+                        }
+                        fill
+                        objectFit="cover"
+                        priority
+                        loader={loaderProp}
+                      />
+                    ) : (
+                      <div className="bg-ov-primaryLight rounded w-full h-full flex items-center justify-center">
+                        <Image
+                          className="w-48 h-20"
+                          src={`/assets/main-menu/ruido-ovnisa-nav-logo-desktop.svg`}
+                          alt="Ovnisa Logo Desktop"
+                          loader={loaderProp}
+                          width={0}
+                          height={0}
+                        />
+                      </div>
+                    )}
                   </div>
                 </Link>
               </SwiperSlide>
