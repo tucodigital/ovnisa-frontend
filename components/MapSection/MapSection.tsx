@@ -89,15 +89,16 @@ export const MapSection = ({
       ) : null}
       {brands.length > 0 ? (
         <div className="hidden lg:flex py-12 px-16 bg-gray-100 rounded-md  flex-col w-full">
-          <div className="flex flex-row justify-between">
+          <div className="flex gap-4 flex-row justify-between">
             {brands.map((brand, index) => (
-              <div key={index} className="w-64 h-20 bg-white flex">
+              <div key={index} className="w-64 h-20 bg-white flex rounded">
                 <Image
                   alt={brand.image?.data?.attributes?.name}
                   src={brand.image?.data?.attributes?.url}
                   width={400}
                   height={200}
                   objectFit="contain"
+                  className="rounded p-2"
                   loader={loaderProp}
                 />
               </div>
