@@ -35,24 +35,60 @@ export const MapSection = ({
               objectFit="contain"
               loader={loaderProp}
             />
-            <MapMarker top={5} right={62} info={"Informacion de este punto del mapa"} />
-            <MapMarker top={15} right={43} info={"Informacion de este punto del mapa"} />
-            <MapMarker top={20} right={62} info={"Informacion de este punto del mapa"} />
-            <MapMarker top={28} right={80} info={"Informacion de este punto del mapa"} />
-            <MapMarker top={32} right={56} info={"Informacion de este punto del mapa"} />
-            <MapMarker top={38} right={38} info={"Informacion de este punto del mapa"} />
-            <MapMarker top={42} right={80} info={"Informacion de este punto del mapa"} />
-            <MapMarker top={46} right={58} info={"Informacion de este punto del mapa"} />
-            <MapMarker top={54} right={83} info={"Informacion de este punto del mapa"} />
-            <MapMarker top={65} right={72} info={"Informacion de este punto del mapa"} />
-            <MapMarker top={70} right={89} info={"Informacion de este punto del mapa"} />
-            <MapMarker top={77} right={68} info={"Informacion de este punto del mapa"} />
-            <MapMarker top={97} right={64} info={"Informacion de este punto del mapa"} />
+            <MapMarker
+              top={32}
+              right={58}
+              info={""}
+              alt="Ovnisa en Córdoba"
+              image="/assets/imgmapa/cordoba.JPG"
+            />
+             <MapMarker
+              top={34}
+              right={42}
+              info={""}
+              alt="Ovnisa en Santa Fe"
+              image="/assets/imgmapa/santa-fe.jpg"
+            />
+            <MapMarker
+              top={16}
+              right={70}
+              info={""}
+              alt="Ovnisa en Catamarca"
+              image="/assets/imgmapa/catamarca.jpg"
+            />
+            <MapMarker
+              top={4}
+              right={56}
+              info={""}
+              alt="Ovnisa en Salta"
+              image="/assets/imgmapa/salta.jpg"
+            />
+            <MapMarker
+              top={29}
+              right={79}
+              info={""}
+              alt="Ovnisa en San Juan"
+              image="/assets/imgmapa/sanjuan.jpg"
+            />
+            <MapMarker
+              top={53}
+              right={81}
+              info={""}
+              alt="Ovnisa en San Neuquén"
+              image="/assets/imgmapa/neuquen.jpg"
+            />
+            <MapMarker
+              top={57}
+              right={72}
+              info={""}
+              alt="Ovnisa en Rio Negro"
+              image="/assets/imgmapa/rionegro.jpg"
+            />
           </div>
         </div>
       ) : null}
       {brands.length > 0 ? (
-        <div className="hidden lg:block py-12 px-16 bg-gray-100 rounded-md flex flex-col w-full">
+        <div className="hidden lg:flex py-12 px-16 bg-gray-100 rounded-md  flex-col w-full">
           <div className="flex flex-row justify-between">
             {brands.map((brand, index) => (
               <div key={index} className="w-64 h-20 bg-white flex">
