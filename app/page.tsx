@@ -26,14 +26,14 @@ export default function Home() {
               },
               brands: {
                 populate: {
-                  image: "*"
-                }
+                  image: "*",
+                },
               },
               categorias: {
                 populate: {
-                  image: "*"
-                }
-              }
+                  image: "*",
+                },
+              },
             },
           },
         },
@@ -46,7 +46,7 @@ export default function Home() {
     }
   };
   return (
-    <div className="">
+    <div className="min-h-screen">
       <ComponentSwitcher componentsList={homeComponents || []} />
     </div>
   );
