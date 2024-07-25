@@ -10,7 +10,7 @@ export default function HomeSlide({
   image_desktop,
 }: SlideContent) {
   return (
-    <div className="w-full bg-gray-100 relative">
+    <div className="w-full bg-gray-100 relative mt-20 lg:mt-32">
       {image_desktop ? (
         <div className="homeSlide-desk hidden md:block">
           <Image
@@ -18,6 +18,8 @@ export default function HomeSlide({
             src={image_desktop?.data?.attributes?.url}
             fill
             loader={loaderProp}
+            objectFit="cover"
+            priority
           />
         </div>
       ) : null}
@@ -33,12 +35,12 @@ export default function HomeSlide({
         </div>
       ) : null}
 
-      <div className="content-homeSlide-desk flex items-center">
-        <div className="mx-auto px-10 md:px-4 lg:grid lg:grid-cols-3 lg:gap-3 w-full">
-          <div className="flex items-center">
+      <div className="content-homeSlide-desk px-4 flex items-center justify-center w-full">
+        <div className="PageMainContainer lg:grid lg:grid-cols-3 lg:gap-3 ">
+          <div className="flex items-center w-full">
             {title ? (
               <div className="headerTextContent">
-                <p className="font-bold prose prose-h1:font-medium prose-h1:text-white text-2xl lg:text-4xl xl:text-6xl mb-48 md:mb-2 text-left text-white lg:mb-3 xl:mb-10">
+                <p className="font-bold prose prose-h1:font-medium prose-h1:text-white text-2xl lg:text-4xl min-w-full xl:text-6xl mb-0 md:mb-2 text-left text-white lg:mb-3 xl:mb-10">
                   {title}
                 </p>
               </div>

@@ -138,10 +138,12 @@ export default function Catalogos() {
     <main className="PageMainContainer min-h-screen px-4 pt-28 lg:pt-44 pb-12">
       <SeoComponent {...SEO_CATALOGOS_CONSTANTS} />
       <div className="lg:grid lg:grid-cols-12 gap-8">
-        <div className="lg:col-span-2 border border-gray-200 rounded-lg p-4 mb-4 lg:mb-0">
-          <Busqueda />
-          <Categorias selected={cat} categorias={categorias} />
-          <Rubros selected={rubro} rubros={rubros} />
+        <div className="lg:col-span-2 mb-4 lg:mb-0">
+          <div className="border border-gray-200 rounded-lg p-4">
+            <Busqueda />
+            <Categorias selected={cat} categorias={categorias} />
+            <Rubros selected={rubro} rubros={rubros} />
+          </div>
         </div>
         <div className="lg:col-span-9">
           {loading ? (

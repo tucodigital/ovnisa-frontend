@@ -15,7 +15,7 @@ export const CategoriesSection = ({
   categorias,
 }: CategoriesSectionContent) => {
   return (
-    <div className=" bg-white py-10 lg:py-20 px-10 lg:px-28 flex gap-6 lg:gap-10 flex-col w-full">
+    <div className=" bg-white py-10 lg:py-20 PageMainContainer px-4">
       <div>
         <h2 className="text-ov-primaryLight font-bold text-2xl lg:text-4xl mb-2">
           {title}
@@ -35,7 +35,7 @@ export const CategoriesSection = ({
                 <Link
                   href={`/productos?categoria=${categoria?.attributes?.slug}`}
                 >
-                  <div className="w-auto h-72 flex justify-center">
+                  <div className="w-full h-72 flex justify-center relative">
                     {categoria?.attributes?.image?.data ? (
                       <Image
                         alt={
@@ -46,10 +46,11 @@ export const CategoriesSection = ({
                           categoria?.attributes?.image?.data?.attributes?.url
                         }
                         fill
+                        className="object-cover rounded-lg"
                         loader={loaderProp}
                       />
                     ) : (
-                      <div className="bg-ov-primaryLight rounded w-full h-full flex items-center justify-center">
+                      <div className="bg-ov-primaryLight rounded-lg w-full h-full flex items-center justify-center">
                         <Image
                           className="w-48 h-20"
                           src={`/assets/main-menu/ruido-ovnisa-nav-logo-desktop.svg`}

@@ -13,17 +13,14 @@ export const CardCatalogos = ({
   file,
 }: CardCatalogosContent) => {
   return (
-    <div className="relative ">
-      <div className=" h-80 w-80 lg:w-96 lg:h-96 relative rounded-lg">
+    <div className="w-full">
+      <div className=" h-80 w-full lg:h-96 relative rounded-lg">
         {image ? (
           <Image
             src={image}
             alt={image_alt}
             fill
-            style={{
-              objectFit: "cover",
-              borderRadius: "0.5rem",
-            }}
+            className="object-cover rounded-lg"
             loader={loaderProp}
           />
         ) : (

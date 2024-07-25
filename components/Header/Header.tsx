@@ -13,7 +13,7 @@ import { SliderContent } from "../../types/components/HeaderTypes";
 
 export const HomeHeader = ({slides} : SliderContent) => {
   return (
-    <>
+    <div className="max-w-[1920px] m-auto relative">
       {slides && slides.length > 0 ? (
         <Swiper
           id="home"
@@ -35,6 +35,6 @@ export const HomeHeader = ({slides} : SliderContent) => {
           ))}
         </Swiper>
       ) : null}
-    </>
+    </div>
   );
 }
