@@ -33,18 +33,18 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
   const transporter = nodemailer.createTransport({
     name: "tucodigital.com",
-    host: process.env.NEXT_PUBLIC_SMTP_HOST,
+    host: process.env.SMTP_HOST,
     port: 465,
     secure: true,
     auth: {
-      user: process.env.NEXT_PUBLIC_SMTP_USER,
-      pass: process.env.NEXT_PUBLIC_SMTP_PASSWORD,
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASSWORD,
     },
   });
   const mailData = {
     from: "landingsredirect@tucodigital.com",
     replyTo: req.body.email,
-    to: process.env.NEXT_PUBLIC_SMTP_CONTACTEMAIL,
+    to: process.env.SMTP_CONTACTEMAIL,
     subject: "Contacto Sitio Web Ovnisa | Nuevo Mensaje",
     html: `
     <html>

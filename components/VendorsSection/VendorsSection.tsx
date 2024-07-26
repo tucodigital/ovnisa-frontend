@@ -15,27 +15,25 @@ export const VendorsSection = ({ title, vendors }) => {
       <div className="grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8 lg:gap-4 w-full">
         {vendors.map((vendor) => (
           <div className="rounded-lg lg:bg-gray-100 lg:p-4 relative lg:hover:shadow-lg lg:transition lg:duration-300 flex flex-row gap-4 align-items-center">
-            <div className="items-center hidden lg:flex">
+            <div className="items-center relative hidden lg:flex">
               <Image
                 alt={vendor?.avatar?.data?.attributes?.alternativeText}
                 src={vendor?.avatar?.data?.attributes?.url}
                 width={100}
                 height={100}
-                objectFit="fill"
                 loader={loaderProp}
-                className="w-32 h-32"
+                className="object-cover h-[100px] w-[100px] rounded"
               />
             </div>
 
-            <div className="flex lg:hidden items-center">
+            <div className="flex lg:hidden relative items-center">
               <Image
                 alt={vendor?.avatar?.data?.attributes?.alternativeText}
                 src={vendor?.avatar?.data?.attributes?.url}
                 width={100}
                 height={100}
-                objectFit="fill"
                 loader={loaderProp}
-                className="rounded-full border border-1 border-gray-700 w-32 h-32"
+                className="object-cover h-[100px] w-[100px] rounded"
               />
             </div>
             <div className="flex flex-col lg:gap-1 justify-center">
