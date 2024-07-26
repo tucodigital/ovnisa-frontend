@@ -76,14 +76,14 @@ export const MapSection = ({
                 right={81}
                 info={""}
                 alt="Ovnisa en San Neuquén"
-                image="/assets/imgmapa/neuquen.jpg"
+                image="/assets/imgmapa/neuquen.JPG"
               />
               <MapMarker
                 top={57}
                 right={72}
                 info={""}
                 alt="Ovnisa en Rio Negro"
-                image="/assets/imgmapa/rionegro.jpg"
+                image="/assets/imgmapa/rionegro.JPG"
               />
             </div>
           </div>
