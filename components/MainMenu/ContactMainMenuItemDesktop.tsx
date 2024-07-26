@@ -18,7 +18,7 @@ export const ContactMainMenuItemDesktop = ({
   if (url)
     return (
       <Link href={`${url}`} target="_blank">
-        <div className="flex flex-row gap-2">
+        <div className="flex flex-row items-center gap-2">
           <Image
             width={20}
             height={20}
@@ -27,7 +27,7 @@ export const ContactMainMenuItemDesktop = ({
             alt={alt ? alt : "icono"}
             src={`${icon}`}
           />
-          <div className="text-sm font-semibold text-gray-300 hover:text-white transition duration-300">
+          <div className="font-semibold text-gray-300 hover:text-white transition duration-300 text-xs xl:text-sm">
             {text}
           </div>
         </div>
@@ -35,7 +35,7 @@ export const ContactMainMenuItemDesktop = ({
     );
 
   return (
-    <div className="flex flex-row gap-2">
+    <div className="flex flex-row items-center gap-2">
       <Image
         width={20}
         height={20}
@@ -44,7 +44,7 @@ export const ContactMainMenuItemDesktop = ({
         alt={alt ? alt : "icono"}
         src={`${icon}`}
       />
-      <div className=" font-semibold text-sm text-gray-300 hover:text-white transition duration-300">
+      <div className="font-semibold text-gray-300 hover:text-white transition duration-300 text-xs xl:text-sm">
         {text}
       </div>
     </div>
