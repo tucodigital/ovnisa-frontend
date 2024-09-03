@@ -117,8 +117,12 @@ export default function Productos() {
 
   const getTipoProductos = async () => {
     try {
-      const tipoProdRes = await fetchAPI("/tipos-de-productos");
-      /* console.log("tipos de productos: ", tipoProdRes); */
+      const tipoProdRes = await fetchAPI("/tipos-de-productos",{
+        pagination: {
+          limit: 100
+        },
+      });
+      console.log("tipos de productos: ", tipoProdRes);
       setTipoProductos(tipoProdRes.data);
     } catch (e: any) {
       console.error(e.response);
