@@ -122,7 +122,6 @@ export default function Productos() {
           limit: 100
         },
       });
-      console.log("tipos de productos: ", tipoProdRes);
       setTipoProductos(tipoProdRes.data);
     } catch (e: any) {
       console.error(e.response);
