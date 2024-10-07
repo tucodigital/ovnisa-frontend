@@ -33,6 +33,24 @@ export default function RootLayout({
           property="og:description"
           content="Soluciones técnicas al servicio de la industria"
         />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest"></link>
         <Script
           src=" https://s.cliengo.com/weboptimizer/5bbcb1c2e4b036ee4dde5680/5bbcb1c3e4b036ee4dde5683.js?platform=view_installation_code"
           strategy="lazyOnload"
