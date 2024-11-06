@@ -419,6 +419,7 @@ export const Footer = () => {
 
       <div className="text-white text-sm text-center lg:py-6 pb-10 pt-4">
         <p>{`@ ${currentDate.getFullYear()} Ovnisa. Todos los derechos reservados`}</p>{" "}
+        <a className="font-bold text-xs" target="_blank" href="https://ruidomarketing.com.ar/">Ruido Marketing</a><br></br>
         <a className="font-bold text-xs" target="_blank" href="https://tucodigital.com">Powered By TucoDigital</a>
       </div>
     </footer>
