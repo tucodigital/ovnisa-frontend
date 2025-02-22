@@ -57,6 +57,13 @@ export const ContactForm = ({
         setMessage(response.data.message);
         setIsLoaded(false);
         reset();
+        if (typeof window !== "undefined") {
+          window.dataLayer = window.dataLayer || [];
+          const eventData = {
+            event: subjectParam ? "contacto_producto" : "envio_contacto",
+          };
+          window.dataLayer.push(eventData);
+        }
         setTimeout(() => {
           setMessage("");
         }, 5000);

@@ -71,6 +71,7 @@ export const MainMenu = ({
 
   return (
     <header className="">
+      <img className="h-0 w-0 hidden" src="https://tracker.metricool.com/c3po.jpg?hash=62731136bb2f84cadefb41b4343a045d"/>
       <nav className="hidden lg:block fixed z-50 w-full">
         <div className="flex flex-col w-full bg-ov-primary">
           <div className="h-20 w-full flex justify-between items-center PageMainContainer px-4">
