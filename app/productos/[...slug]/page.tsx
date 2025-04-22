@@ -12,6 +12,8 @@ import LiteYouTubeEmbed from "react-lite-youtube-embed";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import parse from "html-react-parser";
+
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -161,6 +163,21 @@ export default function ProductoPage(context) {
           <Link href={`/contacto?m=Producto ${data?.attributes?.nombre}`}>
             <MainButton paddingX="px-10" paddingY="py-2" name="Contactanos" />
           </Link>
+          {/* Seccion Tabla (Full width) */}
+          {data?.attributes?.tabla ? (
+            <h3 className="font-black text-black uppercase mt-4 mb-2">
+              Tabla Técnica del producto:
+            </h3>
+          ) : null}
+          <div className="flex mx-auto z-10 relative overflow-x-auto md:block rounded-lg">
+            {data?.attributes?.tabla ? (
+              <div className="flex flex-col text-sm justify-center lg:items-left bg-white">
+                <div className="max-w-6xl mx-auto w-full">
+                  {parse(data?.attributes?.tabla)}
+                </div>
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
       {data?.attributes?.link_youtube ? (

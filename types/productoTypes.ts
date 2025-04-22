@@ -1,27 +1,28 @@
 export interface Producto {
-  id:         number;
+  id: number;
   attributes: ProductoAttributes;
 }
 
 export interface ProductoAttributes {
-  nombre:             string;
-  slug:               string;
-  descripcion:        string;
-  descripcion_corta:  string;
-  link_youtube:       string;
-  link_mercadolibre:  null;
-  createdAt:          Date;
-  updatedAt:          Date;
-  publishedAt:        Date;
-  imagen_principal:   ImagenPrincipal;
-  galeria_imagenes:   GaleriaImagenes;
-  rubros:             Categorias;
-  marca:              Marca;
+  nombre: string;
+  slug: string;
+  descripcion: string;
+  descripcion_corta: string;
+  link_youtube: string;
+  link_mercadolibre: null;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date;
+  imagen_principal: ImagenPrincipal;
+  galeria_imagenes: GaleriaImagenes;
+  rubros: Categorias;
+  marca: Marca;
   tipos_de_productos: Categorias;
-  keywords:           any[];
-  categorias:         Categorias;
-  productos:          Productos;
-  servicios:          Productos;
+  keywords: any[];
+  categorias: Categorias;
+  productos: Productos;
+  servicios: Productos;
+  tabla: string;
 }
 
 export interface Categorias {
@@ -29,15 +30,15 @@ export interface Categorias {
 }
 
 export interface CategoriasData {
-  id:         number;
+  id: number;
   attributes: PurpleAttributes;
 }
 
 export interface PurpleAttributes {
-  nombre:      string;
-  slug:        string;
-  createdAt:   Date;
-  updatedAt:   Date;
+  nombre: string;
+  slug: string;
+  createdAt: Date;
+  updatedAt: Date;
   publishedAt: Date;
 }
 
@@ -46,27 +47,27 @@ export interface GaleriaImagenes {
 }
 
 export interface GaleriaImagenesData {
-  id:         number;
+  id: number;
   attributes: FluffyAttributes;
 }
 
 export interface FluffyAttributes {
-  name:              string;
-  alternativeText:   null;
-  caption:           null;
-  width:             number;
-  height:            number;
-  formats:           Formats;
-  hash:              string;
-  ext:               EXT;
-  mime:              MIME;
-  size:              number;
-  url:               string;
-  previewUrl:        null;
-  provider:          string;
+  name: string;
+  alternativeText: null;
+  caption: null;
+  width: number;
+  height: number;
+  formats: Formats;
+  hash: string;
+  ext: EXT;
+  mime: MIME;
+  size: number;
+  url: string;
+  previewUrl: null;
+  provider: string;
   provider_metadata: ProviderMetadata;
-  createdAt:         Date;
-  updatedAt:         Date;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export enum EXT {
@@ -75,22 +76,22 @@ export enum EXT {
 }
 
 export interface Formats {
-  small:     Large;
-  medium?:   Large;
+  small: Large;
+  medium?: Large;
   thumbnail: Large;
-  large?:    Large;
+  large?: Large;
 }
 
 export interface Large {
-  ext:               EXT;
-  url:               string;
-  hash:              string;
-  mime:              MIME;
-  name:              string;
-  path:              null;
-  size:              number;
-  width:             number;
-  height:            number;
+  ext: EXT;
+  url: string;
+  hash: string;
+  mime: MIME;
+  name: string;
+  path: null;
+  size: number;
+  width: number;
+  height: number;
   provider_metadata: ProviderMetadata;
 }
 
@@ -100,7 +101,7 @@ export enum MIME {
 }
 
 export interface ProviderMetadata {
-  public_id:     string;
+  public_id: string;
   resource_type: ResourceType;
 }
 
@@ -121,22 +122,22 @@ export interface Productos {
 }
 
 export interface Datum {
-  id:         number;
+  id: number;
   attributes: TentacledAttributes;
 }
 
 export interface TentacledAttributes {
-  nombre:            string;
-  slug:              string;
-  descripcion:       null | string;
+  nombre: string;
+  slug: string;
+  descripcion: null | string;
   descripcion_corta: string;
-  link_youtube:      null;
+  link_youtube: null;
   link_mercadolibre: null;
-  createdAt:         Date;
-  updatedAt:         Date;
-  publishedAt:       Date;
-  imagen_principal:  ImagenPrincipal;
-  categorias:        Categorias;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date;
+  imagen_principal: ImagenPrincipal;
+  categorias: Categorias;
 }
 
 export interface CardProductosContent {
