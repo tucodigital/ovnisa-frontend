@@ -187,6 +187,22 @@ table thead tr:nth-child(2) th {
   font-weight: 900;
 }
 
+table thead tr th {
+  border-right: 1px solid #c5c5c5;
+}
+
+table thead tr th:last-child {
+  border-right: 1px solid transparent;
+}
+
+table tbody tr td {
+  border-right: 1px solid #c5c5c5;
+}
+
+table tbody tr td:last-child {
+  border-right: 1px solid transparent;
+}
+
 table tbody tr td:nth-child(1) {
   font-weight: bold;
   font-size: 14px;
