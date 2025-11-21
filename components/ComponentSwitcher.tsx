@@ -29,12 +29,14 @@ const VendorsSection = dynamic(() =>
 
 import { HomeHeader } from "./Header/Header";
 import { CategoriesSection } from "./CategoriesSection/CategoriesSection";
-import { MapSection } from "./MapSection/MapSection";
+import { BrandsSection } from "./BrandsSection/BrandsSection";
 import SeoComponent from "./SEOComponent/SEOComponent";
+import { HomeCTASection } from "./HomeCTASection/HomeCTASection";
 
 const HOME_HEADER = "home-comp.header";
 const CATEGORIES_SECTION = "home-comp.cat-section";
 const MAP_SECTION = "home-comp.map-section";
+const HOME_CTA = "home-comp.cta";
 
 const BUSINESS_PATH = "empr-comp.business-path";
 const VIDEO_SECTION = "empr-comp.video-section";
@@ -66,11 +68,24 @@ export default function ComponentSwitcher({ componentsList }: any) {
         );
       case MAP_SECTION:
         return (
-          <MapSection
+          <BrandsSection
             key={`${MAP_SECTION}_${component?.id}`}
             title={component?.title}
-            description={component?.description}
             brands={component?.brands}
+          />
+        );
+
+      case HOME_CTA:
+        return (
+          <HomeCTASection
+            key={`${HOME_CTA}_${component?.id}`}
+            id={component?.id}
+            __component={component?.__component}
+            title={component?.title}
+            subtitle={component?.subtitle}
+            link_name={component?.link_name}
+            link={component?.link}
+            image={component?.image}
           />
         );
 

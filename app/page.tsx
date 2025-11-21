@@ -18,6 +18,9 @@ export default function Home() {
         populate: {
           components: {
             populate: {
+              image: {
+                populate: "*",
+              },
               slides: {
                 populate: {
                   image_desktop: "*",
