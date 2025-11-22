@@ -1,4 +1,5 @@
 export interface BrandsSectionContent {
+  id:number;
   title: String;
   brands: BrandContent[];
 }
