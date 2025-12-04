@@ -1,7 +1,3 @@
-export interface MainMenuContent {
-  showSearchOverlay: Boolean;
-  setShowSearchOverlay: Function;
-}
 
 export interface MainMenuComponentContent {
   id: number;

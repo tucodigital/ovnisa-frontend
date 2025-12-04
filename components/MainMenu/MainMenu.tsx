@@ -6,7 +6,6 @@ import { NavigationMainMenuItemDesktop } from "./NavigationMainMenuItemDesktop";
 import Link from "next/link";
 import { ContactMainMenuItemMobile } from "./ContactMainMenuItemMobile";
 import { NavigationMainMenuItemMobile } from "./NavigationMainMenuItemMobile";
-import { MainMenuContent } from "../../types/components/MainMenuTypes";
 import {
   ICONS_CONSTANTS_DESKTOP,
   ICONS_CONSTANTS_MOBILE,
@@ -16,13 +15,8 @@ import {
   NavigationMainMenuItemDesktopSkeleton,
 } from "./MainMenuSkeletons";
 import { fetchAPI } from "@/lib/api";
-import Image from "next/image";
-import { loaderProp } from "@/lib/utils";
 
-export const MainMenu = ({
-  showSearchOverlay,
-  setShowSearchOverlay,
-}: MainMenuContent) => {
+export const MainMenu = () => {
   const [mainMenuContent, setMainMenuContent] = useState({
     email_text: "",
     phone_text: "",
@@ -77,7 +71,7 @@ export const MainMenu = ({
       />
       <nav className="hidden lg:block fixed z-50 w-full">
         <div className="flex flex-col w-full bg-ov-primary">
-          <div className="h-20 w-full flex justify-between items-center PageMainContainer px-4">
+          <div className="h-24 w-full flex justify-between items-center PageMainContainer px-4">
             {/* Business Logo */}
             <Link href="/">
               <svg
@@ -135,7 +129,7 @@ export const MainMenu = ({
               </svg>
             </Link>
             {/* Business Logo */}
-            <div className="flex justify-center items-center gap-8">
+            <div className="flex flex-col justify-center gap-0">
               {mainMenuContent?.phone_text ? (
                 <ContactMainMenuItemDesktop
                   alt="Icono telefono"
@@ -167,51 +161,23 @@ export const MainMenu = ({
               ) : (
                 <ContactMainMenuItemDesktopSkeleton />
               )}
-              {mainMenuContent?.mercado_libre_link &&
-              mainMenuContent?.mercado_libre_text ? (
-                <ContactMainMenuItemDesktop
-                  text={mainMenuContent.mercado_libre_text}
-                  icon={ICONS_CONSTANTS_DESKTOP.MERCADO_LIBRE}
-                  url={mainMenuContent.mercado_libre_link}
-                  alt="Icono mercado libre"
-                />
-              ) : (
-                <ContactMainMenuItemDesktopSkeleton />
-              )}
             </div>
           </div>
-          <div className="bg-gradient-to-b from-ov-primaryLight to-ov-primary">
-            <div className="h-12 w-full flex flex-row items-center justify-between max-w-5xl m-auto px-4">
-              {mainMenuContent?.items?.length && !showSearchOverlay
-                ? mainMenuContent.items.map((item, index) => (
-                    <NavigationMainMenuItemDesktop
-                      key={`NavigationMainMenuItemDesktop_${index}`}
-                      text={item.item_text}
-                      url={item.item_link}
-                    />
-                  ))
-                : null}
-              {mainMenuContent?.items?.length && showSearchOverlay ? (
-                <input
-                  autoFocus
-                  value={inputValue}
-                  className="w-full rounded-md mr-8 px-2 h-8 outline-none"
-                  type="text"
-                  placeholder="Buscar..."
-                  onChange={(e) => setInputValue(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Escape") {
-                      setInputValue("");
-                      setShowSearchOverlay(false);
-                    }
-                    if (e.key === "Enter") {
-                      setShowSearchOverlay(false);
-                      window.location.href = `/productos?s=${inputValue}`;
-                    }
-                  }}
-                />
-              ) : null}
-              {!mainMenuContent?.items?.length && !showSearchOverlay ? (
+          <div className="bg-gradient-to-b bg-ov-primaryLight ">
+            <div className="h-12 w-full flex flex-row items-center justify-between PageMainContainer m-auto px-4">
+              <div className="flex justify-between gap-24">
+                {mainMenuContent?.items?.length
+                  ? mainMenuContent.items.map((item, index) => (
+                      <NavigationMainMenuItemDesktop
+                        key={`NavigationMainMenuItemDesktop_${index}`}
+                        text={item.item_text}
+                        url={item.item_link}
+                      />
+                    ))
+                  : null}
+              </div>
+
+              {!mainMenuContent?.items?.length ? (
                 <>
                   <NavigationMainMenuItemDesktopSkeleton />
                   <NavigationMainMenuItemDesktopSkeleton />
@@ -220,41 +186,37 @@ export const MainMenu = ({
                   <NavigationMainMenuItemDesktopSkeleton />
                 </>
               ) : null}
-              <div
-                className="w-8 cursor-pointer text-gray-300 hover:text-white transition duration-300"
-                onClick={() => setShowSearchOverlay(!showSearchOverlay)}
-              >
-                {showSearchOverlay ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    className="w-8 h-8"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    className="w-8 h-8"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                    />
-                  </svg>
-                )}
+              <div className="flex w-64 border-white border-2 px-2 rounded-lg cursor-pointer text-white transition duration-300">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={4}
+                  stroke="currentColor"
+                  className="w-8 h-8"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                  />
+                </svg>
+
+                <input
+                  autoFocus
+                  value={inputValue}
+                  className="w-full rounded-md mr-8 px-2 h-8 outline-none bg-transparent"
+                  type="text"
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Escape") {
+                      setInputValue("");
+                    }
+                    if (e.key === "Enter") {
+                      window.location.href = `/productos?s=${inputValue}`;
+                    }
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -362,14 +324,6 @@ export const MainMenu = ({
                 icon={ICONS_CONSTANTS_MOBILE.WHATSAPP}
                 url={mainMenuContent.whatsapp_link}
                 alt="Icono whatsapp"
-              />
-            ) : null}
-            {mainMenuContent?.mercado_libre_link &&
-            mainMenuContent?.mercado_libre_text ? (
-              <ContactMainMenuItemMobile
-                icon={ICONS_CONSTANTS_MOBILE.MERCADO_LIBRE}
-                url={mainMenuContent.mercado_libre_link}
-                alt="Icono mercado libre"
               />
             ) : null}
           </div>

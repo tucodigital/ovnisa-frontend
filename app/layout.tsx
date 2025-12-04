@@ -16,7 +16,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [showSearchOverlay, setShowSearchOverlay] = useState(false);
 
   return (
     <html lang="es-AR">
@@ -77,12 +76,7 @@ export default function RootLayout({
           }}
         />
         <MainMenu
-          showSearchOverlay={showSearchOverlay}
-          setShowSearchOverlay={setShowSearchOverlay}
         />
-        {showSearchOverlay ? (
-          <div className="w-full bg-slate-900 opacity-50 fixed searchOverlay z-40"></div>
-        ) : null}
         <Suspense>{children}</Suspense>
         <Footer />
       </body>
