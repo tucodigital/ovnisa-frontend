@@ -31,6 +31,10 @@ export default function Productos() {
   const [marcas, setMarcas] = useState([]);
   const [rubros, setRubros] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [seoCat, setSeoCat] = useState({
+    meta_title: "",
+    meta_description: "",
+  });
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -57,6 +61,18 @@ export default function Productos() {
     getCatSubtipos();
   }, [cat]);
 
+  useEffect(() => {
+    if (cat) {
+      const filteredCategorias = categorias.filter(
+        (c: any) => c.attributes.slug === cat
+      );
+      setSeoCat({
+        meta_title: filteredCategorias[0]?.attributes?.nombre || "",
+        meta_description: filteredCategorias[0]?.attributes?.seo_text || "",
+      });
+    }
+  }, [categorias]);
+
   const getCategories = async () => {
     try {
       const catRes = await fetchAPI("/categorias", {
@@ -64,7 +80,6 @@ export default function Productos() {
           tipos_de_productos: "*",
         },
       });
-      /* console.log("categorias: ", catRes); */
       setCategorias(catRes.data);
     } catch (e: any) {
       console.error(e.response);
@@ -94,6 +109,14 @@ export default function Productos() {
   //Si la categoria tiene tipos los carga en tipos de productos
   const getCatSubtipos = () => {
     if (cat) {
+      const filteredCategorias = categorias.filter(
+        (c: any) => c.attributes.slug === cat
+      );
+      setSeoCat({
+        meta_title: filteredCategorias[0]?.attributes?.nombre || "",
+        meta_description: filteredCategorias[0]?.attributes?.seo_text || "",
+      });
+
       categorias.map((categoria: any) => {
         if (cat === categoria.attributes.slug) {
           if (
@@ -117,9 +140,9 @@ export default function Productos() {
 
   const getTipoProductos = async () => {
     try {
-      const tipoProdRes = await fetchAPI("/tipos-de-productos",{
+      const tipoProdRes = await fetchAPI("/tipos-de-productos", {
         pagination: {
-          limit: 100
+          limit: 100,
         },
       });
       setTipoProductos(tipoProdRes.data);
@@ -223,8 +246,9 @@ export default function Productos() {
       });
       setProdutos(productRes.data);
       setTotalPages(productRes.meta.pagination.total);
+
       setLoading(false);
-      /* console.log("Productos", productRes); */
+      console.log("Productos", productRes);
     } catch (e: any) {
       console.error(e.response);
       setProdutos([]);
@@ -233,8 +257,9 @@ export default function Productos() {
   };
 
   const SEO_PRODUCTOS_CONSTANTS = {
-    meta_title: 'Ovnisa - Productos',
-    meta_url: 'https://www.ovnisa.com/productos',
+    meta_title: seoCat.meta_title ? `Ovnisa - Productos: ${seoCat.meta_title}` : "Ovnisa - Productos",
+    meta_description: seoCat.meta_description,
+    meta_url: "https://www.ovnisa.com/productos",
   };
 
   return (
@@ -251,6 +276,17 @@ export default function Productos() {
           </div>
         </div>
         <div className="lg:col-span-9">
+          {seoCat && seoCat.meta_title && (
+            <div className="mb-6">
+              <p className="text-xs text-gray-500">Linea de productos</p>
+              <h1 className="text-2xl font-bold text-black mb-6">
+                {seoCat.meta_title}
+              </h1>
+              {seoCat.meta_description && (
+                <div className="text-gray-700">{seoCat.meta_description}</div>
+              )}
+            </div>
+          )}
           {loading ? (
             <div className="grid lg:grid-cols-4 grid-cols-1 gap-4">
               <LoadingProductsSkeleton total={PageSize} />
