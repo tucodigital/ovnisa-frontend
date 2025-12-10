@@ -11,14 +11,17 @@ export const HomeCTASection = ({
   subtitle,
   link_name,
   link,
+  image,
 }: HomeSectionContent) => {
   return (
-    <div className="bg-ov-primary py-10 lg:py-20">
+    <div className="bg-ov-primary">
       <div className="PageMainContainer px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-6 gap-4">
-          <div className="lg:col-span-4">
+        <div className="grid grid-cols-1 lg:grid-cols-6 gap-4 items-center">
+          <div className="lg:col-span-4 py-10 lg:py-20">
             {title ? (
-              <h3 className="text-white text-2xl lg:text-4xl font-bold mb-8">{title}</h3>
+              <h3 className="text-white text-2xl lg:text-4xl font-bold mb-8">
+                {title}
+              </h3>
             ) : null}
 
             {subtitle ? (
@@ -36,7 +39,23 @@ export const HomeCTASection = ({
               </Link>
             ) : null}
           </div>
-          <div className="lg:col-span-2"></div>
+          <div className="lg:col-span-2">
+            {image && image?.data?.attributes?.url ? (
+              <div className="w-full h-full flex items-center justify-center">
+                <Image
+                  loader={loaderProp}
+                  src={image?.data?.attributes?.url}
+                  alt={
+                    image?.data?.attributes?.alternativeText ||
+                    "Mapa ovnisa CTA home"
+                  }
+                  width={1000}
+                  height={1000}
+                  className="max-w-full h-auto"
+                />
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>

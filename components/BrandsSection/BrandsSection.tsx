@@ -5,7 +5,7 @@ import { BrandsSectionContent } from "../../types/components/BrandsSectionTypes"
 
 export const BrandsSection = ({ title, brands }: BrandsSectionContent) => {
   return (
-    <div className="pt-10 lg:pt-14">
+    <div className="py-10 lg:py-14">
       <h4 className="text-black text-center text-2xl font-bold mb-2">
         {title}
       </h4>

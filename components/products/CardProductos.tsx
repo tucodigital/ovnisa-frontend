@@ -14,8 +14,8 @@ export const CardProductos = ({
   slug,
 }: CardProductosContent) => {
   return (
-    <div className="border border-gray-200 rounded-lg bg-white p-4 relative hover:shadow-lg transition duration-300">
-      <Link href={`/productos/${slug}`}>
+    <Link href={`/productos/${slug}`}>
+      <div className="border-2 border-gray-200 rounded-2xl bg-white p-4 relative hover:shadow-lg transition duration-300 mb-2">
         {marca ? <TagMarca marca={marca} /> : null}
         <div className="w-full h-56 relative mb-2">
           {imagen_principal !== "" ? (
@@ -41,8 +41,8 @@ export const CardProductos = ({
             </div>
           )}
         </div>
-        <h3 className="font-bold text-gray-600">{nombre}</h3>
-      </Link>
-    </div>
+      </div>
+      <h3 className="font-bold text-gray-500">{nombre}</h3>
+    </Link>
   );
 };

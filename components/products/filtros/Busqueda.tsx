@@ -34,24 +34,26 @@ export const Busqueda = () => {
     <form onSubmit={(e) => handleSearch(e)}>
       <div className="mb-3 relative">
         <input
-          className="px-4 py-2 rounded w-full bg-blue-100 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
+          className="px-4 py-2 rounded-lg w-full bg-white border-2 border-ov-primary text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
           type="text"
           name="search"
           placeholder="Buscar..."
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
-        <button type="submit" className="absolute top-1.5 right-2">
+        <button type="submit" className="absolute top-2 right-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
+            fill="none"
             viewBox="0 0 24 24"
-            fill="currentColor"
-            className="w-6 h-6"
+            strokeWidth={3}
+            stroke="currentColor"
+            className="w-6 h-6 text-ov-primary"
           >
             <path
-              fillRule="evenodd"
-              d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z"
-              clipRule="evenodd"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
             />
           </svg>
         </button>

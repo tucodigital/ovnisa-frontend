@@ -242,7 +242,7 @@ export default function Productos() {
       <SeoComponent {...SEO_PRODUCTOS_CONSTANTS} />
       <div className="lg:grid lg:grid-cols-12 gap-8">
         <div className="lg:col-span-2 mb-4 lg:mb-0">
-          <div className="border border-gray-200 rounded-lg p-4">
+          <div>
             <Busqueda />
             <Categorias selected={cat} categorias={categorias} />
             <TipoProductos selected={tipo} tipoProductos={tipoProductos} />
