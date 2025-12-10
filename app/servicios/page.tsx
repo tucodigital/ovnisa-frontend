@@ -56,23 +56,18 @@ export default function Servicios() {
     return (
       <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
         <div className="xl:grid xl:grid-cols-12 gap-8">
-          <div className="xl:col-span-2 rounded-lg p-4">
-            <h2 className="font-bold text-blue-600 text-lg xl:text-2xl px-2 pb-4">
-              Servicio
-            </h2>
+          <div className="xl:col-span-2 rounded-lg">
             <div className="h-8 w-full rounded-lg bg-gray-100 animate-pulse mb-2"></div>
             <div className="h-8 w-full rounded-lg bg-gray-100 animate-pulse mb-2"></div>
             <div className="h-8 w-full rounded-lg bg-gray-100 animate-pulse mb-2"></div>
             <div className="h-8 w-full rounded-lg bg-gray-100 animate-pulse mb-2"></div>
           </div>
           <div className="xl:col-span-9">
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
-              <div className="MainProductImage rounded-lg relative w-full bg-gray-100 animate-pulse"></div>
-              <div>
-                <div className="h-10 w-full rounded-lg bg-gray-100 animate-pulse mb-4"></div>
-                <div className="h-44 w-full rounded-lg bg-gray-100 animate-pulse mb-6"></div>
-                <div className="h-10 w-48 rounded-full bg-gray-100 animate-pulse"></div>
-              </div>
+            <div>
+              <div className="h-5 w-full rounded-lg bg-gray-100 animate-pulse mb-4"></div>
+              <div className="h-10 w-full rounded-lg bg-gray-100 animate-pulse mb-4"></div>
+              <div className="h-44 w-full rounded-lg bg-gray-100 animate-pulse mb-6"></div>
+              <div className="h-10 w-48 rounded-full bg-gray-100 animate-pulse"></div>
             </div>
           </div>
         </div>
@@ -81,23 +76,20 @@ export default function Servicios() {
   }
 
   const SEO_SERVICIOS_CONSTANTS = {
-    meta_title: 'Ovnisa - Servicios',
-    meta_url: 'https://www.ovnisa.com/servicios',
+    meta_title: "Ovnisa - Servicios",
+    meta_url: "https://www.ovnisa.com/servicios",
   };
 
   return (
     <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
       <SeoComponent {...SEO_SERVICIOS_CONSTANTS} />
       <div className="xl:grid xl:grid-cols-12 gap-8">
-        <div className="xl:col-span-2 rounded-lg p-4 divide-y divide-slate-200">
-          <h2 className="font-bold text-blue-600 text-lg xl:text-2xl px-2 pb-4">
-            Servicio
-          </h2>
+        <div className="xl:col-span-2 space-y-2 py-4">
           {servicios && servicios.length > 0
             ? servicios.map((s) => (
                 <div
                   key={s.id}
-                  className="font-medium text-gray-500 p-2 hover:text-gray-800 duration-300 transition cursor-pointer"
+                  className="font-bold rounded-lg text-xs text-white bg-ov-primary p-2 hover:bg-ov-primaryLight duration-300 transition cursor-pointer px-4"
                   onClick={() => setSelectedServ(s.attributes.slug)}
                 >
                   {s.attributes.nombre}

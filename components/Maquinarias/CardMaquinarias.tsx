@@ -13,8 +13,8 @@ export const CardMaquinarias = ({
   slug,
 }: CardMaquinariasContent) => {
   return (
-    <div className="border border-gray-200 rounded-lg bg-white p-4 relative hover:shadow-lg transition duration-300">
-      <Link href={`/maquinarias/${slug}`}>
+    <Link href={`/maquinarias/${slug}`}>
+      <div className="border-2 border-gray-200 rounded-lg bg-white p-4 relative hover:shadow-lg transition duration-300">
         <div className="w-full h-56 relative">
           <Image
             src={imagen_principal}
@@ -26,8 +26,8 @@ export const CardMaquinarias = ({
             loader={loaderProp}
           />
         </div>
-        <h3 className="font-bold text-gray-600">{nombre}</h3>
-      </Link>
-    </div>
+      </div>
+      <h3 className="font-bold text-sm mt-1 text-gray-500">{nombre}</h3>
+    </Link>
   );
 };
