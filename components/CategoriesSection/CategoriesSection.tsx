@@ -16,18 +16,23 @@ export const CategoriesSection = ({
 }: CategoriesSectionContent) => {
   return (
     <div className=" bg-white py-10 lg:py-20 PageMainContainer px-4">
-      <div>
-        <h2 className="text-gray-500 text-sm mb-1">
-          {title}
-        </h2>
-        <p className="text-2xl prose:text-2xl text-black font-bold mb-4">{subtitle}</p>
+      <div className="mb-4 lg:mb-0 lg:flex lg:justify-between lg:items-end gap-6">
+        <div>
+          <h2 className="text-gray-500 text-sm mb-1">{title}</h2>
+          <p className="text-2xl prose:text-2xl text-black font-bold mb-4">
+            {subtitle}
+          </p>
+        </div>
+        <Link href="/categorias">
+          <MainButton paddingY="py-2" paddingX="px-8" name="Categorias" />
+        </Link>
       </div>
       {categorias.data.length > 0 ? (
         <div>
           <Swiper
             id="home"
             className="categories-swiper w-full hidden lg:block"
-            slidesPerView={3}
+            slidesPerView={4}
             spaceBetween={20}
           >
             {categorias.data.map((categoria: any) => (
@@ -35,7 +40,7 @@ export const CategoriesSection = ({
                 <Link
                   href={`/productos?categoria=${categoria?.attributes?.slug}`}
                 >
-                  <div className="w-full h-72 flex justify-center relative rounded-lg">
+                  <div className="w-full h-72 flex justify-center relative rounded-lg mb-2">
                     {categoria?.attributes?.image?.data ? (
                       <Image
                         alt={
@@ -61,14 +66,10 @@ export const CategoriesSection = ({
                         />
                       </div>
                     )}
-                    <div className="absolute -bottom-8 ">
-                      <MainButton
-                        paddingX="px-16"
-                        paddingY="py-4"
-                        name="Ver más"
-                      />
-                    </div>
                   </div>
+                  <p className="font-bold text-lg text-black">
+                    {categoria?.attributes?.nombre}
+                  </p>
                 </Link>
               </SwiperSlide>
             ))}
@@ -86,7 +87,7 @@ export const CategoriesSection = ({
                 <Link
                   href={`/productos?categoria=${categoria?.attributes?.slug}`}
                 >
-                  <div className="w-auto h-40 flex justify-center rounded-lg">
+                  <div className="w-auto h-40 flex justify-center rounded-lg mb-2 relative">
                     {categoria?.attributes?.image?.data ? (
                       <Image
                         alt={
@@ -114,6 +115,9 @@ export const CategoriesSection = ({
                       </div>
                     )}
                   </div>
+                  <p className="font-bold text-sm text-black">
+                    {categoria?.attributes?.nombre}
+                  </p>
                 </Link>
               </SwiperSlide>
             ))}
