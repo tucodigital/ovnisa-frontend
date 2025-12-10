@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { CardProductosRelacionadosContent } from "@/types/productoTypes";
 import { loaderProp } from "@/lib/utils";
+import { Main } from "next/document";
+import { MainButton } from "../MainButton";
 
 export const CardProductosRelacionados = ({
   nombre,
@@ -56,9 +58,7 @@ export const CardProductosRelacionados = ({
           ) : <div className="mt-1 mb-6 h-6"></div>}
         </Link>
         <Link href={`/productos/${slug}`}>
-          <button className="bg-gradient-to-b from-ov-primaryLight to-ov-primary hover:to-blue-800 text-white py-2 text-sm px-10 rounded-full">
-            Ver más
-          </button>
+          <MainButton paddingY="py-1" paddingX="px-8" name="Ver más" />
         </Link>
       </div>
     </div>

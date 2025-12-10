@@ -165,7 +165,7 @@ export default function ProductoPage(context) {
           </Link>
           {/* Seccion Tabla (Full width) */}
           {data?.attributes?.tabla ? (
-            <h3 className="font-black text-black uppercase mt-4 mb-2">
+            <h3 className="font-black text-gray-500 text-sm mt-6 mb-2">
               Tabla Técnica del producto:
             </h3>
           ) : null}
@@ -196,14 +196,16 @@ export default function ProductoPage(context) {
       ) : null}
       {relGalery.length > 0 ? (
         <div className="mt-10">
-          <h2 className="font-bold text-ov-primaryLight text-lg xl:text-3xl pb-3">
+          <p className="text-gray-500">
+            Conocé nuestros excelentes productos y servicios
+          </p>
+          <h2 className="font-bold text-black text-lg xl:text-3xl">
             Productos y servicios relacionados
           </h2>
-          <p>Conocé nuestros excelentes productos y servicios</p>
           <Swiper
             navigation={true}
             modules={[Navigation]}
-            className="mySwiper categorySlider mt-12"
+            className="mySwiper categorySlider mt-6"
             spaceBetween={26}
             slidesPerView={3}
             allowTouchMove={false}
