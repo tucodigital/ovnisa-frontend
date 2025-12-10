@@ -62,16 +62,33 @@ export default function Productos() {
   }, [cat]);
 
   useEffect(() => {
-    if (cat) {
+    // tipo tiene prioridad sobre cat
+    if (tipo) {
+      const filteredTipo = tipoProductos.filter(
+        (t: any) => t.attributes.slug === tipo
+      );
+      console.log("filteredTipo", filteredTipo);
+      setSeoCat({
+        meta_title: filteredTipo[0]?.attributes?.nombre || "",
+        meta_description: filteredTipo[0]?.attributes?.seo_text || "",
+      });
+    } else if (cat) {
       const filteredCategorias = categorias.filter(
         (c: any) => c.attributes.slug === cat
       );
+      console.log("filteredCategorias", filteredCategorias);
       setSeoCat({
         meta_title: filteredCategorias[0]?.attributes?.nombre || "",
         meta_description: filteredCategorias[0]?.attributes?.seo_text || "",
       });
+    } else {
+      // se resetea cuando no hay filtro de categoria ni tipo
+      setSeoCat({
+        meta_title: "",
+        meta_description: "",
+      });
     }
-  }, [categorias]);
+  }, [cat, tipo, categorias, tipoProductos]);
 
   const getCategories = async () => {
     try {
@@ -109,14 +126,6 @@ export default function Productos() {
   //Si la categoria tiene tipos los carga en tipos de productos
   const getCatSubtipos = () => {
     if (cat) {
-      const filteredCategorias = categorias.filter(
-        (c: any) => c.attributes.slug === cat
-      );
-      setSeoCat({
-        meta_title: filteredCategorias[0]?.attributes?.nombre || "",
-        meta_description: filteredCategorias[0]?.attributes?.seo_text || "",
-      });
-
       categorias.map((categoria: any) => {
         if (cat === categoria.attributes.slug) {
           if (
@@ -246,7 +255,6 @@ export default function Productos() {
       });
       setProdutos(productRes.data);
       setTotalPages(productRes.meta.pagination.total);
-
       setLoading(false);
       console.log("Productos", productRes);
     } catch (e: any) {
@@ -257,7 +265,9 @@ export default function Productos() {
   };
 
   const SEO_PRODUCTOS_CONSTANTS = {
-    meta_title: seoCat.meta_title ? `Ovnisa - Productos: ${seoCat.meta_title}` : "Ovnisa - Productos",
+    meta_title: seoCat.meta_title
+      ? `Ovnisa - Productos: ${seoCat.meta_title}`
+      : "Ovnisa - Productos",
     meta_description: seoCat.meta_description,
     meta_url: "https://www.ovnisa.com/productos",
   };
@@ -279,7 +289,7 @@ export default function Productos() {
           {seoCat && seoCat.meta_title && (
             <div className="mb-6">
               <p className="text-xs text-gray-500">Linea de productos</p>
-              <h1 className="text-2xl font-bold text-black mb-6">
+              <h1 className="text-2xl font-bold text-black mb-2">
                 {seoCat.meta_title}
               </h1>
               {seoCat.meta_description && (

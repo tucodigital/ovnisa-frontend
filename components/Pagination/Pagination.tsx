@@ -113,8 +113,8 @@ const Pagination = ({
             <button
               className={
                 currentPage === pageNumber
-                  ? "py-2 px-3 font-bold text-blue-600 "
-                  : "py-2 px-4 font-bold text-gray-400 dark:text-gray-500 text-sm rounded focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-opacity-50"
+                  ? "py-2 px-3 font-bold text-black text-sm"
+                  : "py-2 px-4 text-gray-300 dark:text-gray-400 text-sm rounded focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-opacity-50"
               }
               disabled={currentPage === pageNumber}
               onClick={() => {
