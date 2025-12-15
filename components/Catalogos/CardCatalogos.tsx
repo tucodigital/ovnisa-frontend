@@ -4,7 +4,6 @@ import Image from "next/image";
 import { loaderProp } from "@/lib/utils";
 import { CardCatalogosContent } from "@/types/catalogoTypes";
 import Link from "next/link";
-import { MainButton } from "../MainButton";
 
 export const CardCatalogos = ({
   title,
@@ -14,41 +13,31 @@ export const CardCatalogos = ({
 }: CardCatalogosContent) => {
   return (
     <div className="w-full">
-      <div className=" h-80 w-full lg:h-96 relative rounded-lg">
-        {image ? (
-          <Image
-            src={image}
-            alt={image_alt}
-            fill
-            className="object-cover rounded-lg"
-            loader={loaderProp}
-          />
-        ) : (
-          <div className="bg-ov-primaryLight rounded w-full h-full flex items-center justify-center">
+      <Link target="_blank" href={file}>
+        <div className=" h-40 lg:h-56 relative rounded-lg">
+          {image ? (
             <Image
-              className="w-48 h-20"
-              src={`/assets/main-menu/ruido-ovnisa-nav-logo-desktop.svg`}
-              alt="Ovnisa Logo Desktop"
+              src={image}
+              alt={image_alt}
+              fill
+              className="object-cover rounded-lg border-2 border-gray-300"
               loader={loaderProp}
-              width={0}
-              height={0}
             />
-          </div>
-        )}
-      </div>
-      <div className="hidden relative -mt-16 lg:flex z-10 justify-center">
-        {/* Desktop Card */}
-        <Link target="_blank" href={file}>
-          <MainButton paddingX="px-10" paddingY="py-3" name="Descargar" />
-        </Link>
-      </div>
-
-      <div className="flex mt-4 relative lg:hidden z-10 justify-center">
-        {/* Mobile Card */}
-        <Link target="_blank" href={file}>
-          <MainButton paddingX="px-10" paddingY="py-3" name="Descargar" />
-        </Link>
-      </div>
+          ) : (
+            <div className="bg-ov-primaryLight rounded w-full h-full flex items-center justify-center">
+              <Image
+                className="w-48 h-20 border-2 border-gray-200"
+                src={`/assets/main-menu/ruido-ovnisa-nav-logo-desktop.svg`}
+                alt="Ovnisa Logo Desktop"
+                loader={loaderProp}
+                width={0}
+                height={0}
+              />
+            </div>
+          )}
+        </div>
+        <p className="text-gray-600 uppercase text-xs font-semibold mt-2">{title}</p>
+      </Link>
     </div>
   );
 };

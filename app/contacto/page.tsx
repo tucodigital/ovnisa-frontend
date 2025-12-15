@@ -38,3 +38,14 @@ export default function Contacto() {
     </div>
   );
 }
+
+/* 
+
+Puntos a tocar:
+- Agregar imagen superior, titulo y bajada como campos
+- Ajustar seccion con info de contacto ya que se suma la info de localizacion, se elimina whatsapp y se agrera un texto para seguir en redes
+- Eliminar Meli de las opciones de redes
+- Agregar Location Section a la pagina
+- eliminar seccion de vendedores
+
+*/

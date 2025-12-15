@@ -88,11 +88,6 @@ body {
   padding-bottom: 32px;
 }
 
-.businessPathDivisor {
-  border: 1px rgba(0, 0, 0, 0.3) solid;
-  border-left: none;
-}
-
 .businessPathItemDivisor {
   border: 2px rgba(0, 0, 0, 0.3) solid;
   border-bottom: none;

@@ -152,7 +152,7 @@ export default function Catalogos() {
             </div>
           ) : (
             <div>
-              <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 gap-y-10 lg:gap-y-24 justify-items-center">
+              <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 gap-y-10 lg:gap-y-16 justify-items-center">
                 {catalogos && catalogos.length > 0
                   ? catalogos.map((catalogo: any) => (
                       <Fragment key={catalogo.id}>
@@ -186,3 +186,12 @@ export default function Catalogos() {
     </main>
   );
 }
+
+/* 
+Puntos a tocar:
+
+- Crear 'pagina' de catalogos para agregar un componente que tenga overtitle, title y description
+  - Se tiene que hacer el request a esta pagina para obtener esta info
+- Ajustar skeleton
+
+*/
