@@ -156,11 +156,11 @@ export const Footer = () => {
                 {footerContent?.site_map_title || "Mapa de sitio"}
               </h5>
               <Link key={`site_map_item_inicio`} href={`/`}>
-                <p className="text-white text-sm font-bold">Inicio</p>
+                <p className="text-white font-bold">Inicio</p>
               </Link>
               {footerContent.site_map_items.map((item, index) => (
                 <Link key={`site_map_item_${index}`} href={`${item.item_link}`}>
-                  <p className="text-white text-sm">{item.item_text}</p>
+                  <p className="text-white">{item.item_text}</p>
                 </Link>
               ))}
             </div>
