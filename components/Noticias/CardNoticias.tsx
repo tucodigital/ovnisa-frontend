@@ -2,26 +2,19 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { TagMarca } from "./TagMarca";
 import { loaderProp } from "@/lib/utils";
-import { CardProductosContent } from "@/types/productoTypes";
+import { NoticiaAttributes } from "@/types/noticiaTypes";
 
-export const CardProductos = ({
-  nombre,
-  imagen_principal,
-  imagen_principal_alt,
-  marca,
-  slug,
-}: CardProductosContent) => {
+export const CardNoticias = ({ title, image }: NoticiaAttributes) => {
   return (
-    <Link href={`/productos/${slug}`}>
+    // <Link href={`/productos/${slug}`}>
+    <>
       <div className="border-2 border-gray-200 rounded-2xl bg-white p-4 relative hover:shadow-lg transition duration-300 mb-2">
-        {marca ? <TagMarca marca={marca} /> : null}
         <div className="w-full h-56 relative mb-2">
-          {imagen_principal !== "" ? (
+          {image && image.data ? (
             <Image
-              src={imagen_principal}
-              alt={imagen_principal_alt}
+              src={image.data.attributes.url}
+              alt={image?.data?.attributes?.alternativeText || title}
               fill
               style={{
                 objectFit: "contain",
@@ -87,7 +80,8 @@ export const CardProductos = ({
           )}
         </div>
       </div>
-      <h3 className="font-bold text-gray-500">{nombre}</h3>
-    </Link>
+      <h3 className="font-bold text-gray-500">{title}</h3>
+    </>
+    // </Link>
   );
 };
