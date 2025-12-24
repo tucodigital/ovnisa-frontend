@@ -1,13 +1,5 @@
-export interface BusinessPathContentType {
+export interface BusinessPathV2ContentType {
   title: String;
-  subtitle: String;
+  over_title: String;
   description: string;
-  items: BusinessPathItemType[];
-}
-
-export interface BusinessPathItemType {
-  id: number;
-  title: String;
-  description: String;
-  icon: any;
 }

@@ -22,6 +22,12 @@ export default function Empresa() {
                   icon: "*",
                 },
               },
+              cards: {
+                populate: {
+                  image: "*",
+                },
+              },
+              main_image: "*",
             },
           },
         },
@@ -40,14 +46,3 @@ export default function Empresa() {
     </div>
   );
 }
-
-
-/* 
-Puntos a tocar backend:
-
-- Ajustar componente BusinessPath, ya no tiene mas los items y el texto es mas corto
-- Ajustar componente video-section: no deberia llamarse mas asi para dar lugar al nuevo formato que abarcaria todo lo restante
-  - El nuevo componente incluira la parte ya existen de los 4 items, la imagen principal con textos y las 3 cards a mostrar en la parte inferior
-- Ajustar skeleton
-
-*/

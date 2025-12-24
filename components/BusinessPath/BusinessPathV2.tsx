@@ -1,25 +1,24 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 
-import { BusinessPathContentType } from "../../types/components/BusinessPathTypes";
+import { BusinessPathV2ContentType } from "../../types/components/BusinessPathTypes";
 
-export const BusinessPath = ({
+export const BusinessPathV2 = ({
   title,
-  subtitle,
+  over_title,
   description,
-  items,
-}: BusinessPathContentType) => {
+}: BusinessPathV2ContentType) => {
   return (
     <div className=" bg-white py-28 px-10 lg:px-28 flex gap-4 lg:gap-10 flex-col lg:flex-row w-full ">
       <div className="flex flex-col">
-        <h2 className="text-gray-400 text-2xl lg:text-xl">
+        <h5 className="text-gray-400 text-2xl lg:text-xl ">{over_title}</h5>
+        <h2 className="font-bold text-xl lg:text-4xl mb-4">
           {title}
         </h2>
-        <h5 className="font-bold text-xl lg:text-4xl mb-4">{subtitle}</h5>
 
         <div className="mb-6">
           <ReactMarkdown
-            className="lg:text-lg font-regular flex flex-col gap-1"
+            className="lg:text-lg font-regular flex flex-col "
             children={description}
           />
         </div>

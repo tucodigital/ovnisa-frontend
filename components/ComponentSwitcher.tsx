@@ -1,17 +1,15 @@
 import React, { Fragment } from "react";
 import dynamic from "next/dynamic";
 
-const BusinessPath = dynamic(() =>
-  import("./BusinessPath/BusinessPath").then((module) => module.BusinessPath)
+const BusinessPathV2 = dynamic(() =>
+  import("./BusinessPath/BusinessPathV2").then(
+    (module) => module.BusinessPathV2
+  )
 );
 
-const VideoSection = dynamic(() =>
-  import("./VideoSection/VideoSection").then((module) => module.VideoSection)
-);
-
-const LocationSection = dynamic(() =>
-  import("./LocationSection/LocationSection").then(
-    (module) => module.LocationSection
+const BusinessResume = dynamic(() =>
+  import("./BusinessResume/BusinessResume").then(
+    (module) => module.BusinessResume
   )
 );
 
@@ -38,9 +36,8 @@ const CATEGORIES_SECTION = "home-comp.cat-section";
 const MAP_SECTION = "home-comp.map-section";
 const HOME_CTA = "home-comp.cta";
 
-const BUSINESS_PATH = "empr-comp.business-path";
-const VIDEO_SECTION = "empr-comp.video-section";
-const LOCATION_SECTION = "empr-comp.location-section";
+const BUSINESS_PATH_V2 = "empr-comp.business-path-v2";
+const BUSINESS_RESUME = "empr-comp.business-resume";
 
 const CONTACT_SECTION = "contacto.contact-section";
 const VENDORS_SECTION = "contacto.vendors-section";
@@ -69,6 +66,7 @@ export default function ComponentSwitcher({ componentsList }: any) {
       case MAP_SECTION:
         return (
           <BrandsSection
+            id={component?.id}
             key={`${MAP_SECTION}_${component?.id}`}
             title={component?.title}
             brands={component?.brands}
@@ -89,31 +87,25 @@ export default function ComponentSwitcher({ componentsList }: any) {
           />
         );
 
-      case BUSINESS_PATH:
+      case BUSINESS_PATH_V2:
         return (
-          <BusinessPath
+          <BusinessPathV2
             key={`${MAP_SECTION}_${component?.id}`}
             title={component?.title}
-            subtitle={component?.subtitle}
+            over_title={component?.over_title}
             description={component?.description}
-            items={component?.items}
           />
         );
 
-      case VIDEO_SECTION:
+      case BUSINESS_RESUME:
         return (
-          <VideoSection
-            key={`${VIDEO_SECTION}_${component?.id}`}
-            video_link={component?.video_link}
-            items={component?.items}
-          />
-        );
-
-      case LOCATION_SECTION:
-        return (
-          <LocationSection
-            key={`${LOCATION_SECTION}_${component?.id}`}
+          <BusinessResume
+            key={`${MAP_SECTION}_${component?.id}`}
             title={component?.title}
+            over_title={component?.over_title}
+            items={component?.items}
+            cards={component?.cards}
+            main_image={component?.main_image}
           />
         );
 
