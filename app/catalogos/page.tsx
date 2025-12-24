@@ -134,6 +134,14 @@ export default function Catalogos() {
     meta_url: "https://www.ovnisa.com/catalogos",
   };
 
+  const CATEGORIAS_HEADER_CONSTANTS = {
+    over_title: "Línea de Catálogos.",
+    title:
+      "Lo invitamos a descargar nuestros detallados catálogos de productos",
+    description:
+      "En cada catálogo uds contara con toda la información del producto que busca de cada producto que vendemos, medidas, peso e implementación acompañado con cuadros comparativos y reseñas. Ante cualquier duda puede comunicarse con nuestro departamento de ventas que se encargara de darle toda la información adicional que ud requiera.",
+  };
+
   return (
     <main className="PageMainContainer min-h-screen px-4 pt-28 lg:pt-44 pb-12">
       <SeoComponent {...SEO_CATALOGOS_CONSTANTS} />
@@ -146,6 +154,14 @@ export default function Catalogos() {
           </div>
         </div>
         <div className="lg:col-span-9">
+          <div className="  flex gap-4 lg:gap-10 flex-col lg:flex-row w-full ">
+            <div className="flex flex-col">
+              <h5 className="text-gray-400 ">{CATEGORIAS_HEADER_CONSTANTS.over_title}</h5>
+              <h2 className="font-bold text-xl lg:text-3xl mb-4">{CATEGORIAS_HEADER_CONSTANTS.title}</h2>
+
+              <div className="mb-6">{CATEGORIAS_HEADER_CONSTANTS.description}</div>
+            </div>
+          </div>
           {loading ? (
             <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 lg:gap-y-24 gap-y-10 justify-items-center">
               <LoadingCatalogsSkeleton total={PageSize} />
@@ -186,12 +202,3 @@ export default function Catalogos() {
     </main>
   );
 }
-
-/* 
-Puntos a tocar:
-
-- Crear 'pagina' de catalogos para agregar un componente que tenga overtitle, title y description
-  - Se tiene que hacer el request a esta pagina para obtener esta info
-- Ajustar skeleton
-
-*/
