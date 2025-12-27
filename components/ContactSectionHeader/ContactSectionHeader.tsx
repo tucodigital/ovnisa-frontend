@@ -20,7 +20,7 @@ export const ContactSectionHeader = ({
           priority
         />
       </div>
-      <div className="absolute top-0 left-0 w-full h-full bg-ov-primary opacity-60"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-ov-primary opacity-60 brightness-100"></div>
 
       <div className="absolute top-0 left-0 flex justify-center w-full h-full">
         <div className="flex w-full">

@@ -107,7 +107,7 @@ export const BusinessResume = ({
             priority
           />
         </div>
-        <div className="absolute top-0 left-0 w-full h-full bg-ov-primary opacity-60"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-ov-primary opacity-60 brightness-100"></div>
 
         <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full">
           <div className="flex gap-4 lg:grid lg:grid-cols-2 lg:gap-3 w-full">
