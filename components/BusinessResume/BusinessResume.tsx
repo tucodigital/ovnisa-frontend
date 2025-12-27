@@ -14,7 +14,7 @@ export const BusinessResume = ({
   main_image,
 }: BusinessResumeContent) => {
   return (
-    <div className="   flex  flex-col w-full px-10 lg:px-28 pb-48 justify-between">
+    <div className="flex flex-col w-full PageMainContainer px-4 pb-48 justify-between">
       {/* Header del componente */}
       <div className="bg-ov-primary flex w-full py-20 px-10 lg:px-16 gap-20 justify-between rounded-t-2xl">
         {/* Logo Marca */}

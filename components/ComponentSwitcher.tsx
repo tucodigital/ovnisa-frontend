@@ -13,15 +13,21 @@ const BusinessResume = dynamic(() =>
   )
 );
 
-const ContactSection = dynamic(() =>
-  import("./ContactSection/ContactSection").then(
-    (module) => module.ContactSection
+const ContactSectionHeader = dynamic(() =>
+  import("./ContactSectionHeader/ContactSectionHeader").then(
+    (module) => module.ContactSectionHeader
   )
 );
 
-const VendorsSection = dynamic(() =>
-  import("./VendorsSection/VendorsSection").then(
-    (module) => module.VendorsSection
+const ContactSectionV2 = dynamic(() =>
+  import("./ContactSectionV2/ContactSectionV2").then(
+    (module) => module.ContactSectionV2
+  )
+);
+
+const LocationSectionV2 = dynamic(() =>
+  import("./LocationSectionV2/LocationSectionV2").then(
+    (module) => module.LocationSectionV2
   )
 );
 
@@ -39,8 +45,9 @@ const HOME_CTA = "home-comp.cta";
 const BUSINESS_PATH_V2 = "empr-comp.business-path-v2";
 const BUSINESS_RESUME = "empr-comp.business-resume";
 
-const CONTACT_SECTION = "contacto.contact-section";
-const VENDORS_SECTION = "contacto.vendors-section";
+const CONTACT_SECTION_HEADER = "contacto.contact-section-header";
+const CONTACT_SECTION_V2 = "contacto.contact-section-v2";
+const LOCATION_SECTION_V2 = "contacto.location-section-v2";
 
 const SEO_COMPONENT = "seo.seo";
 
@@ -109,23 +116,35 @@ export default function ComponentSwitcher({ componentsList }: any) {
           />
         );
 
-      case CONTACT_SECTION:
+      case CONTACT_SECTION_HEADER:
         return (
-          <ContactSection
-            key={`${CONTACT_SECTION}_${component?.id}`}
+          <ContactSectionHeader
+            key={`${LOCATION_SECTION_V2}_${component?.id}`}
             title={component?.title}
+            subtitle={component?.subtitle}
+            image={component?.image}
+          />
+        );
+
+      case CONTACT_SECTION_V2:
+        return (
+          <ContactSectionV2
+            key={`${CONTACT_SECTION_V2}_${component?.id}`}
+            info_title={component?.info_title}
+            location_title={component?.location_title}
+            location_text={component?.location_text}
+            phone_title={component?.phone_title}
             phone_text_1={component?.phone_text_1}
             phone_text_2={component?.phone_text_2}
+            email_title={component?.email_title}
             email_text={component?.email_text}
-            whatsapp_text={component?.whatsapp_text}
+            networks_title={component?.networks_title}
             facebook_link={component?.facebook_link}
             instagram_link={component?.instagram_link}
             youtube_link={component?.youtube_link}
             linkedin_link={component?.linkedin_link}
-            mercado_libre_link={component?.mercado_libre_link}
-            name_and_lastname_placeholder={
-              component?.name_and_lastname_placeholder
-            }
+            contact_form_title={component?.contact_form_title}
+            name_placeholder={component?.name_placeholder}
             phone_placeholder={component?.phone_placeholder}
             email_placeholder={component?.email_placeholder}
             subject_placeholder={component?.subject_placeholder}
@@ -133,19 +152,15 @@ export default function ComponentSwitcher({ componentsList }: any) {
           />
         );
 
-      case VENDORS_SECTION:
+      case LOCATION_SECTION_V2:
         return (
-          <VendorsSection
-            key={`${VENDORS_SECTION}_${component?.id}`}
-            title={component?.title}
-            vendors={component?.vendors}
-          />
+          <LocationSectionV2 key={`${LOCATION_SECTION_V2}_${component?.id}`} />
         );
 
       case SEO_COMPONENT:
         return (
           <SeoComponent
-            key={`${VENDORS_SECTION}_${component?.id}`}
+            key={`${SEO_COMPONENT}_${component?.id}`}
             meta_title={component?.meta_title}
             meta_url={component?.meta_url}
             meta_description={component?.meta_description}

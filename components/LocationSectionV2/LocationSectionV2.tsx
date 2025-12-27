@@ -1,12 +1,8 @@
 import React from "react";
-import { LocationSectionContent } from "../../types/components/LocationSectionTypes";
 
-export const LocationSection = ({ title }: LocationSectionContent) => {
+export const LocationSectionV2 = () => {
   return (
-    <div className=" bg-white hidden lg:flex flex-col  w-full px-28 pt-20 ">
-      <h2 className="text-black font-bold text-2xl lg:text-5xl mb-12">
-        {title}
-      </h2>
+    <div className=" bg-white hidden lg:flex flex-col w-full pt-20 ">
       <div className="">
         <iframe
           width="100%"
