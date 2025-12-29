@@ -20,17 +20,27 @@ export const ContactSectionHeader = ({
           priority
         />
       </div>
+      <div className="homeSlide-mobile max-h-96 block md:hidden ">
+        <Image
+          alt={image?.data?.attributes?.name}
+          src={image?.data?.attributes?.url}
+          fill
+          loader={loaderProp}
+          objectFit="cover"
+          priority
+        />
+      </div>
       <div className="absolute top-0 left-0 w-full h-full bg-ov-primary opacity-60 brightness-100"></div>
 
       <div className="absolute top-0 left-0 flex justify-center w-full h-full">
         <div className="flex w-full">
-          <div className="flex pt-36 w-full">
+          <div className="flex pt-32 lg:pt-36 w-full">
             {title && subtitle ? (
               <div className="flex w-full flex-col items-center gap-4 text-center">
-                <p className="lg:text-2xl xl:text-4xl mb-0  text-white font-semibold">
+                <p className="text-2xl xl:text-4xl mb-0  text-white font-semibold">
                   {title}
                 </p>
-                <p className=" text-white xl:text-2xl w-2/5">
+                <p className=" text-white text-xl xl:text-2xl px-4 lg:px-0 lg:w-2/5">
                   {subtitle}
                 </p>
               </div>

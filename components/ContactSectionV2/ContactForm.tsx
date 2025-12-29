@@ -164,7 +164,7 @@ export const ContactForm = ({
           <div className="flex justify-start">
             <button
               type="submit"
-              className="bg-ov-primary text-white px-48 py-2 rounded-full duration-300 transition cursor-pointer hover:bg-ov-primaryLight" 
+              className="bg-ov-primary text-white px-16 lg:px-48 py-2 rounded-full duration-300 transition cursor-pointer hover:bg-ov-primaryLight" 
             >
               Enviar
             </button>
