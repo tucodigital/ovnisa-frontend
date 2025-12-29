@@ -154,8 +154,8 @@ export default function Catalogos() {
           </div>
         </div>
         <div className="lg:col-span-9">
-          <div className="  flex gap-4 lg:gap-10 flex-col lg:flex-row w-full ">
-            <div className="flex flex-col">
+          <div className="flex gap-4 lg:gap-10 flex-col lg:flex-row w-full ">
+            <div className="flex flex-col py-4 lg:py-0">
               <h5 className="text-gray-400 ">{CATEGORIAS_HEADER_CONSTANTS.over_title}</h5>
               <h2 className="font-bold text-xl lg:text-3xl mb-4">{CATEGORIAS_HEADER_CONSTANTS.title}</h2>
 
