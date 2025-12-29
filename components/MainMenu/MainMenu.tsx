@@ -224,7 +224,7 @@ export const MainMenu = () => {
       </nav>
 
       <nav className="block lg:hidden fixed z-50 w-full">
-        <div className="bg-gradient-to-b from-ov-primaryLight to-ov-primary h-20 w-full flex flex-row justify-between items-center text-white px-4">
+        <div className="bg-ov-primary h-20 w-full flex flex-row justify-between items-center text-white px-4">
           {/* Hamburguer Menu */}
           <div
             className=""
@@ -329,14 +329,14 @@ export const MainMenu = () => {
           </div>
         </div>
         {open ? (
-          <div className=" bg-ov-primary pt-5 pb-16 px-8 w-full flex flex-col gap-6 justify-between items-center absolute z-10">
-            <div className="w-full bg-slate-200 h-10 px-3 flex flex-row items-center gap-2">
+          <div className=" bg-ov-primaryLight pt-5 pb-16 px-8 w-full flex flex-col gap-6 justify-between items-center absolute z-10">
+            <div className="w-full bg-white h-10 px-3 flex flex-row items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={2}
-                stroke="currentColor"
+                stroke="#0441a8"
                 className="w-8 h-8"
               >
                 <path
@@ -348,7 +348,7 @@ export const MainMenu = () => {
 
               <input
                 value={inputValue}
-                className="w-full bg-slate-200 rounded-md h-8 outline-none"
+                className="w-full bg-white rounded-md h-8 outline-none"
                 type="text"
                 placeholder="Buscar..."
                 onChange={(e) => setInputValue(e.target.value)}

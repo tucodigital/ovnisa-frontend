@@ -232,8 +232,8 @@ export const Footer = () => {
         {/* Footer Mobile */}
         <div className=" lg:hidden bg-ov-primaryLight w-full flex justify-between py-8">
           <div className="mx-8 flex flex-col gap-4 w-full">
-            <svg
-              className="h-16 text-white"
+          <svg
+              className="w-48 text-white"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 259.64 68.45"
             >
@@ -289,7 +289,7 @@ export const Footer = () => {
               <p className="text-white">{footerContent.description_text}</p>
             ) : null}
             {footerContent?.location_text ? (
-              <div className="flex flex-row gap-2 items-center mb-2">
+              <div className="flex flex-row gap-2 items-start mb-2">
                 <Image
                   width={30}
                   height={30}
@@ -350,7 +350,7 @@ export const Footer = () => {
                 ) : null}
 
                 {footerContent?.phone_text_1 || footerContent?.phone_text_2 ? (
-                  <div className="flex flex-row gap-2 items-center">
+                  <div className="flex flex-row gap-2 items-start">
                     <Image
                       width={30}
                       height={30}
@@ -377,20 +377,7 @@ export const Footer = () => {
               </div>
             </div>
             <div className="flex flex-row mt-4 justify-between">
-              {footerContent?.facebook_link ? (
-                <Link href={`${footerContent.facebook_link}`} target="_blank">
-                  <Image
-                    width={30}
-                    height={30}
-                    objectFit="fill"
-                    loader={loaderProp}
-                    className="h-7"
-                    alt="Icono Facebook"
-                    src={`/assets/footer/ruido-ovnisa-footer-icono-facebook.svg`}
-                  />
-                </Link>
-              ) : null}
-              {footerContent?.instagram_link ? (
+            {footerContent?.instagram_link ? (
                 <Link href={`${footerContent.instagram_link}`} target="_blank">
                   <Image
                     width={30}
@@ -403,16 +390,16 @@ export const Footer = () => {
                   />
                 </Link>
               ) : null}
-              {footerContent?.youtube_link ? (
-                <Link href={`${footerContent.youtube_link}`} target="_blank">
+              {footerContent?.facebook_link ? (
+                <Link href={`${footerContent.facebook_link}`} target="_blank">
                   <Image
                     width={30}
                     height={30}
                     objectFit="fill"
                     loader={loaderProp}
                     className="h-7"
-                    alt="Icono Youtube"
-                    src={`/assets/footer/ruido-ovnisa-icono-footer-youtube.svg`}
+                    alt="Icono Facebook"
+                    src={`/assets/footer/ruido-ovnisa-footer-icono-facebook.svg`}
                   />
                 </Link>
               ) : null}
@@ -429,19 +416,29 @@ export const Footer = () => {
                   />
                 </Link>
               ) : null}
-              {footerContent?.mercado_libre_link ? (
-                <Link
-                  href={`${footerContent.mercado_libre_link}`}
-                  target="_blank"
-                >
+              {footerContent?.youtube_link ? (
+                <Link href={`${footerContent.youtube_link}`} target="_blank">
                   <Image
                     width={30}
                     height={30}
                     objectFit="fill"
                     loader={loaderProp}
                     className="h-7"
-                    alt="Icono Mercado Libre"
-                    src={`/assets/footer/ruido-ovnisa-footer-icono-meli.svg`}
+                    alt="Icono Youtube"
+                    src={`/assets/footer/ruido-ovnisa-icono-footer-youtube.svg`}
+                  />
+                </Link>
+              ) : null}
+              {footerContent?.whatsapp_link ? (
+                <Link href={`${footerContent.whatsapp_link}`} target="_blank">
+                  <Image
+                    width={30}
+                    height={30}
+                    objectFit="fill"
+                    loader={loaderProp}
+                    className="h-7"
+                    alt="Icono Whatsapp"
+                    src={`/assets/footer/ruido-ovnisa-footer-icono-whatsapp.svg`}
                   />
                 </Link>
               ) : null}
@@ -450,10 +447,10 @@ export const Footer = () => {
         </div>
 
         <div className="text-white text-sm text-center lg:py-4 pb-10 pt-4 bg-ov-primaryLight">
-          <div className="PageMainContainer flex justify-between">
-            <div className="flex">
+          <div className="PageMainContainer flex justify-center lg:justify-between">
+            <div className="flex flex-col lg:flex-row">
               <p className="text-base">{`Diseño Artifice Design © 2024.`}</p>
-              <p className="px-2 text-base">|</p>
+              <p className="px-2 text-base hidden lg:block">|</p>
               <a
                 className="text-base"
                 target="_blank"
@@ -461,7 +458,7 @@ export const Footer = () => {
               >
                 Ruido Marketing
               </a>
-              <p className="px-2 text-base">|</p>
+              <p className="px-2 text-base hidden lg:block">|</p>
               <a
                 className="text-base"
                 target="_blank"
@@ -470,7 +467,7 @@ export const Footer = () => {
                 Powered By TucoDigital
               </a>
             </div>
-            <div className="flex flex-row gap-4 mr-6">
+            <div className="hidden lg:flex flex-row gap-4 mr-6">
               {footerContent?.email_text ? (
                 <Link
                   href={`mailto:${footerContent.email_text}`}
