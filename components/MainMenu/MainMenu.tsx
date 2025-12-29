@@ -129,7 +129,7 @@ export const MainMenu = () => {
               </svg>
             </Link>
             {/* Business Logo */}
-            <div className="flex flex-col justify-center gap-0">
+            <div className="flex flex-col justify-center">
               {mainMenuContent?.phone_text ? (
                 <ContactMainMenuItemDesktop
                   alt="Icono telefono"
@@ -137,7 +137,7 @@ export const MainMenu = () => {
                   icon={ICONS_CONSTANTS_DESKTOP.PHONE}
                 />
               ) : (
-                <ContactMainMenuItemDesktopSkeleton width={64} />
+                <ContactMainMenuItemDesktopSkeleton />
               )}
 
               {mainMenuContent?.email_text ? (
@@ -165,26 +165,26 @@ export const MainMenu = () => {
           </div>
           <div className="bg-gradient-to-b bg-ov-primaryLight ">
             <div className="h-12 w-full flex flex-row items-center justify-between PageMainContainer m-auto px-4">
-              <div className="flex justify-between gap-24">
-                {mainMenuContent?.items?.length
-                  ? mainMenuContent.items.map((item, index) => (
+              {mainMenuContent?.items?.length
+                ? mainMenuContent.items.map((item, index) => (
+                    <div className="flex justify-between gap-24">
                       <NavigationMainMenuItemDesktop
                         key={`NavigationMainMenuItemDesktop_${index}`}
                         text={item.item_text}
                         url={item.item_link}
                       />
-                    ))
-                  : null}
-              </div>
+                    </div>
+                  ))
+                : null}
 
               {!mainMenuContent?.items?.length ? (
-                <>
+                <div className="flex justify-between gap-24 w-9/12">
                   <NavigationMainMenuItemDesktopSkeleton />
                   <NavigationMainMenuItemDesktopSkeleton />
                   <NavigationMainMenuItemDesktopSkeleton />
                   <NavigationMainMenuItemDesktopSkeleton />
                   <NavigationMainMenuItemDesktopSkeleton />
-                </>
+                </div>
               ) : null}
               <div className="flex w-64 border-white border-2 px-2 rounded-lg cursor-pointer text-white transition duration-300">
                 <svg

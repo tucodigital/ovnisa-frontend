@@ -1,12 +1,12 @@
-export const ContactMainMenuItemDesktopSkeleton = ({ width = 32 }) => {
+export const ContactMainMenuItemDesktopSkeleton = () => {
   return (
-    <div className="flex flex-row gap-2 items-center">
-      <div className="animate-pulse w-7 rounded-full bg-blue-800 h-7 " />
-      <div className={`animate-pulse w-${width} rounded bg-blue-800 h-7`} />
+    <div className="flex flex-row gap-2 items-center mb-1">
+      <div className="animate-pulse w-7 rounded-full bg-ov-primaryLight h-5 " />
+      <div className={`animate-pulse w-40 rounded bg-ov-primaryLight h-5`} />
     </div>
   );
 };
 
 export const NavigationMainMenuItemDesktopSkeleton = () => (
-  <div className="animate-pulse rounded-md bg-blue-800 h-7 w-28" />
+  <div className="animate-pulse rounded-md bg-ov-primary h-7 w-28" />
 );
