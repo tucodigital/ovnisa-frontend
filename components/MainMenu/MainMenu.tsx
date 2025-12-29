@@ -191,7 +191,7 @@ export const MainMenu = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  strokeWidth={4}
+                  strokeWidth={3}
                   stroke="currentColor"
                   className="w-8 h-8"
                 >
