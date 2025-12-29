@@ -19,6 +19,7 @@ export interface NoticiaAttributes {
   updatedAt: string;
   publishedAt: string;
   image: ImageData;
+  slug: string;
 }
 
 export interface Noticia {

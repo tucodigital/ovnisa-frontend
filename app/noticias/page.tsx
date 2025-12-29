@@ -7,6 +7,7 @@ import { fetchAPI } from "@/lib/api";
 import SeoComponent from "@/components/SEOComponent/SEOComponent";
 import Pagination from "@/components/Pagination/Pagination";
 import { CardNoticias } from "@/components/Noticias/CardNoticias";
+import { LoadingProductsSkeleton } from "@/components/products/LoadingProductsSkeleton";
 
 export default function Noticias() {
   const searchParams = useSearchParams();
@@ -55,14 +56,39 @@ export default function Noticias() {
     <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
       <SeoComponent {...SEO_SERVICIOS_CONSTANTS} />
       {loading ? (
-        <div className="grid lg:grid-cols-4 grid-cols-1 gap-4"></div>
+        <div>
+          <div className="h-3 w-52 rounded bg-gray-200 animate-pulse mb-2"></div>
+          <div className="h-8 w-72 rounded bg-gray-200 animate-pulse mb-2"></div>
+          <div className="h-6 w-full rounded bg-gray-200 animate-pulse mb-6"></div>
+          <div className="grid lg:grid-cols-3 grid-cols-1 gap-4">
+            <LoadingProductsSkeleton total={PageSize} />
+          </div>
+        </div>
       ) : (
         <div>
-          <div className="grid lg:grid-cols-4 grid-cols-1 gap-4">
+          <div className="mb-6">
+            <p className="text-xs text-gray-500">Novedades en OVNISA S.A</p>
+            <h1 className="text-2xl font-bold text-black mb-2">Noticias</h1>
+            <div className="text-gray-700">
+              Mantengase actualizado con todas las actividades de nuestra
+              Empresa y enterese de los nuevos ingresos, Exposiciones, puntos de
+              venta y conocer todo nuestro trabajo en un solo lugar
+            </div>
+          </div>
+          <div className="grid lg:grid-cols-3 grid-cols-1 gap-4">
             {noticias && noticias.length > 0
               ? noticias.map((noticia: any) => (
                   <Fragment key={noticia.id}>
-                    <CardNoticias {...noticia} />
+                    <CardNoticias
+                      title={noticia.attributes.title}
+                      image={noticia.attributes.image}
+                      slug={noticia.attributes.slug}
+                      description={noticia.attributes.description}
+                      content={noticia.attributes.content}
+                      createdAt={noticia.attributes.createdAt}
+                      updatedAt={noticia.attributes.updatedAt}
+                      publishedAt={noticia.attributes.publishedAt}
+                    />
                   </Fragment>
                 ))
               : null}

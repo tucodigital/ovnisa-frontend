@@ -1,20 +1,70 @@
 "use client";
 
-import Link from "next/link";
+import React, { Fragment, useEffect, useState } from "react";
+import { Noticia } from "@/types/noticiaTypes";
+import { fetchAPI } from "@/lib/api";
+import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import { loaderProp } from "@/lib/utils";
-import { NoticiaAttributes } from "@/types/noticiaTypes";
+import { usePathname } from "next/navigation";
+import SeoComponent from "@/components/SEOComponent/SEOComponent";
 
-export const CardNoticias = ({ title, image, slug }: NoticiaAttributes) => {
+export default function NoticiaPage(context) {
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState<Noticia>();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    getNoticia();
+  }, [context.params.slug]);
+
+  const getNoticia = async () => {
+    setLoading(true);
+    try {
+      const noticiasRes = await fetchAPI(`/novedades/${context.params.slug}`, {
+        populate: "*",
+      });
+      console.log("noticia: ", noticiasRes);
+      setData(noticiasRes.data);
+      setLoading(false);
+    } catch (e: any) {
+      console.error(e.response);
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
+          <div className="MainProductImage rounded-lg relative w-full bg-gray-100 animate-pulse"></div>
+          <div>
+            <div className="h-10 w-full rounded-lg bg-gray-100 animate-pulse mb-4"></div>
+            <div className="h-44 w-full rounded-lg bg-gray-100 animate-pulse mb-6"></div>
+            <div className="h-10 w-48 rounded-full bg-gray-100 animate-pulse"></div>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
   return (
-    <div>
-      <div className="bg-white relative mb-2">
-        <Link href={`/noticias/${slug}`}>
-          <div className="w-full h-56 relative">
-            {image && image.data ? (
+    <main className="PageMainContainer min-h-screen px-4 pt-28 xl:pt-44 pb-12">
+      <SeoComponent
+        meta_title={`Ovnisa - ${data?.attributes?.title}`}
+        meta_description={`Página de la noticia ${data?.attributes?.title}`}
+        meta_url={`https://www.ovnisa.com/noticias${pathname}`}
+      />
+      <div>
+        <div>
+          <h1 className="font-bold text-gray-800 text-2xl xl:text-4xl mb-4">
+            {data?.attributes?.title}
+          </h1>
+          <div className="w-full h-72 relative mb-4">
+            {data?.attributes?.image && data?.attributes?.image?.data ? (
               <Image
-                src={image.data.attributes.url}
-                alt={image?.data?.attributes?.alternativeText || title}
+                src={data?.attributes?.image?.data?.attributes?.url}
+                alt={data?.attributes?.image?.data?.attributes?.alternativeText || data?.attributes?.title}
                 fill
                 style={{
                   objectFit: "contain",
@@ -80,15 +130,24 @@ export const CardNoticias = ({ title, image, slug }: NoticiaAttributes) => {
               </div>
             )}
           </div>
-        </Link>
+          {data?.attributes?.description ? (
+            <div className="mb-6">
+              <ReactMarkdown
+                className="font-medium text-lg text-gray-500 prose prose-invert"
+                children={data?.attributes?.description}
+              />
+            </div>
+          ) : null}
+          {data?.attributes?.content ? (
+            <div className="mb-6">
+              <ReactMarkdown
+                className="font-regular text-gray-800 prose prose-invert"
+                children={data?.attributes?.content}
+              />
+            </div>
+          ) : null}
+        </div>
       </div>
-      <h3 className="font-bold text-gray-500 mb-3">{title}</h3>
-      <Link
-        className="bg-ov-primaryLight rounded px-4 py-2 text-white font-bold text-xs hover:bg-ov-primary transition-all duration-300"
-        href={`/noticias/${slug}`}
-      >
-        LEER MÁS
-      </Link>
-    </div>
+    </main>
   );
-};
+}
