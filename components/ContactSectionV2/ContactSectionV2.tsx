@@ -235,7 +235,6 @@ export const ContactSectionV2 = ({
           </div>
         </div>
       </div>
-      {/* Vista Desktop */}
     </div>
   );
 };

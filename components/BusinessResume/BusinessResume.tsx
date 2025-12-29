@@ -14,13 +14,13 @@ export const BusinessResume = ({
   main_image,
 }: BusinessResumeContent) => {
   return (
-    <div className="flex flex-col w-full PageMainContainer px-4 pb-48 justify-between">
+    <div className="flex flex-col w-full PageMainContainer px-4 pb-16 lg:pb-48 justify-between">
       {/* Header del componente */}
-      <div className="bg-ov-primary flex w-full py-20 px-10 lg:px-16 gap-20 justify-between rounded-t-2xl">
+      <div className="bg-ov-primary flex flex-col lg:flex-row w-full py-8 px-10 lg:px-16 gap-10 lg:gap-20 justify-between rounded-t-2xl">
         {/* Logo Marca */}
-        <div className="w-2/6 flex items-center">
+        <div className="w-full lg:w-2/6 flex flex-col lg:flex-row items-start lg:items-center">
           <svg
-            className="h-20 w-auto text-white"
+            className=" h-16 lg:h-20 w-auto text-white"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 259.64 68.45"
           >
@@ -74,7 +74,7 @@ export const BusinessResume = ({
           </svg>
         </div>
         {/* Contenedor Items Informativos */}
-        <div className="flex gap-8 gap-y-8 lg:gap-y-12 w-4/6 justify-end items-end">
+        <div className=" grid grid-cols-2 lg:flex gap-8 gap-y-8 lg:gap-y-12 w-full lg:w-4/6  lg:justify-end lg:items-end">
           {items.map((item, index) => (
             <div className="flex flex-col gap-2" key={index}>
               <Image
@@ -87,7 +87,7 @@ export const BusinessResume = ({
                 height={50}
                 loader={loaderProp}
               />
-              <h6 className="font-black text-4xl lg:text-4xl text-white">
+              <h6 className="font-black text-xl lg:text-4xl text-white">
                 {item.title}
               </h6>
               <p className=" font-bold text-white">{item.description}</p>
@@ -97,7 +97,7 @@ export const BusinessResume = ({
       </div>
       {/* Imagen Central */}
       <div className="w-full bg-gray-100 relative">
-        <div className="homeSlide-desk hidden md:block ">
+        <div className="homeSlide-desk hidden lg:block ">
           <Image
             alt={main_image?.data?.attributes?.name}
             src={main_image?.data?.attributes?.url}
@@ -107,14 +107,25 @@ export const BusinessResume = ({
             priority
           />
         </div>
-        <div className="absolute top-0 left-0 w-full h-full bg-ov-primary opacity-60 brightness-100"></div>
+        <div className="homeSlide-mobile max-h-96 block lg:hidden">
+          <Image
+            alt={main_image?.data?.attributes?.name}
+            src={main_image?.data?.attributes?.url}
+            fill
+            loader={loaderProp}
+            objectFit="cover"
+            priority
+             className=" rounded-b-2xl"
+          />
+        </div>
+        <div className="absolute top-0 left-0 w-full h-full bg-ov-primary opacity-60 brightness-100 rounded-b-2xl lg:rounded-b-none"></div>
 
         <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full">
           <div className="flex gap-4 lg:grid lg:grid-cols-2 lg:gap-3 w-full">
             <div className="flex items-center w-full">
               {title ? (
-                <div className="  px-32 py-6 flex  w-full rounded-r-full flex-col">
-                  <p className="   mb-0  text-white lg:text-xl font-light">
+                <div className="lg:px-32 px-4 py-6 flex  w-full rounded-r-full flex-col">
+                  <p className=" mb-0  text-white lg:text-xl font-light">
                     {over_title}
                   </p>
                   <p className="  text-xl lg:text-3xl xl:text-5xl mb-0  text-white font-semibold">
@@ -127,10 +138,10 @@ export const BusinessResume = ({
         </div>
       </div>
       {/* Contenedor Cards */}
-      <div className="grid grid-cols-3 justify-items-center -mt-24">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-0 lg:justify-items-center mt-8 lg:-mt-24">
         {cards.map((card, index) => (
           <div
-            className="w-96 h-96 flex justify-center relative rounded-2xl px-10"
+            className="w-full lg:w-96 h-96 flex justify-center relative rounded-2xl px-10"
             key={index}
           >
             <Image

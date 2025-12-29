@@ -9,7 +9,7 @@ export const BusinessPathV2 = ({
   description,
 }: BusinessPathV2ContentType) => {
   return (
-    <div className=" bg-white py-28 PageMainContainer px-4 flex gap-4 lg:gap-10 flex-col lg:flex-row w-full ">
+    <div className=" bg-white pt-24 pb4-4 lg:pt-28 PageMainContainer px-4 flex gap-4 lg:gap-10 flex-col lg:flex-row w-full ">
       <div className="flex flex-col">
         <h5 className="text-gray-400 text-2xl lg:text-xl ">{over_title}</h5>
         <h2 className="font-bold text-xl lg:text-4xl mb-4">
