@@ -87,7 +87,7 @@ export const BusinessResume = ({
                 height={50}
                 loader={loaderProp}
               />
-              <h6 className="font-black text-xl lg:text-4xl text-white">
+              <h6 className="font-black text-xl md:text-4xl text-white">
                 {item.title}
               </h6>
               <p className=" font-bold text-white">{item.description}</p>
@@ -97,17 +97,18 @@ export const BusinessResume = ({
       </div>
       {/* Imagen Central */}
       <div className="w-full bg-gray-100 relative">
-        <div className="homeSlide-desk hidden lg:block ">
+        <div className="homeSlide-desk hidden md:block ">
           <Image
             alt={main_image?.data?.attributes?.name}
             src={main_image?.data?.attributes?.url}
             fill
             loader={loaderProp}
             objectFit="cover"
+            className=" rounded-b-2xl lg:rounded-b-none"
             priority
           />
         </div>
-        <div className="homeSlide-mobile max-h-96 block lg:hidden">
+        <div className="homeSlide-mobile max-h-96 block md:hidden">
           <Image
             alt={main_image?.data?.attributes?.name}
             src={main_image?.data?.attributes?.url}
@@ -125,10 +126,10 @@ export const BusinessResume = ({
             <div className="flex items-center w-full">
               {title ? (
                 <div className="lg:px-32 px-4 py-6 flex  w-full rounded-r-full flex-col">
-                  <p className=" mb-0  text-white lg:text-xl font-light">
+                  <p className=" mb-0  text-white md:text-xl font-light">
                     {over_title}
                   </p>
-                  <p className="  text-xl lg:text-3xl xl:text-5xl mb-0  text-white font-semibold">
+                  <p className="  text-xl md:text-3xl xl:text-5xl mb-0  text-white font-semibold">
                     {title}
                   </p>
                 </div>

@@ -446,11 +446,11 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="text-white text-sm text-center lg:py-4 pb-10 pt-4 bg-ov-primaryLight">
-          <div className="PageMainContainer flex justify-center lg:justify-between">
-            <div className="flex flex-col lg:flex-row">
+        <div className="text-white text-sm text-center lg:py-4 pb-10 pt-4 bg-ov-primaryLight px-8">
+          <div className="PageMainContainer flex justify-center md:justify-between">
+            <div className="flex flex-col md:flex-row">
               <p className="text-base">{`Diseño Artifice Design © 2024.`}</p>
-              <p className="px-2 text-base hidden lg:block">|</p>
+              <p className="px-2 text-base hidden md:block">|</p>
               <a
                 className="text-base"
                 target="_blank"
@@ -458,7 +458,7 @@ export const Footer = () => {
               >
                 Ruido Marketing
               </a>
-              <p className="px-2 text-base hidden lg:block">|</p>
+              <p className="px-2 text-base hidden md:block">|</p>
               <a
                 className="text-base"
                 target="_blank"
