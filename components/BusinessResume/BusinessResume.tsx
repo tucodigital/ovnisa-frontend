@@ -74,9 +74,9 @@ export const BusinessResume = ({
           </svg>
         </div>
         {/* Contenedor Items Informativos */}
-        <div className=" grid grid-cols-2 lg:flex gap-8 gap-y-8 lg:gap-y-12 w-full lg:w-4/6  lg:justify-end lg:items-end">
+        <div className=" grid grid-cols-2 lg:flex gap-8 lg:gap-24 w-full lg:w-4/6  lg:justify-end lg:items-end">
           {items.map((item, index) => (
-            <div className="flex flex-col gap-2" key={index}>
+            <div className="flex flex-col items-center lg:items-start gap-2" key={index}>
               <Image
                 src={item.icon.data.attributes.url}
                 alt={
@@ -87,10 +87,10 @@ export const BusinessResume = ({
                 height={50}
                 loader={loaderProp}
               />
-              <h6 className="font-black text-xl md:text-4xl text-white">
+              <h6 className="font-black text-xl md:text-4xl text-center lg:text-left text-white">
                 {item.title}
               </h6>
-              <p className=" font-bold text-white">{item.description}</p>
+              <p className="font-bold text-white text-center lg:text-left">{item.description}</p>
             </div>
           ))}
         </div>

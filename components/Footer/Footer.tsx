@@ -230,7 +230,7 @@ export const Footer = () => {
         </div>
 
         {/* Footer Mobile */}
-        <div className=" lg:hidden bg-ov-primaryLight w-full flex justify-between py-8">
+        <div className=" lg:hidden bg-ov-primary w-full flex justify-between py-8">
           <div className="mx-8 flex flex-col gap-4 w-full">
           <svg
               className="w-48 text-white"
@@ -446,21 +446,21 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="text-white text-sm text-center lg:py-4 pb-10 pt-4 bg-ov-primaryLight px-8">
+        <div className="text-white text-sm text-center lg:py-4 pb-4 pt-4 bg-ov-primaryLight px-8">
           <div className="PageMainContainer flex justify-center md:justify-between">
             <div className="flex flex-col md:flex-row">
-              <p className="text-base">{`Diseño Artifice Design © 2024.`}</p>
-              <p className="px-2 text-base hidden md:block">|</p>
+              <p className="text-sm lg:text-base">{`Diseño Artifice Design © 2024.`}</p>
+              <p className="px-2 lg:text-base hidden md:block">|</p>
               <a
-                className="text-base"
+                className="text-sm lg:text-base"
                 target="_blank"
                 href="https://ruidomarketing.com.ar/"
               >
                 Ruido Marketing
               </a>
-              <p className="px-2 text-base hidden md:block">|</p>
+              <p className="px-2 text-sm lg:text-base hidden md:block">|</p>
               <a
-                className="text-base"
+                className="text-sm lg:text-base"
                 target="_blank"
                 href="https://tucodigital.com"
               >

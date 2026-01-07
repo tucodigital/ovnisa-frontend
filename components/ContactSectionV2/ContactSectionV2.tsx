@@ -50,7 +50,7 @@ export const ContactSectionV2 = ({
       </div>
 
       {/* Items de Redes Sociales */}
-      <div className="flex lg:hidden flex-row gap-6 my-8">
+      <div className="flex lg:hidden flex-row gap-6 my-2 lg:my-8">
         {facebook_link ? (
           <Link href={`${facebook_link}`} target="_blank">
             <div className="">

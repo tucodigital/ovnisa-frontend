@@ -165,27 +165,27 @@ export const MainMenu = () => {
           </div>
           <div className="bg-gradient-to-b bg-ov-primaryLight ">
             <div className="h-12 w-full flex flex-row items-center justify-between PageMainContainer m-auto px-4">
-              {mainMenuContent?.items?.length
-                ? mainMenuContent.items.map((item, index) => (
-                    <div className="flex justify-between gap-24">
+              <div className="flex items-center gap-24">
+                {mainMenuContent?.items?.length
+                  ? mainMenuContent.items.map((item, index) => (
                       <NavigationMainMenuItemDesktop
                         key={`NavigationMainMenuItemDesktop_${index}`}
                         text={item.item_text}
                         url={item.item_link}
                       />
-                    </div>
-                  ))
-                : null}
+                    ))
+                  : null}
 
-              {!mainMenuContent?.items?.length ? (
-                <div className="flex justify-between gap-24 w-9/12">
-                  <NavigationMainMenuItemDesktopSkeleton />
-                  <NavigationMainMenuItemDesktopSkeleton />
-                  <NavigationMainMenuItemDesktopSkeleton />
-                  <NavigationMainMenuItemDesktopSkeleton />
-                  <NavigationMainMenuItemDesktopSkeleton />
-                </div>
-              ) : null}
+                {!mainMenuContent?.items?.length ? (
+                  <>
+                    <NavigationMainMenuItemDesktopSkeleton />
+                    <NavigationMainMenuItemDesktopSkeleton />
+                    <NavigationMainMenuItemDesktopSkeleton />
+                    <NavigationMainMenuItemDesktopSkeleton />
+                    <NavigationMainMenuItemDesktopSkeleton />
+                  </>
+                ) : null}
+              </div>
               <div className="flex w-64 border-white border-2 px-2 rounded-lg cursor-pointer text-white transition duration-300">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -232,7 +232,6 @@ export const MainMenu = () => {
               setOpen(!open);
             }}
           >
-            {/* TODO: Pedir Logo Menu Mobile */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
