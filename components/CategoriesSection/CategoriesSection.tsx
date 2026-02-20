@@ -17,9 +17,9 @@ export const CategoriesSection = ({
   return (
     <div className=" bg-white py-10 lg:py-20 PageMainContainer px-4">
       <div className="mb-4 lg:mb-0 lg:flex lg:justify-between lg:items-end gap-6">
-        <div>
+        <div className="mb-4 lg:mb-0">
           <h2 className="text-gray-500 text-sm mb-1">{title}</h2>
-          <p className="text-2xl prose:text-2xl text-black font-bold mb-4">
+          <p className="text-2xl prose:text-2xl text-black font-bold">
             {subtitle}
           </p>
         </div>
@@ -28,11 +28,11 @@ export const CategoriesSection = ({
         </Link>
       </div>
       {categorias.data.length > 0 ? (
-        <div>
+        <div className="mt-6">
           <Swiper
             id="home"
             className="categories-swiper w-full hidden lg:block"
-            slidesPerView={4}
+            slidesPerView={3}
             spaceBetween={20}
           >
             {categorias.data.map((categoria: any) => (
