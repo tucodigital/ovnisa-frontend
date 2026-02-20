@@ -18,7 +18,7 @@ export const ContactMainMenuItemDesktop = ({
   if (url)
     return (
       <Link href={`${url}`} target="_blank">
-        <div className="flex flex-row items-center gap-2">
+        <div className="flex flex-row items-center justify-end gap-2">
           <Image
             width={15}
             height={15}
@@ -35,7 +35,7 @@ export const ContactMainMenuItemDesktop = ({
     );
 
   return (
-    <div className="flex flex-row items-center gap-2">
+    <div className="flex flex-row items-center justify-end gap-2">
       <Image
         width={15}
         height={15}

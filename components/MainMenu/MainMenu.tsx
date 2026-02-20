@@ -129,7 +129,7 @@ export const MainMenu = () => {
               </svg>
             </Link>
             {/* Business Logo */}
-            <div className="flex flex-col justify-center">
+            <div className="flex flex-col justify-end">
               {mainMenuContent?.phone_text ? (
                 <ContactMainMenuItemDesktop
                   alt="Icono telefono"

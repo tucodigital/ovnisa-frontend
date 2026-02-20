@@ -447,7 +447,7 @@ export const Footer = () => {
         </div>
 
         <div className="text-white text-sm text-center lg:py-4 pb-4 pt-4 bg-ov-primaryLight px-8">
-          <div className="PageMainContainer flex justify-center md:justify-between">
+          <div className="PageMainContainer flex justify-center items-center md:justify-between">
             <div className="flex flex-col md:flex-row">
               <p className="text-sm lg:text-base">{`Diseño Artifice Design © 2024.`}</p>
               <p className="px-2 lg:text-base hidden md:block">|</p>
