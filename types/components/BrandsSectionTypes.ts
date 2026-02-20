@@ -1,6 +1,6 @@
-export interface MapSectionContent {
+export interface BrandsSectionContent {
+  id:number;
   title: String;
-  description: String;
   brands: BrandContent[];
 }
 

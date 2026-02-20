@@ -134,6 +134,14 @@ export default function Catalogos() {
     meta_url: "https://www.ovnisa.com/catalogos",
   };
 
+  const CATEGORIAS_HEADER_CONSTANTS = {
+    over_title: "Línea de Catálogos.",
+    title:
+      "Lo invitamos a descargar nuestros detallados catálogos de productos",
+    description:
+      "En cada catálogo uds contara con toda la información del producto que busca de cada producto que vendemos, medidas, peso e implementación acompañado con cuadros comparativos y reseñas. Ante cualquier duda puede comunicarse con nuestro departamento de ventas que se encargara de darle toda la información adicional que ud requiera.",
+  };
+
   return (
     <main className="PageMainContainer min-h-screen px-4 pt-28 lg:pt-44 pb-12">
       <SeoComponent {...SEO_CATALOGOS_CONSTANTS} />
@@ -146,13 +154,21 @@ export default function Catalogos() {
           </div>
         </div>
         <div className="lg:col-span-9">
+          <div className="flex gap-4 lg:gap-10 flex-col lg:flex-row w-full ">
+            <div className="flex flex-col py-4 lg:py-0">
+              <h5 className="text-xs text-gray-500">{CATEGORIAS_HEADER_CONSTANTS.over_title}</h5>
+              <h2 className="text-2xl font-bold text-black mb-2">{CATEGORIAS_HEADER_CONSTANTS.title}</h2>
+
+              <div className="font-regular text-gray-800 prose prose-invert mb-6">{CATEGORIAS_HEADER_CONSTANTS.description}</div>
+            </div>
+          </div>
           {loading ? (
             <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 lg:gap-y-24 gap-y-10 justify-items-center">
               <LoadingCatalogsSkeleton total={PageSize} />
             </div>
           ) : (
             <div>
-              <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 gap-y-10 lg:gap-y-24 justify-items-center">
+              <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 gap-y-10 lg:gap-y-16 justify-items-center">
                 {catalogos && catalogos.length > 0
                   ? catalogos.map((catalogo: any) => (
                       <Fragment key={catalogo.id}>

@@ -17,7 +17,7 @@ export const ServicioView = ({
   return (
     <>
       <div className="p-4 lg:grid lg:grid-cols-2 gap-10">
-        <div className="MainProductImage rounded-lg relative w-full mb-4 lg:mb-0">
+        {/* <div className="MainProductImage rounded-lg relative w-full mb-4 lg:mb-0">
           {imagen_principal ? (
             <Image
               src={imagen_principal}
@@ -31,9 +31,10 @@ export const ServicioView = ({
               loader={loaderProp}
             />
           ) : null}
-        </div>
+        </div> */}
         <div>
-          <h1 className="font-bold text-gray-800 text-2xl xl:text-4xl mb-4">
+          <p className="text-xs text-gray-500">Linea de servicios</p>
+          <h1 className="text-2xl font-bold text-black mb-2">
             {nombre}
           </h1>
           {descripcion ? (
@@ -45,15 +46,12 @@ export const ServicioView = ({
             </div>
           ) : null}
           <Link href={`/contacto?m=Servicio ${nombre}`}>
-            <MainButton paddingX="px-10" paddingY="py-2" name="Contactanos" />
+            <MainButton paddingX="px-8" paddingY="py-1" name="Contactanos" />
           </Link>
         </div>
       </div>
       {maquinarias?.data && maquinarias?.data?.length > 0 ? (
-        <div className="mt-6 lg:mt-12 p-4">
-          <h3 className="font-bold text-gray-800 text-2xl xl:text-4xl mb-4">
-            Maquinaria utilizada
-          </h3>
+        <div className="mt-2 p-4">
           <div className="lg:grid lg:grid-cols-3 gap-4">
             {maquinarias.data.map((maq) => (
               <Fragment key={maq.id}>

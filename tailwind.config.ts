@@ -15,12 +15,12 @@ const config: Config = {
       },
       colors: {
         ov: {
-          primary: "#001748",
-          primaryLight: "#194092",
+          primary: "#0441a8",
+          primaryLight: "#2f7af8",
         },
       },
       fontFamily: {
-        sans: ["Nunito Sans", "sans-serif"],
+        sans: ["nexa", "sans-serif"],
       },
       boxShadow: {
         'contact': '0px 0px 10px rgba(0, 0, 0, 0.3)',

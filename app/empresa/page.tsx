@@ -22,6 +22,12 @@ export default function Empresa() {
                   icon: "*",
                 },
               },
+              cards: {
+                populate: {
+                  image: "*",
+                },
+              },
+              main_image: "*",
             },
           },
         },

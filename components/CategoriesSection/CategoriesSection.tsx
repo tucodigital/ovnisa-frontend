@@ -16,14 +16,19 @@ export const CategoriesSection = ({
 }: CategoriesSectionContent) => {
   return (
     <div className=" bg-white py-10 lg:py-20 PageMainContainer px-4">
-      <div>
-        <h2 className="text-ov-primaryLight font-bold text-2xl lg:text-4xl mb-2">
-          {title}
-        </h2>
-        <p className="lg:text-lg">{subtitle}</p>
+      <div className="mb-4 lg:mb-0 lg:flex lg:justify-between lg:items-end gap-6">
+        <div className="mb-4 lg:mb-0">
+          <h2 className="text-gray-500 text-sm mb-1">{title}</h2>
+          <p className="text-2xl prose:text-2xl text-black font-bold">
+            {subtitle}
+          </p>
+        </div>
+        <Link href="/categorias">
+          <MainButton paddingY="py-2" paddingX="px-8" name="Categorias" />
+        </Link>
       </div>
       {categorias.data.length > 0 ? (
-        <div>
+        <div className="mt-6">
           <Swiper
             id="home"
             className="categories-swiper w-full hidden lg:block"
@@ -35,7 +40,7 @@ export const CategoriesSection = ({
                 <Link
                   href={`/productos?categoria=${categoria?.attributes?.slug}`}
                 >
-                  <div className="w-full h-72 flex justify-center relative">
+                  <div className="w-full h-72 flex justify-center relative rounded-lg mb-2">
                     {categoria?.attributes?.image?.data ? (
                       <Image
                         alt={
@@ -52,7 +57,7 @@ export const CategoriesSection = ({
                     ) : (
                       <div className="bg-ov-primaryLight rounded-lg w-full h-full flex items-center justify-center">
                         <Image
-                          className="w-48 h-20"
+                          className="w-48 h-20 rounded-lg"
                           src={`/assets/main-menu/ruido-ovnisa-nav-logo-desktop.svg`}
                           alt="Ovnisa Logo Desktop"
                           loader={loaderProp}
@@ -61,14 +66,10 @@ export const CategoriesSection = ({
                         />
                       </div>
                     )}
-                    <div className="absolute -bottom-8 ">
-                      <MainButton
-                        paddingX="px-16"
-                        paddingY="py-4"
-                        name="Ver más"
-                      />
-                    </div>
                   </div>
+                  <p className="font-bold text-lg text-black">
+                    {categoria?.attributes?.nombre}
+                  </p>
                 </Link>
               </SwiperSlide>
             ))}
@@ -86,7 +87,7 @@ export const CategoriesSection = ({
                 <Link
                   href={`/productos?categoria=${categoria?.attributes?.slug}`}
                 >
-                  <div className="w-auto h-40 flex justify-center">
+                  <div className="w-auto h-40 flex justify-center rounded-lg mb-2 relative">
                     {categoria?.attributes?.image?.data ? (
                       <Image
                         alt={
@@ -96,14 +97,15 @@ export const CategoriesSection = ({
                           categoria?.attributes?.image?.data?.attributes?.url
                         }
                         fill
+                        className="rounded-lg"
                         objectFit="cover"
                         priority
                         loader={loaderProp}
                       />
                     ) : (
-                      <div className="bg-ov-primaryLight rounded w-full h-full flex items-center justify-center">
+                      <div className="bg-ov-primaryLight w-full h-full flex items-center justify-center rounded-lg">
                         <Image
-                          className="w-48 h-20"
+                          className="w-48 h-20 rounded-lg"
                           src={`/assets/main-menu/ruido-ovnisa-nav-logo-desktop.svg`}
                           alt="Ovnisa Logo Desktop"
                           loader={loaderProp}
@@ -113,6 +115,9 @@ export const CategoriesSection = ({
                       </div>
                     )}
                   </div>
+                  <p className="font-bold text-sm text-black">
+                    {categoria?.attributes?.nombre}
+                  </p>
                 </Link>
               </SwiperSlide>
             ))}

@@ -31,6 +31,10 @@ export default function Productos() {
   const [marcas, setMarcas] = useState([]);
   const [rubros, setRubros] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [seoCat, setSeoCat] = useState({
+    meta_title: "",
+    meta_description: "",
+  });
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -57,6 +61,35 @@ export default function Productos() {
     getCatSubtipos();
   }, [cat]);
 
+  useEffect(() => {
+    // tipo tiene prioridad sobre cat
+    if (tipo) {
+      const filteredTipo = tipoProductos.filter(
+        (t: any) => t.attributes.slug === tipo
+      );
+      console.log("filteredTipo", filteredTipo);
+      setSeoCat({
+        meta_title: filteredTipo[0]?.attributes?.nombre || "",
+        meta_description: filteredTipo[0]?.attributes?.seo_text || "",
+      });
+    } else if (cat) {
+      const filteredCategorias = categorias.filter(
+        (c: any) => c.attributes.slug === cat
+      );
+      console.log("filteredCategorias", filteredCategorias);
+      setSeoCat({
+        meta_title: filteredCategorias[0]?.attributes?.nombre || "",
+        meta_description: filteredCategorias[0]?.attributes?.seo_text || "",
+      });
+    } else {
+      // se resetea cuando no hay filtro de categoria ni tipo
+      setSeoCat({
+        meta_title: "",
+        meta_description: "",
+      });
+    }
+  }, [cat, tipo, categorias, tipoProductos]);
+
   const getCategories = async () => {
     try {
       const catRes = await fetchAPI("/categorias", {
@@ -64,7 +97,6 @@ export default function Productos() {
           tipos_de_productos: "*",
         },
       });
-      /* console.log("categorias: ", catRes); */
       setCategorias(catRes.data);
     } catch (e: any) {
       console.error(e.response);
@@ -117,9 +149,9 @@ export default function Productos() {
 
   const getTipoProductos = async () => {
     try {
-      const tipoProdRes = await fetchAPI("/tipos-de-productos",{
+      const tipoProdRes = await fetchAPI("/tipos-de-productos", {
         pagination: {
-          limit: 100
+          limit: 100,
         },
       });
       setTipoProductos(tipoProdRes.data);
@@ -224,7 +256,7 @@ export default function Productos() {
       setProdutos(productRes.data);
       setTotalPages(productRes.meta.pagination.total);
       setLoading(false);
-      /* console.log("Productos", productRes); */
+      console.log("Productos", productRes);
     } catch (e: any) {
       console.error(e.response);
       setProdutos([]);
@@ -233,8 +265,11 @@ export default function Productos() {
   };
 
   const SEO_PRODUCTOS_CONSTANTS = {
-    meta_title: 'Ovnisa - Productos',
-    meta_url: 'https://www.ovnisa.com/productos',
+    meta_title: seoCat.meta_title
+      ? `Ovnisa - Productos: ${seoCat.meta_title}`
+      : "Ovnisa - Productos",
+    meta_description: seoCat.meta_description,
+    meta_url: "https://www.ovnisa.com/productos",
   };
 
   return (
@@ -242,7 +277,7 @@ export default function Productos() {
       <SeoComponent {...SEO_PRODUCTOS_CONSTANTS} />
       <div className="lg:grid lg:grid-cols-12 gap-8">
         <div className="lg:col-span-2 mb-4 lg:mb-0">
-          <div className="border border-gray-200 rounded-lg p-4">
+          <div>
             <Busqueda />
             <Categorias selected={cat} categorias={categorias} />
             <TipoProductos selected={tipo} tipoProductos={tipoProductos} />
@@ -251,6 +286,17 @@ export default function Productos() {
           </div>
         </div>
         <div className="lg:col-span-9">
+          {seoCat && seoCat.meta_title && (
+            <div className="mb-6">
+              <p className="text-xs text-gray-500">Linea de productos</p>
+              <h1 className="text-2xl font-bold text-black mb-2">
+                {seoCat.meta_title}
+              </h1>
+              {seoCat.meta_description && (
+                <div className="text-gray-700">{seoCat.meta_description}</div>
+              )}
+            </div>
+          )}
           {loading ? (
             <div className="grid lg:grid-cols-4 grid-cols-1 gap-4">
               <LoadingProductsSkeleton total={PageSize} />

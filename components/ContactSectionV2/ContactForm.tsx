@@ -94,9 +94,9 @@ export const ContactForm = ({
         </div>
       ) : (
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="mb-4">
+          <div className="mb-6">
             <input
-              className="p-3 border shadow-lg rounded-lg w-full"
+              className="p-2 border-2 rounded-md w-full"
               type="text"
               placeholder={name_and_lastname_placeholder}
               {...register("nombre", { required: true })}
@@ -107,9 +107,9 @@ export const ContactForm = ({
               </p>
             )}
           </div>
-          <div className="mb-4">
+          <div className="mb-6">
             <input
-              className="p-3 border shadow-lg rounded-lg w-full"
+              className="p-2 border-2 rounded-md w-full"
               type="number"
               placeholder={phone_placeholder}
               {...register("telefono", { required: true })}
@@ -120,9 +120,9 @@ export const ContactForm = ({
               </p>
             )}
           </div>
-          <div className="mb-4">
+          <div className="mb-6">
             <input
-              className="p-3 border shadow-lg rounded-lg w-full"
+              className="p-2 border-2 rounded-md w-full"
               type="text"
               placeholder={email_placeholder}
               {...register("email", { required: true })}
@@ -133,9 +133,9 @@ export const ContactForm = ({
               </p>
             )}
           </div>
-          <div className="mb-4">
+          <div className="mb-6">
             <input
-              className="p-3 border shadow-lg rounded-lg w-full"
+              className="p-2 border-2 rounded-md w-full"
               type="text"
               placeholder={subject_placeholder}
               {...register("motivo", { value: subjectParam })}
@@ -148,7 +148,7 @@ export const ContactForm = ({
           </div>
           <div className="mb-6">
             <textarea
-              className="p-3 border shadow-lg rounded-lg w-full h-48 lg:h-96"
+              className="p-2 border-2 rounded-md w-full h-48"
               placeholder={message_placeholder}
               {...register("mensaje", { required: true })}
             />
@@ -164,7 +164,7 @@ export const ContactForm = ({
           <div className="flex justify-start">
             <button
               type="submit"
-              className="bg-gradient-to-b from-ov-primaryLight to-ov-primary text-white px-16 py-4 rounded-full hover:to-blue-800"
+              className="bg-ov-primary text-white px-16 lg:px-48 py-2 rounded-full duration-300 transition cursor-pointer hover:bg-ov-primaryLight" 
             >
               Enviar
             </button>
