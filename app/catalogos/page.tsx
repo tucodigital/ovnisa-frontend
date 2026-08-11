@@ -135,12 +135,9 @@ export default function Catalogos() {
   };
 
   const CATEGORIAS_HEADER_CONSTANTS = {
-    over_title: "Línea de Catálogos.",
-    title:
-      "Lo invitamos a descargar nuestros detallados catálogos de productos",
-    description:
-      "En cada catálogo uds contara con toda la información del producto que busca de cada producto que vendemos, medidas, peso e implementación acompañado con cuadros comparativos y reseñas. Ante cualquier duda puede comunicarse con nuestro departamento de ventas que se encargara de darle toda la información adicional que ud requiera.",
-  };
+    over_title: "Catálogos.",
+    title:"Descargá nuestros catálogos de productos",
+    description:"En esta sección podés acceder a los catálogos de nuestras principales líneas de productos, con información técnica, medidas, aplicaciones y datos relevantes para la selección de cada solución. Ante cualquier consulta, nuestro equipo comercial está disponible para brindarte asesoramiento y ayudarte a encontrar el producto adecuado según tu necesidad."};
 
   return (
     <main className="PageMainContainer min-h-screen px-4 pt-28 lg:pt-44 pb-12">
