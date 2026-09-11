@@ -31,20 +31,38 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       .json({ log: "Fields Empty", message: "Los campos estan incompletos." });
   }
 
+  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, SMTP_FROM, SMTP_TO } =
+    process.env;
+
+  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASSWORD || !SMTP_FROM || !SMTP_TO) {
+    console.error("[contact] faltan variables SMTP en el entorno");
+    return res.status(500).json({
+      log: "Config Error",
+      message: "El email no pudo ser enviado, por favor intente mas tarde.",
+    });
+  }
+
+  const port = Number(SMTP_PORT) || 465;
+
   const transporter = nodemailer.createTransport({
-    name: "tucodigital.com",
-    host: process.env.SMTP_HOST,
-    port: 465,
-    secure: true,
+    host: SMTP_HOST,
+    port,
+    // 465 arranca cifrado; 587 y 2587 abren en claro y suben con STARTTLS.
+    // requireTLS evita que la API key viaje en texto plano si el server no lo
+    // ofrece.
+    secure: port === 465,
+    requireTLS: port !== 465,
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASSWORD,
+      user: SMTP_USER,
+      pass: SMTP_PASSWORD,
     },
   });
   const mailData = {
-    from: "landingsredirect@tucodigital.com",
+    // Sale del entorno: con Resend tiene que ser una direccion de un
+    // dominio verificado, y asi se cambia sin tocar codigo.
+    from: SMTP_FROM,
     replyTo: req.body.email,
-    to: process.env.SMTP_CONTACTEMAIL,
+    to: SMTP_TO,
     subject: "Contacto Sitio Web Ovnisa | Nuevo Mensaje",
     html: `
     <html>
