@@ -26,6 +26,10 @@ export default function RootLayout({
           name="description"
           content="Soluciones técnicas al servicio de la industria"
         />
+        <meta
+          name="google-site-verification"
+          content="6Th-YvWD0DCc2v_DKv0jQM9fWrtyZITHFailGcGvIbk"
+        />
         <meta property="og:title" content="Ovnisa" />
         <meta property="og:url" content="https://www.ovnisa.com/" />
         <meta
